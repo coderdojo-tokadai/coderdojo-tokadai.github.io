@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>メンター募集 — CoderDojo 桃花台</title>
+  <meta name="description" content="CoderDojo 桃花台ではエンジニア経験者のメンターを募集しています。月1回、子どもたちのプログラミング学習をサポートするボランティア活動です。">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── Mentor page extras ──────────────────── */
+    .mentor-hero {
+      background: linear-gradient(135deg, #1A0A3D 0%, #3D1A6E 50%, #6B3FA0 100%);
+      padding: 5.5rem 1.5rem 4.5rem;
+      text-align: center;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .mentor-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(255,122,92,.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .mentor-hero .breadcrumb { color: rgba(255,255,255,.7); }
+    .mentor-hero .breadcrumb a { color: rgba(255,255,255,.7); }
+    .mentor-hero h1 { font-size: clamp(2rem,5vw,3rem); margin-bottom: .75rem; }
+    .mentor-hero p { opacity: .88; max-width: 560px; margin: .5rem auto 0; font-size: 1.05rem; }
+
+    .mentor-hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(255,255,255,.12); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 999px; padding: .35rem 1.1rem;
+      font-size: .8rem; font-weight: 700; color: var(--white);
+      margin-bottom: 1.25rem;
+    }
+
+    /* skill tags */
+    .skill-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; justify-content: center; }
+    .skill-tag {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 999px; padding: .3rem .9rem;
+      font-size: .8rem; font-weight: 600;
+    }
+
+    /* why cards */
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .why-card {
+      background: var(--white); border-radius: var(--radius-lg);
+      padding: 2rem 1.75rem; text-align: center;
+      box-shadow: var(--shadow-sm); border: 2px solid transparent;
+      transition: transform var(--t) var(--ease), border-color var(--t), box-shadow var(--t);
+    }
+    .why-card:hover { transform: translateY(-5px); border-color: var(--purple); box-shadow: 0 8px 28px rgba(107,63,160,.15); }
+    .why-icon {
+      width: 72px; height: 72px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.2rem; margin: 0 auto 1.25rem;
+      background: linear-gradient(135deg, #F5E8FF, #E0C8FF);
+    }
+    .why-card h3 { font-size: 1.1rem; margin-bottom: .5rem; }
+    .why-card p { color: var(--text-light); font-size: .9rem; line-height: 1.8; }
+
+    /* looking-for section */
+    .looking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .check-list { display: flex; flex-direction: column; gap: .85rem; margin-top: 1rem; }
+    .check-item { display: flex; align-items: flex-start; gap: .75rem; }
+    .check-mark {
+      width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .85rem; margin-top: .1rem;
+    }
+    .check-ok  { background: #E8F7F0; color: var(--green-dark); }
+    .check-no  { background: #FFF0F5; color: var(--pink); }
+    .check-item p { font-size: .93rem; line-height: 1.7; color: var(--text); }
+    .check-item p span { color: var(--text-light); font-size: .85rem; display: block; }
+
+    /* timeline */
+    .timeline { display: flex; flex-direction: column; gap: 0; position: relative; max-width: 560px; margin: 0 auto; }
+    .timeline::before {
+      content: ''; position: absolute; left: 22px; top: 0; bottom: 0;
+      width: 2px; background: linear-gradient(to bottom, var(--peach), var(--purple));
+    }
+    .tl-item { display: flex; gap: 1.25rem; padding-bottom: 2rem; position: relative; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-dot {
+      width: 46px; height: 46px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--peach), var(--pink));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; z-index: 1; box-shadow: 0 2px 10px rgba(255,78,139,.25);
+    }
+    .tl-content { padding-top: .6rem; }
+    .tl-time { font-size: .75rem; font-weight: 700; color: var(--peach); letter-spacing: .08em; margin-bottom: .2rem; }
+    .tl-content h4 { font-size: 1rem; margin-bottom: .2rem; }
+    .tl-content p { font-size: .875rem; color: var(--text-light); }
+
+    /* voice cards */
+    .voice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .voice-card {
+      background: var(--white); border-radius: var(--radius-lg);
+      padding: 1.75rem; box-shadow: var(--shadow-sm); border: 2px solid var(--border);
+      position: relative;
+    }
+    .voice-card::before {
+      content: '"'; position: absolute; top: 1rem; right: 1.5rem;
+      font-size: 4rem; color: var(--peach-pale); line-height: 1;
+      font-family: Georgia, serif; pointer-events: none;
+    }
+    .voice-meta { display: flex; align-items: center; gap: .75rem; margin-bottom: 1rem; }
+    .voice-avatar {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--peach), var(--pink));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; flex-shrink: 0;
+    }
+    .voice-name { font-weight: 700; font-size: .95rem; }
+    .voice-role { font-size: .78rem; color: var(--text-light); }
+    .voice-card p { font-size: .9rem; line-height: 1.85; color: var(--text-light); }
+
+    /* apply banner */
+    .apply-banner {
+      background: linear-gradient(135deg, var(--dark), var(--purple));
+      border-radius: var(--radius-xl); padding: 3.5rem;
+      text-align: center; color: var(--white);
+      box-shadow: var(--shadow-lg);
+    }
+    .apply-banner h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); margin-bottom: .75rem; }
+    .apply-banner p { opacity: .85; max-width: 480px; margin: 0 auto 2rem; }
+    .apply-banner .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    @media (max-width: 900px) {
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .looking-grid { grid-template-columns: 1fr; }
+      .voice-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .why-grid { grid-template-columns: 1fr; }
+      .voice-grid { grid-template-columns: 1fr; }
+      .apply-banner { padding: 2.5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════ NAVIGATION ══════════════════════ -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" aria-hidden="true">
+        <defs><linearGradient id="lg0" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF7A5C"/><stop offset="100%" stop-color="#FF4E8B"/></linearGradient></defs>
+        <rect width="80" height="80" rx="18" fill="url(#lg0)"/>
+        <g transform="translate(60,18)"><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(0)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(72)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(144)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(216)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(288)"/><circle cx="0" cy="0" r="2.5" fill="#FFE082"/></g>
+        <text x="37" y="53" font-family="'Courier New',monospace" font-size="21" font-weight="900" fill="white" text-anchor="middle">&lt;/&gt;</text>
+        <circle cx="14" cy="24" r="2.5" fill="rgba(255,255,255,.55)"/>
+      </svg>
+      <span class="nav-logo-text">
+        <strong>CoderDojo</strong>
+        <span class="brand-sub">桃花台 Tokadai</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">ホーム</a>
+      <a href="venue.html">開催場所</a>
+      <a href="news.html">お知らせ</a>
+      <a href="mentor.html" class="active">メンター募集</a>
+      <a href="contact.html" class="nav-cta">参加申込み</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="mobileNav">
+    <a href="index.html">🏠 ホーム</a>
+    <a href="venue.html">📍 開催場所</a>
+    <a href="news.html">📢 お知らせ</a>
+    <a href="mentor.html">🧑‍💻 メンター募集</a>
+    <a href="contact.html" class="nav-cta-mobile">🚀 参加申込み</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════ HERO ══════════════════════ -->
+<div class="mentor-hero">
+  <div class="breadcrumb">
+    <a href="index.html">ホーム</a>
+    <span>›</span>
+    <span>メンター募集</span>
+  </div>
+  <div class="mentor-hero-badge">🧑‍💻 エンジニア経験者 歓迎</div>
+  <h1>あなたの技術で、<br>子どもたちの未来を開こう</h1>
+  <p>月1回・3時間から始められるボランティア。プログラミングの楽しさを、次の世代へ。</p>
+  <div class="skill-tags">
+    <span class="skill-tag">💻 Web開発</span>
+    <span class="skill-tag">🐍 Python</span>
+    <span class="skill-tag">📱 アプリ開発</span>
+    <span class="skill-tag">🎮 ゲーム開発</span>
+    <span class="skill-tag">🤖 AI・機械学習</span>
+    <span class="skill-tag">🌐 インフラ・クラウド</span>
+    <span class="skill-tag">その他なんでも</span>
+  </div>
+</div>
+
+<!-- ══════════════════════ WHY ══════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label">メンターになる理由</span>
+      <h2>こんないいことがあります</h2>
+      <p>子どもたちへの貢献だけでなく、エンジニアとしての自分にも返ってくるものがあります。</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-in delay-1">
+        <div class="why-icon">🗣️</div>
+        <h3>教えると自分が深まる</h3>
+        <p>「なぜこう動くの？」という子どもの素朴な質問が、自分の理解の盲点を突いてきます。技術の本質を言葉にする力が鍛えられます。</p>
+      </div>
+      <div class="why-card fade-in delay-2">
+        <div class="why-icon">🌱</div>
+        <h3>地域に貢献できる</h3>
+        <p>桃花台という地元コミュニティで、次世代のエンジニアを育てる活動に直接関われます。技術を社会に還元する実感が持てます。</p>
+      </div>
+      <div class="why-card fade-in delay-3">
+        <div class="why-icon">🤝</div>
+        <h3>仲間のエンジニアと繋がる</h3>
+        <p>異なる業種・技術背景を持つメンター仲間と自然に交流できます。副業・転職・勉強会などの情報交換も生まれています。</p>
+      </div>
+      <div class="why-card fade-in delay-1">
+        <div class="why-icon">😄</div>
+        <h3>子どもたちの「できた！」が最高</h3>
+        <p>子どもが初めてコードを動かした瞬間の顔は格別です。業務では味わえない、純粋な喜びがあります。</p>
+      </div>
+      <div class="why-card fade-in delay-2">
+        <div class="why-icon">⏰</div>
+        <h3>月1回・3時間だけ</h3>
+        <p>活動は月1回、第3日曜日の午後のみ。忙しい社会人でも無理なく続けられます。参加できない月は事前連絡でOK。</p>
+      </div>
+      <div class="why-card fade-in delay-3">
+        <div class="why-icon">📄</div>
+        <h3>実績・経歴にもなる</h3>
+        <p>継続的なボランティア活動はポートフォリオや職務経歴書に記載できます。転職活動でも人柄や社会性をアピールする材料になります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ LOOKING FOR ══════════════════════ -->
+<section style="background: linear-gradient(180deg, var(--bg) 0%, #F0E8FF 100%);">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label">こんな方を求めています</span>
+      <h2>資格より「好き」が大事</h2>
+      <p>特定の言語や資格は不要です。プログラミングが好きで、子どもと関わることを楽しめる方を歓迎します。</p>
+    </div>
+
+    <div class="looking-grid">
+      <div class="fade-in">
+        <h3 style="margin-bottom:1rem; color:var(--green-dark);">✅ こんな方、大歓迎です</h3>
+        <div class="check-list">
+          <div class="check-item">
+            <div class="check-mark check-ok">✓</div>
+            <p>プログラミング経験がある方<span>言語・年数・業務外の趣味でも OK</span></p>
+          </div>
+          <div class="check-item">
+            <div class="check-mark check-ok">✓</div>
+            <p>IT業界以外のエンジニア・研究者の方<span>製造・農業・医療など、どの分野でも歓迎</span></p>
+          </div>
+          <div class="check-item">
+            <div class="check-mark check-ok">✓</div>
+            <p>学生エンジニア（大学生・専門学生）<span>社会人でなくても参加できます</span></p>
+          </div>
+          <div class="check-item">
+            <div class="check-mark check-ok">✓</div>
+            <p>子育て経験のある方<span>保護者目線でのサポートも大きな力です</span></p>
+          </div>
+          <div class="check-item">
+            <div class="check-mark check-ok">✓</div>
+            <p>「子どもに教えたことがない」という方<span>最初はメンターのサポートに回るだけでもOK</span></p>
+          </div>
+          <div class="check-item">
+            <div class="check-mark check-ok">✓</div>
+            <p>月1回の参加が難しい月がある方<span>毎回参加の義務はありません</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="fade-in delay-2">
+        <h3 style="margin-bottom:1rem; color:var(--pink);">⚠️ こんな準備は不要です</h3>
+        <div class="check-list">
+          <div class="check-item">
+            <div class="check-mark check-no">✕</div>
+            <p>特定の資格・認定証<span>教員免許・情報処理技術者などは不要です</span></p>
+          </div>
+          <div class="check-item">
+            <div class="check-mark check-no">✕</div>
+            <p>指導経験・塾講師の経験<span>「教える」よりも「一緒に考える」スタイルです</span></p>
+          </div>
+          <div class="check-item">
+            <div class="check-mark check-no">✕</div>
+            <p>特定の言語・スキルセット<span>担当するニンジャの興味に合わせて柔軟に動きます</span></p>
+          </div>
+          <div class="check-item">
+            <div class="check-mark check-no">✕</div>
+            <p>準備・事前学習の時間<span>カリキュラムはないので、当日その場で対応できます</span></p>
+          </div>
+        </div>
+
+        <div style="margin-top:2rem; background:var(--white); border-radius:var(--radius); padding:1.5rem; border:2px solid var(--border);">
+          <p style="font-size:.875rem; line-height:1.85; color:var(--text-light);">
+            💡 <strong style="color:var(--text);">CoderDojo のメンタースタイル</strong><br>
+            答えを教えるのではなく、ニンジャ（参加する子ども）自身が「答えに気づく」よう問いかけます。だから完璧な知識よりも、「一緒に調べよう」と言える姿勢が大切です。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ DAY FLOW ══════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label">活動の流れ</span>
+      <h2>Dojo当日のスケジュール</h2>
+      <p>月1回、第3日曜日の午後。ここにメンターとしての3時間があります。</p>
+    </div>
+    <div class="timeline fade-in">
+      <div class="tl-item">
+        <div class="tl-dot">🚪</div>
+        <div class="tl-content">
+          <p class="tl-time">12:45</p>
+          <h4>メンター集合・準備</h4>
+          <p>メンター同士で情報共有。今日の参加ニンジャの顔ぶれや、前回の状況を確認します。初参加のメンターへのオリエンテーションもここで。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">👋</div>
+        <div class="tl-content">
+          <p class="tl-time">13:00</p>
+          <h4>開始・ニンジャ受付</h4>
+          <p>ニンジャ（子どもたち）が次々と集合。初回参加の子には丁寧に説明します。自由に席についてもらい、作業スタート。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">💻</div>
+        <div class="tl-content">
+          <p class="tl-time">13:15 〜 15:30</p>
+          <h4>コーディングタイム</h4>
+          <p>ニンジャがそれぞれのプロジェクトに取り組みます。メンターは困っている子に声をかけたり、一緒に考えたり、アイデアを広げるサポートをします。強制・一斉授業はありません。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">🎤</div>
+        <div class="tl-content">
+          <p class="tl-time">15:30 〜 15:50</p>
+          <h4>作品発表・シェアタイム</h4>
+          <p>希望するニンジャが今日作ったものをみんなに見せます。拍手と笑顔が飛び交うDojoの醍醐味。発表は強制ではありません。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">🌸</div>
+        <div class="tl-content">
+          <p class="tl-time">16:00</p>
+          <h4>終了・メンター振り返り</h4>
+          <p>ニンジャ解散後、メンター間で簡単な振り返りを行います。気になったこと・次回へのメモを共有して終了。おつかれさまでした！</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ VOICES ══════════════════════ -->
+<section style="background: var(--peach-pale);">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label">メンターの声</span>
+      <h2>参加メンターからひとこと</h2>
+    </div>
+    <div class="voice-grid">
+      <div class="voice-card fade-in delay-1">
+        <div class="voice-meta">
+          <div class="voice-avatar">👨‍💻</div>
+          <div>
+            <p class="voice-name">田中さん（32歳）</p>
+            <p class="voice-role">Webエンジニア・メンター歴1年半</p>
+          </div>
+        </div>
+        <p>「なぜforループはこう書くの？」という質問に答えようとして、自分が言語化できていなかったことに気づきました。子どもに説明するって、意外と難しくて面白いです。</p>
+      </div>
+      <div class="voice-card fade-in delay-2">
+        <div class="voice-meta">
+          <div class="voice-avatar">👩‍💻</div>
+          <div>
+            <p class="voice-name">佐藤さん（28歳）</p>
+            <p class="voice-role">社内SE・メンター歴8ヶ月</p>
+          </div>
+        </div>
+        <p>最初は「教えられるか不安」でしたが、ここでは一緒に考えるだけでいいと知って気が楽になりました。子どもが「できた！」と言う瞬間はやっぱり嬉しいですね。</p>
+      </div>
+      <div class="voice-card fade-in delay-3">
+        <div class="voice-meta">
+          <div class="voice-avatar">🧑‍💻</div>
+          <div>
+            <p class="voice-name">鈴木さん（41歳）</p>
+            <p class="voice-role">フリーランス開発者・メンター歴2年</p>
+          </div>
+        </div>
+        <p>在宅ワーク中心で地域と繋がりが薄かったのですが、Dojoで地元の人たちと知り合えました。メンター仲間との情報交換も楽しくて、続けています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ FAQ ══════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label">よくある質問</span>
+      <h2>メンターに関するFAQ</h2>
+    </div>
+    <div class="faq-list fade-in" style="max-width:720px; margin: 0 auto;">
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text"><span class="faq-q-badge">Q</span>どんな技術があればメンターになれますか？</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a">
+          特定の言語や技術は問いません。Scratch・Python・HTML/CSS・JavaScript・Unity・Roblox Studio など、ニンジャが取り組む内容は多岐にわたります。「自分はこれが得意」という分野があれば十分です。知らない分野は「一緒に調べよう」で大丈夫です。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text"><span class="faq-q-badge">Q</span>参加できない月があってもいいですか？</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a">
+          問題ありません。仕事や家庭の都合で参加できない月は事前にお知らせください。毎月参加の義務はなく、無理のない範囲で続けていただければ十分です。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text"><span class="faq-q-badge">Q</span>初めてのメンター参加は何をすればいいですか？</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a">
+          初回は先輩メンターと一緒に動いてもらうだけで大丈夫です。最初の数回は「見て・聞いて・少し手伝う」くらいのスタンスで問題ありません。慣れてきたら自然と動き方がわかってきます。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text"><span class="faq-q-badge">Q</span>交通費・報酬はありますか？</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a">
+          CoderDojo はボランティアベースで運営しているため、報酬・交通費の支給はありません。ただし、飲み物などの軽い差し入れをご用意することがあります。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text"><span class="faq-q-badge">Q</span>子どもと接するのが得意ではないのですが…</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a">
+          大丈夫です！CoderDojo のニンジャたちはプログラミングに集中していることが多いので、「コードについて一緒に考える」という形で自然に関われます。無理に盛り上げたり、リードしたりする必要はありません。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text"><span class="faq-q-badge">Q</span>まず見学だけでもできますか？</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a">
+          もちろんです。「まずは雰囲気を見てみたい」という方のための見学も歓迎しています。下記のフォームからお気軽にご連絡ください。
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ APPLY ══════════════════════ -->
+<section style="background: var(--peach-pale);">
+  <div class="container">
+    <div class="apply-banner fade-in">
+      <h2>一緒にDojoをつくりませんか？🌸</h2>
+      <p>見学・体験参加も大歓迎。まずはお気軽にメッセージをください。担当メンターからご返信します。</p>
+      <div style="display:flex; gap:.75rem; justify-content:center; flex-wrap:wrap; margin-bottom:2rem;">
+        <div style="background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2); border-radius:var(--radius); padding:.75rem 1.25rem; font-size:.875rem;">
+          📅 次回Dojo：<span data-ev="date-text">2026年5月17日（日）</span>
+        </div>
+        <div style="background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2); border-radius:var(--radius); padding:.75rem 1.25rem; font-size:.875rem;">
+          🕐 <span data-ev="time-text">13:00 〜 16:00</span>
+        </div>
+        <div style="background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2); border-radius:var(--radius); padding:.75rem 1.25rem; font-size:.875rem;">
+          📍 <span data-ev="venue-text">小牧市東部市民センター 学習室</span>
+        </div>
+      </div>
+      <div class="btn-group">
+        <a href="contact.html?type=mentor" class="btn btn-white">メンターとして応募する</a>
+        <a href="contact.html" class="btn btn-ghost">まずは見学したい</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ FOOTER ══════════════════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="40" height="40" aria-hidden="true">
+            <defs><linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF7A5C"/><stop offset="100%" stop-color="#FF4E8B"/></linearGradient></defs>
+            <rect width="80" height="80" rx="18" fill="url(#lg1)"/>
+            <g transform="translate(60,18)"><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(0)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(72)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(144)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(216)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(288)"/><circle cx="0" cy="0" r="2.5" fill="#FFE082"/></g>
+            <text x="37" y="53" font-family="'Courier New',monospace" font-size="21" font-weight="900" fill="white" text-anchor="middle">&lt;/&gt;</text>
+          </svg>
+          <div class="footer-brand-name">
+            CoderDojo
+            <span class="footer-brand-sub">桃花台 Tokadai</span>
+          </div>
+        </div>
+        <p class="footer-desc">桃花台の子どもたちが、コードを通じて「作る楽しさ」を知り、未来への可能性を広げるための無料プログラミングクラブです。</p>
+      </div>
+      <div class="footer-col">
+        <h4>ページ</h4>
+        <ul>
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="venue.html">開催場所</a></li>
+          <li><a href="news.html">お知らせ</a></li>
+          <li><a href="mentor.html">メンター募集</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>リンク</h4>
+        <ul>
+          <li><a href="https://coderdojo.com" target="_blank" rel="noopener">CoderDojo 公式</a></li>
+          <li><a href="https://coderdojo.jp" target="_blank" rel="noopener">CoderDojo Japan</a></li>
+          <li><a href="mentor.html">メンター募集</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CoderDojo 桃花台 (Tokadai). Powered by volunteers. 🌸</span>
+      <div class="footer-links">
+        <a href="contact.html">お問い合わせ</a>
+        <a href="#">プライバシー</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="events.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせ — CoderDojo 桃花台</title>
+  <meta name="description" content="CoderDojo 桃花台への参加申込み・見学・メンター参加・その他お問い合わせはこちらから。">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ══════════════════════ NAVIGATION ══════════════════════ -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" aria-hidden="true">
+        <defs><linearGradient id="lg0" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF7A5C"/><stop offset="100%" stop-color="#FF4E8B"/></linearGradient></defs>
+        <rect width="80" height="80" rx="18" fill="url(#lg0)"/>
+        <g transform="translate(60,18)"><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(0)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(72)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(144)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(216)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(288)"/><circle cx="0" cy="0" r="2.5" fill="#FFE082"/></g>
+        <text x="37" y="53" font-family="'Courier New',monospace" font-size="21" font-weight="900" fill="white" text-anchor="middle">&lt;/&gt;</text>
+        <circle cx="14" cy="24" r="2.5" fill="rgba(255,255,255,.55)"/>
+      </svg>
+      <span class="nav-logo-text">
+        <strong>CoderDojo</strong>
+        <span class="brand-sub">桃花台 Tokadai</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">ホーム</a>
+      <a href="venue.html">開催場所</a>
+      <a href="news.html">お知らせ</a>
+      <a href="mentor.html">メンター募集</a>
+      <a href="contact.html" class="nav-cta">参加申込み</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="mobileNav">
+    <a href="index.html">🏠 ホーム</a>
+    <a href="venue.html">📍 開催場所</a>
+    <a href="news.html">📢 お知らせ</a>
+    <a href="mentor.html">🧑‍💻 メンター募集</a>
+    <a href="contact.html" class="nav-cta-mobile">🚀 参加申込み</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════ PAGE HERO ══════════════════════ -->
+<div class="page-hero">
+  <div class="breadcrumb">
+    <a href="index.html">ホーム</a>
+    <span>›</span>
+    <span>お問い合わせ</span>
+  </div>
+  <h1>✉️ お問い合わせ</h1>
+  <p>参加申込み・見学・メンター参加・その他、なんでもお気軽にご連絡ください。</p>
+</div>
+
+<!-- ══════════════════════ CONTACT MAIN ══════════════════════ -->
+<section>
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- Left: info -->
+      <div class="fade-in">
+        <h3>こんな方からのご連絡、お待ちしています！</h3>
+        <p>初めての参加、見学希望、保護者の方からのご質問、メンターとして関わりたいなど、どんな内容でも歓迎です。お気軽にどうぞ。</p>
+
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="c-icon">🚀</div>
+            <div>
+              <strong>参加申込み</strong><br>
+              <span style="color:var(--text-light);font-size:.9rem;">次回Dojoへの参加を希望される方</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">👀</div>
+            <div>
+              <strong>見学希望</strong><br>
+              <span style="color:var(--text-light);font-size:.9rem;">雰囲気を見てから参加を決めたい方</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">🧑‍💻</div>
+            <div>
+              <strong>メンター参加</strong><br>
+              <span style="color:var(--text-light);font-size:.9rem;">子どもたちをサポートしたいボランティアの方</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">❓</div>
+            <div>
+              <strong>その他のご質問</strong><br>
+              <span style="color:var(--text-light);font-size:.9rem;">なんでもお気軽にどうぞ</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Next event reminder -->
+        <div style="margin-top:2rem;background:var(--peach-pale);border-radius:var(--radius);padding:1.5rem;border-left:4px solid var(--peach);">
+          <p style="font-size:.78rem;font-weight:700;color:var(--peach);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem;">次回開催</p>
+          <p data-ev="date-short" style="font-weight:700;margin-bottom:.25rem;">🌸 2026年5月17日（日）13:00〜16:00</p>
+          <p style="font-size:.88rem;color:var(--text-light);"><span data-ev="venue-short">小牧市東部市民センター 学習室</span><br>参加には<a href="https://connpass.com/event/xxxxxx/" data-ev="link" target="_blank" rel="noopener" style="color:var(--peach);text-decoration:underline;">connpass</a>からの事前申込みが必要です。</p>
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <div class="fade-in delay-2">
+        <div class="form-card">
+          <h3 style="margin-bottom:1.5rem;">📝 お問い合わせフォーム</h3>
+
+          <form id="contactForm" novalidate>
+            <input type="hidden" name="_subject" value="【CoderDojo 桃花台】お問い合わせ">
+            <input type="hidden" name="_language" value="ja">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">お名前<span class="required">*</span></label>
+                <input type="text" id="name" name="name" placeholder="山田 太郎" required>
+              </div>
+              <div class="form-group">
+                <label for="child-name">お子さんのお名前</label>
+                <input type="text" id="child-name" name="child-name" placeholder="山田 花子">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">メールアドレス<span class="required">*</span></label>
+              <input type="email" id="email" name="email" placeholder="example@email.com" required>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="age">お子さんの年齢</label>
+                <select id="age" name="age">
+                  <option value="">選択してください</option>
+                  <option value="7">7歳</option>
+                  <option value="8">8歳</option>
+                  <option value="9">9歳</option>
+                  <option value="10">10歳</option>
+                  <option value="11">11歳</option>
+                  <option value="12">12歳</option>
+                  <option value="13">13歳</option>
+                  <option value="14">14歳</option>
+                  <option value="15">15歳</option>
+                  <option value="16">16歳</option>
+                  <option value="17">17歳</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="type">お問い合わせ種別<span class="required">*</span></label>
+                <select id="type" name="type" required>
+                  <option value="">選択してください</option>
+                  <option value="join">参加申込み</option>
+                  <option value="visit">見学希望</option>
+                  <option value="mentor">メンター参加</option>
+                  <option value="other">その他</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="experience">プログラミング経験</label>
+              <select id="experience" name="experience">
+                <option value="">選択してください（任意）</option>
+                <option value="none">まったくない（初めて）</option>
+                <option value="scratch">Scratchを少し触ったことがある</option>
+                <option value="some">少し学んだことがある</option>
+                <option value="good">ある程度できる</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">メッセージ・ご質問<span class="required">*</span></label>
+              <textarea id="message" name="message" placeholder="例）5月のDojoに参加したいです。初めての参加ですが、Scratchを学びたいと思っています。よろしくお願いします。" required></textarea>
+            </div>
+
+            <div style="background:var(--peach-pale);border-radius:var(--radius-sm);padding:1rem;font-size:.83rem;color:var(--text-light);margin-bottom:1.25rem;">
+              📋 <strong>ご確認ください：</strong>12歳未満のお子さんは保護者の付き添いをお願いしています。ご質問があればお気軽にどうぞ。
+            </div>
+
+            <button type="submit" class="btn btn-primary form-submit">送信する 🚀</button>
+          </form>
+
+          <!-- Success message -->
+          <div class="form-success" id="formSuccess">
+            <div class="s-icon">🎉</div>
+            <h3>送信完了！</h3>
+            <p>お問い合わせありがとうございます。<br>3営業日以内にご登録のメールアドレスへご返信いたします。</p>
+            <p style="margin-top:1rem;font-size:.88rem;color:var(--text-light);">次のDojoでお会いできることを楽しみにしています！🌸</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ FAQ ══════════════════════ -->
+<section style="background:var(--peach-pale);">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label">よくあるご質問</span>
+      <h2>FAQ</h2>
+      <p>よくいただくご質問をまとめました。解決しない場合はお気軽にお問い合わせください。</p>
+    </div>
+    <div class="faq-list fade-in" style="max-width:720px;margin:0 auto;">
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text"><span class="faq-q-badge">Q</span>参加費はかかりますか？</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a">
+          参加費は完全無料です。CoderDojo の基本方針として、すべての子どもたちが無料でプログラミングを学べる環境を提供しています。材料費や会場費なども一切かかりません。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text"><span class="faq-q-badge">Q</span>プログラミング経験がなくても参加できますか？</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a">
+          もちろんです！むしろ初めての方を大歓迎しています。メンターが丁寧にサポートしますので、キーボード操作が苦手な方でも安心して参加できます。まずは「コンピューターで何かを作る楽しさ」を体験してみてください。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text"><span class="faq-q-badge">Q</span>保護者の付き添いは必要ですか？</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a">
+          12歳未満のお子さんは保護者の付き添いをお願いしています。保護者の方はDojoの見学・参加も歓迎です。12歳以上は一人での参加もOKです（事前にご連絡ください）。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text"><span class="faq-q-badge">Q</span>パソコンは持参が必要ですか？</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a">
+          お持ちであればノートPCをご持参ください。台数に余裕がある場合は会場のPCも使えますが、保証はできないため、可能であれば持参をおすすめします。タブレットでも一部の活動に参加できます。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text"><span class="faq-q-badge">Q</span>何を学べますか？</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a">
+          決まったカリキュラムはありません。Scratch（初心者向けのビジュアルプログラミング）、HTML/CSS（ウェブサイト制作）、Python（テキストプログラミング）、JavaScript など、興味に合わせて自由に選べます。メンターが一緒に考えてサポートします。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text"><span class="faq-q-badge">Q</span>毎回参加しなくてもいいですか？</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a">
+          参加は任意で、毎回出席する義務はありません。都合の良い月だけ参加してください。ただし、会場の定員がありますので、参加を希望される月は事前にお申込みをお願いします。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text"><span class="faq-q-badge">Q</span>メンターとして参加したいのですが？</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a">
+          大歓迎です！プログラミング経験があれば年齢・職業は問いません。月1回、土日の午後に活動します。特別な資格も不要です。子どもたちと一緒に楽しく学びながら関わっていただける方を求めています。お問い合わせフォームから「メンター参加」を選んでご連絡ください。
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ FOOTER ══════════════════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="40" height="40" aria-hidden="true">
+            <defs><linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF7A5C"/><stop offset="100%" stop-color="#FF4E8B"/></linearGradient></defs>
+            <rect width="80" height="80" rx="18" fill="url(#lg1)"/>
+            <g transform="translate(60,18)"><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(0)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(72)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(144)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(216)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(288)"/><circle cx="0" cy="0" r="2.5" fill="#FFE082"/></g>
+            <text x="37" y="53" font-family="'Courier New',monospace" font-size="21" font-weight="900" fill="white" text-anchor="middle">&lt;/&gt;</text>
+          </svg>
+          <div class="footer-brand-name">
+            CoderDojo
+            <span class="footer-brand-sub">桃花台 Tokadai</span>
+          </div>
+        </div>
+        <p class="footer-desc">桃花台の子どもたちが、コードを通じて「作る楽しさ」を知り、未来への可能性を広げるための無料プログラミングクラブです。</p>
+      </div>
+      <div class="footer-col">
+        <h4>ページ</h4>
+        <ul>
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="venue.html">開催場所</a></li>
+          <li><a href="news.html">お知らせ</a></li>
+          <li><a href="mentor.html">メンター募集</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>リンク</h4>
+        <ul>
+          <li><a href="https://coderdojo.com" target="_blank" rel="noopener">CoderDojo 公式</a></li>
+          <li><a href="https://coderdojo.jp" target="_blank" rel="noopener">CoderDojo Japan</a></li>
+          <li><a href="mentor.html">メンター募集</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CoderDojo 桃花台 (Tokadai). Powered by volunteers. 🌸</span>
+      <div class="footer-links">
+        <a href="contact.html">お問い合わせ</a>
+        <a href="#">プライバシー</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="events.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

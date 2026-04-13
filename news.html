@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お知らせ — CoderDojo 桃花台</title>
+  <meta name="description" content="CoderDojo 桃花台の最新のお知らせ・開催情報・活動報告をまとめています。">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ══════════════════════ NAVIGATION ══════════════════════ -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" aria-hidden="true">
+        <defs><linearGradient id="lg0" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF7A5C"/><stop offset="100%" stop-color="#FF4E8B"/></linearGradient></defs>
+        <rect width="80" height="80" rx="18" fill="url(#lg0)"/>
+        <g transform="translate(60,18)"><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(0)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(72)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(144)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(216)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(288)"/><circle cx="0" cy="0" r="2.5" fill="#FFE082"/></g>
+        <text x="37" y="53" font-family="'Courier New',monospace" font-size="21" font-weight="900" fill="white" text-anchor="middle">&lt;/&gt;</text>
+        <circle cx="14" cy="24" r="2.5" fill="rgba(255,255,255,.55)"/>
+      </svg>
+      <span class="nav-logo-text">
+        <strong>CoderDojo</strong>
+        <span class="brand-sub">桃花台 Tokadai</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">ホーム</a>
+      <a href="venue.html">開催場所</a>
+      <a href="news.html">お知らせ</a>
+      <a href="mentor.html">メンター募集</a>
+      <a href="contact.html" class="nav-cta">参加申込み</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="mobileNav">
+    <a href="index.html">🏠 ホーム</a>
+    <a href="venue.html">📍 開催場所</a>
+    <a href="news.html">📢 お知らせ</a>
+    <a href="mentor.html">🧑‍💻 メンター募集</a>
+    <a href="contact.html" class="nav-cta-mobile">🚀 参加申込み</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════ PAGE HERO ══════════════════════ -->
+<div class="page-hero">
+  <div class="breadcrumb">
+    <a href="index.html">ホーム</a>
+    <span>›</span>
+    <span>お知らせ</span>
+  </div>
+  <h1>📢 お知らせ</h1>
+  <p>開催情報・活動報告・メンター募集など、最新情報をお届けします。</p>
+</div>
+
+<!-- ══════════════════════ NEWS LIST ══════════════════════ -->
+<section>
+  <div class="container">
+
+    <!-- Pinned: next event -->
+    <div style="background:linear-gradient(135deg,var(--dark),var(--purple));border-radius:var(--radius-lg);padding:2rem 2.5rem;color:white;margin-bottom:2.5rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;" class="fade-in">
+      <span style="font-size:2.5rem;">📌</span>
+      <div style="flex:1;">
+        <p style="font-size:.78rem;opacity:.7;text-transform:uppercase;letter-spacing:.12em;margin-bottom:.25rem;">次回開催</p>
+        <h3 data-ev="title" style="font-size:1.4rem;margin-bottom:.4rem;">🌸 5月のCoderDojo 桃花台</h3>
+        <p data-ev="news-summary" style="opacity:.85;font-size:.95rem;">2026年5月17日（日）13:00〜16:00｜小牧市東部市民センター 学習室</p>
+      </div>
+      <a href="https://connpass.com/event/xxxxxx/" data-ev="link" class="btn btn-white" target="_blank" rel="noopener" style="flex-shrink:0;">connpassで申込む →</a>
+    </div>
+
+    <!-- Tag filter bar -->
+    <div style="display:flex;gap:.6rem;margin-bottom:1.75rem;flex-wrap:wrap;" class="fade-in">
+      <span style="font-size:.85rem;font-weight:700;color:var(--text-light);line-height:2.2;">絞り込み：</span>
+      <button onclick="filterNews('all')"    class="filter-btn active" data-filter="all"   style="padding:.4rem 1rem;border-radius:999px;border:2px solid var(--border);background:var(--white);font-size:.82rem;font-weight:700;cursor:pointer;">すべて</button>
+      <button onclick="filterNews('event')"  class="filter-btn"        data-filter="event" style="padding:.4rem 1rem;border-radius:999px;border:2px solid var(--border);background:var(--white);font-size:.82rem;font-weight:700;cursor:pointer;">開催情報</button>
+      <button onclick="filterNews('report')" class="filter-btn"        data-filter="report" style="padding:.4rem 1rem;border-radius:999px;border:2px solid var(--border);background:var(--white);font-size:.82rem;font-weight:700;cursor:pointer;">活動報告</button>
+      <button onclick="filterNews('info')"   class="filter-btn"        data-filter="info"   style="padding:.4rem 1rem;border-radius:999px;border:2px solid var(--border);background:var(--white);font-size:.82rem;font-weight:700;cursor:pointer;">お知らせ</button>
+    </div>
+
+    <div class="news-list" id="newsList">
+
+      <article class="news-card fade-in" data-type="event">
+        <div class="news-date">
+          <div class="month">May</div>
+          <div class="day">17</div>
+          <div class="year">2026</div>
+        </div>
+        <div class="news-body">
+          <span class="news-tag tag-event">開催情報</span>
+          <h3>【5月開催】CoderDojo 桃花台 第24回</h3>
+          <p>2026年5月17日（日）13:00〜16:00、桃花台東コミュニティセンターにて開催します。今月はPythonを使ったゲーム制作に挑戦するニンジャも多数参加予定！初めての方も大歓迎です。お申込みはお問い合わせページから。</p>
+        </div>
+      </article>
+
+      <article class="news-card fade-in delay-1" data-type="info">
+        <div class="news-date">
+          <div class="month">Apr</div>
+          <div class="day">20</div>
+          <div class="year">2026</div>
+        </div>
+        <div class="news-body">
+          <span class="news-tag tag-info">お知らせ</span>
+          <h3>メンター（ボランティア）を募集しています！</h3>
+          <p>CoderDojo 桃花台では、子どもたちをサポートするメンターを募集しています。プログラミング経験があれば年齢・職業は問いません。月1回、土日の午後に活動します。興味のある方はお問い合わせください。</p>
+        </div>
+      </article>
+
+      <article class="news-card fade-in delay-2" data-type="report">
+        <div class="news-date">
+          <div class="month">Apr</div>
+          <div class="day">02</div>
+          <div class="year">2026</div>
+        </div>
+        <div class="news-body">
+          <span class="news-tag tag-report">活動報告</span>
+          <h3>【4月活動報告】新年度スタート！新しいニンジャが仲間入り</h3>
+          <p>4月のDojoには新しいニンジャ3名が参加し、にぎやかな会となりました。Scratchでアニメーションを作ったり、HTMLで自分のホームページを作ったりと、みんな楽しそうに取り組んでいました。来月も一緒に頑張りましょう！</p>
+        </div>
+      </article>
+
+      <article class="news-card fade-in delay-1" data-type="event">
+        <div class="news-date">
+          <div class="month">Mar</div>
+          <div class="day">16</div>
+          <div class="year">2026</div>
+        </div>
+        <div class="news-body">
+          <span class="news-tag tag-event">開催情報</span>
+          <h3>【4月開催】CoderDojo 桃花台 第23回</h3>
+          <p>2026年4月20日（日）13:00〜16:00に開催しました。新年度最初のDojoは12名のニンジャが参加しました。</p>
+        </div>
+      </article>
+
+      <article class="news-card fade-in delay-2" data-type="report">
+        <div class="news-date">
+          <div class="month">Mar</div>
+          <div class="day">08</div>
+          <div class="year">2026</div>
+        </div>
+        <div class="news-body">
+          <span class="news-tag tag-report">活動報告</span>
+          <h3>【3月活動報告】ショーケースを開催しました🎉</h3>
+          <p>3月のDojoでは、ニンジャたちが制作した作品のミニ発表会「ショーケース」を行いました。スクラッチで作ったゲーム、HTMLで作った自己紹介サイト、Pythonで作ったクイズアプリなど、力作揃い！保護者の皆さまも応援ありがとうございました。</p>
+        </div>
+      </article>
+
+      <article class="news-card fade-in delay-3" data-type="info">
+        <div class="news-date">
+          <div class="month">Feb</div>
+          <div class="day">22</div>
+          <div class="year">2026</div>
+        </div>
+        <div class="news-body">
+          <span class="news-tag tag-info">お知らせ</span>
+          <h3>CoderDojo 桃花台 公式ウェブサイトをリニューアルしました</h3>
+          <p>より見やすく、使いやすいウェブサイトにリニューアルしました。スマートフォンでも快適にご覧いただけます。引き続きCoderDojo 桃花台をよろしくお願いいたします。</p>
+        </div>
+      </article>
+
+      <article class="news-card fade-in delay-1" data-type="report">
+        <div class="news-date">
+          <div class="month">Feb</div>
+          <div class="day">16</div>
+          <div class="year">2026</div>
+        </div>
+        <div class="news-body">
+          <span class="news-tag tag-report">活動報告</span>
+          <h3>【2月活動報告】バレンタインDojoを開催しました💕</h3>
+          <p>2月はバレンタインをテーマに、Scratchでハートアニメーションを作るチャレンジを実施。参加した子どもたちがお気に入りのキャラクターとハートを組み合わせたオリジナル作品を発表してくれました。</p>
+        </div>
+      </article>
+
+      <article class="news-card fade-in delay-2" data-type="event">
+        <div class="news-date">
+          <div class="month">Jan</div>
+          <div class="day">19</div>
+          <div class="year">2026</div>
+        </div>
+        <div class="news-body">
+          <span class="news-tag tag-event">開催情報</span>
+          <h3>【1月活動報告】新年最初のDojoを開催しました🎍</h3>
+          <p>あけましておめでとうございます！2026年最初のCoderDojo 桃花台は10名のニンジャが参加。今年の目標を書いたプログラムを作るなど、新年らしい活動を楽しみました。本年もどうぞよろしくお願いします。</p>
+        </div>
+      </article>
+
+    </div><!-- /news-list -->
+
+  </div>
+</section>
+
+<!-- ══════════════════════ CTA ══════════════════════ -->
+<section class="cta-section">
+  <div class="container">
+    <div class="fade-in">
+      <h2>次回のDojoに参加しませんか？🌸</h2>
+      <p>初めての方も大歓迎。見学だけでもOKです！</p>
+      <a href="contact.html" class="btn btn-white">参加申込み・お問い合わせ</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ FOOTER ══════════════════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="40" height="40" aria-hidden="true">
+            <defs><linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF7A5C"/><stop offset="100%" stop-color="#FF4E8B"/></linearGradient></defs>
+            <rect width="80" height="80" rx="18" fill="url(#lg1)"/>
+            <g transform="translate(60,18)"><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(0)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(72)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(144)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(216)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(288)"/><circle cx="0" cy="0" r="2.5" fill="#FFE082"/></g>
+            <text x="37" y="53" font-family="'Courier New',monospace" font-size="21" font-weight="900" fill="white" text-anchor="middle">&lt;/&gt;</text>
+          </svg>
+          <div class="footer-brand-name">
+            CoderDojo
+            <span class="footer-brand-sub">桃花台 Tokadai</span>
+          </div>
+        </div>
+        <p class="footer-desc">桃花台の子どもたちが、コードを通じて「作る楽しさ」を知り、未来への可能性を広げるための無料プログラミングクラブです。</p>
+      </div>
+      <div class="footer-col">
+        <h4>ページ</h4>
+        <ul>
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="venue.html">開催場所</a></li>
+          <li><a href="news.html">お知らせ</a></li>
+          <li><a href="mentor.html">メンター募集</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>リンク</h4>
+        <ul>
+          <li><a href="https://coderdojo.com" target="_blank" rel="noopener">CoderDojo 公式</a></li>
+          <li><a href="https://coderdojo.jp" target="_blank" rel="noopener">CoderDojo Japan</a></li>
+          <li><a href="mentor.html">メンター募集</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CoderDojo 桃花台 (Tokadai). Powered by volunteers. 🌸</span>
+      <div class="footer-links">
+        <a href="contact.html">お問い合わせ</a>
+        <a href="#">プライバシー</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="events.js"></script>
+<script src="script.js"></script>
+<script>
+  // News filter
+  function filterNews(type) {
+    const cards = document.querySelectorAll('#newsList .news-card');
+    const btns  = document.querySelectorAll('.filter-btn');
+    btns.forEach(b => {
+      const isActive = b.dataset.filter === type;
+      b.style.background    = isActive ? 'var(--peach)' : 'var(--white)';
+      b.style.color         = isActive ? 'white' : '';
+      b.style.borderColor   = isActive ? 'var(--peach)' : 'var(--border)';
+    });
+    cards.forEach(c => {
+      c.style.display = (type === 'all' || c.dataset.type === type) ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>

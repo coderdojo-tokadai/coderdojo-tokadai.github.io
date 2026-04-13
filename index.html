@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoderDojo 桃花台 — 子どものためのプログラミングクラブ</title>
+  <meta name="description" content="桃花台で開催する子どものための無料プログラミングクラブ。7〜17歳対象。スクラッチ、Python、HTML/CSSなど自由に学べます。">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ══════════════════════ NAVIGATION ══════════════════════ -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <!-- LOGO SVG -->
+      <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" aria-hidden="true">
+        <defs>
+          <linearGradient id="lg0" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FF7A5C"/>
+            <stop offset="100%" stop-color="#FF4E8B"/>
+          </linearGradient>
+        </defs>
+        <rect width="80" height="80" rx="18" fill="url(#lg0)"/>
+        <!-- peach blossom top-right -->
+        <g transform="translate(60,18)">
+          <ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(0)"/>
+          <ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(72)"/>
+          <ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(144)"/>
+          <ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(216)"/>
+          <ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(288)"/>
+          <circle cx="0" cy="0" r="2.5" fill="#FFE082"/>
+        </g>
+        <!-- code symbol -->
+        <text x="37" y="53" font-family="'Courier New',monospace" font-size="21" font-weight="900" fill="white" text-anchor="middle">&lt;/&gt;</text>
+        <!-- sparkles -->
+        <circle cx="14" cy="24" r="2.5" fill="rgba(255,255,255,.55)"/>
+        <circle cx="22" cy="63" r="1.8" fill="rgba(255,255,255,.40)"/>
+      </svg>
+      <span class="nav-logo-text">
+        <strong>CoderDojo</strong>
+        <span class="brand-sub">桃花台 Tokadai</span>
+      </span>
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html">ホーム</a>
+      <a href="venue.html">開催場所</a>
+      <a href="news.html">お知らせ</a>
+      <a href="mentor.html">メンター募集</a>
+      <a href="contact.html" class="nav-cta">参加申込み</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="mobileNav">
+    <a href="index.html">🏠 ホーム</a>
+    <a href="venue.html">📍 開催場所</a>
+    <a href="news.html">📢 お知らせ</a>
+    <a href="mentor.html">🧑‍💻 メンター募集</a>
+    <a href="contact.html" class="nav-cta-mobile">🚀 参加申込み</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════ HERO ══════════════════════ -->
+<section class="hero" id="heroSection">
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content container">
+    <div class="hero-badge" id="heroBadge">🌸 CoderDojo 桃花台 — Tokadai</div>
+    <h1>コードで未来を<br><span>つくろう！</span></h1>
+    <p>桃花台でプログラミングを楽しく学ぼう。<br>7〜17歳の子どもたちのための<strong>無料</strong>コーディングクラブです。</p>
+    <div class="hero-cta">
+      <a href="contact.html" class="btn btn-primary">🚀 参加してみる</a>
+      <a href="#about" class="btn btn-ghost">もっと見る ↓</a>
+    </div>
+  </div>
+
+  <!-- Cityscape SVG illustration -->
+  <svg class="hero-cityscape" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 480" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs>
+      <pattern id="wY" x="0" y="0" width="22" height="26" patternUnits="userSpaceOnUse">
+        <rect x="3" y="5" width="16" height="12" rx="1.5" fill="#FFE082" opacity="0.55"/>
+      </pattern>
+      <pattern id="wB" x="0" y="0" width="22" height="26" patternUnits="userSpaceOnUse">
+        <rect x="3" y="5" width="16" height="12" rx="1.5" fill="#81D4FA" opacity="0.42"/>
+      </pattern>
+      <linearGradient id="groundG" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#3D8B37"/>
+        <stop offset="100%" stop-color="#2E6B2A"/>
+      </linearGradient>
+    </defs>
+
+    <!-- ── Buildings ── -->
+    <!-- Bld 1 far-left tall -->
+    <rect x="-8"  y="55"  width="112" height="440" rx="3" fill="#2D1B5E"/>
+    <rect x="-8"  y="55"  width="112" height="440" fill="url(#wY)"/>
+    <rect x="18"  y="44"  width="38"  height="20"  rx="2" fill="#1e1040"/>
+    <rect x="65"  y="47"  width="28"  height="18"  rx="2" fill="#1e1040"/>
+    <!-- Bld 2 -->
+    <rect x="122" y="145" width="88"  height="350" rx="2" fill="#3D1A6E"/>
+    <rect x="122" y="145" width="88"  height="350" fill="url(#wB)"/>
+    <!-- Bld 3 tall center-left -->
+    <rect x="228" y="35"  width="148" height="460" rx="3" fill="#2D1B5E"/>
+    <rect x="228" y="35"  width="148" height="460" fill="url(#wY)"/>
+    <rect x="255" y="22"  width="42"  height="22"  rx="2" fill="#1e1040"/>
+    <rect x="310" y="26"  width="32"  height="18"  rx="2" fill="#1e1040"/>
+    <!-- antenna -->
+    <rect x="294" y="0"   width="4"   height="28"  rx="2" fill="#3D1A6E"/>
+    <circle cx="296" cy="0" r="5" fill="#FF6B6B" opacity=".7"/>
+    <!-- Bld 4 -->
+    <rect x="393" y="162" width="78"  height="328" rx="2" fill="#4A2080"/>
+    <rect x="393" y="162" width="78"  height="328" fill="url(#wB)"/>
+    <!-- Bld 5 tallest -->
+    <rect x="490" y="15"  width="170" height="475" rx="3" fill="#1A0A3D"/>
+    <rect x="490" y="15"  width="170" height="475" fill="url(#wY)"/>
+    <rect x="522" y="2"   width="46"  height="22"  rx="2" fill="#120720"/>
+    <rect x="582" y="6"   width="36"  height="18"  rx="2" fill="#120720"/>
+    <!-- antenna -->
+    <rect x="574" y="-18" width="4"   height="26"  rx="2" fill="#2D1B5E"/>
+    <circle cx="576" cy="-18" r="5" fill="#FF6B6B" opacity=".65"/>
+    <!-- Bld 6 -->
+    <rect x="678" y="108" width="105" height="385" rx="2" fill="#3D1A6E"/>
+    <rect x="678" y="108" width="105" height="385" fill="url(#wB)"/>
+    <!-- Bld 7 -->
+    <rect x="800" y="68"  width="135" height="425" rx="3" fill="#2D1B5E"/>
+    <rect x="800" y="68"  width="135" height="425" fill="url(#wY)"/>
+    <rect x="828" y="56"  width="42"  height="20"  rx="2" fill="#1e1040"/>
+    <!-- Bld 8 -->
+    <rect x="950" y="178" width="82"  height="312" rx="2" fill="#4A2080"/>
+    <rect x="950" y="178" width="82"  height="312" fill="url(#wB)"/>
+    <!-- Bld 9 -->
+    <rect x="1052" y="75" width="152" height="415" rx="3" fill="#2D1B5E"/>
+    <rect x="1052" y="75" width="152" height="415" fill="url(#wY)"/>
+    <rect x="1082" y="62" width="42"  height="20"  rx="2" fill="#1e1040"/>
+    <rect x="1140" y="66" width="32"  height="17"  rx="2" fill="#1e1040"/>
+    <!-- antenna -->
+    <rect x="1128" y="40" width="4"   height="28"  rx="2" fill="#3D1A6E"/>
+    <circle cx="1130" cy="40" r="5" fill="#FF6B6B" opacity=".65"/>
+    <!-- Bld 10 -->
+    <rect x="1222" y="118" width="108" height="372" rx="2" fill="#3D1A6E"/>
+    <rect x="1222" y="118" width="108" height="372" fill="url(#wB)"/>
+    <!-- Bld 11 right edge -->
+    <rect x="1348" y="45" width="105" height="450" rx="2" fill="#2D1B5E"/>
+    <rect x="1348" y="45" width="105" height="450" fill="url(#wY)"/>
+
+    <!-- ── Peach blossom tree (center) ── -->
+    <rect x="644" y="385" width="18"  height="80"  rx="4" fill="#8D6E63"/>
+    <!-- branches -->
+    <line x1="653" y1="420" x2="608" y2="378" stroke="#8D6E63" stroke-width="9"  stroke-linecap="round"/>
+    <line x1="653" y1="410" x2="698" y2="368" stroke="#8D6E63" stroke-width="8"  stroke-linecap="round"/>
+    <line x1="653" y1="395" x2="653" y2="348" stroke="#8D6E63" stroke-width="10" stroke-linecap="round"/>
+    <line x1="608" y1="378" x2="588" y2="355" stroke="#8D6E63" stroke-width="6"  stroke-linecap="round"/>
+    <line x1="698" y1="368" x2="720" y2="345" stroke="#8D6E63" stroke-width="6"  stroke-linecap="round"/>
+    <!-- blossom clusters -->
+    <g id="blossomClusters">
+      <circle cx="605" cy="350" r="32" fill="#FF8FAB" opacity=".88"/>
+      <circle cx="588" cy="340" r="22" fill="#FFB3C6" opacity=".85"/>
+      <circle cx="626" cy="336" r="26" fill="#FF8FAB" opacity=".80"/>
+      <circle cx="653" cy="338" r="34" fill="#FFB3C6" opacity=".85"/>
+      <circle cx="680" cy="332" r="28" fill="#FF8FAB" opacity=".80"/>
+      <circle cx="703" cy="342" r="22" fill="#FFB3C6" opacity=".85"/>
+      <circle cx="720" cy="336" r="20" fill="#FFCCE4" opacity=".80"/>
+    </g>
+    <!-- scattered petals in sky -->
+    <g id="scatteredPetals">
+      <circle cx="750" cy="290" r="7"  fill="#FFB3C6" opacity=".45"/>
+      <circle cx="820" cy="240" r="5"  fill="#FFD4C2" opacity=".38"/>
+      <circle cx="680" cy="200" r="6"  fill="#FFAABB" opacity=".35"/>
+      <circle cx="550" cy="320" r="8"  fill="#FFB6C1" opacity=".40"/>
+      <circle cx="910" cy="280" r="5"  fill="#FFD4C2" opacity=".35"/>
+    </g>
+
+    <!-- ── Green trees ── -->
+    <!-- Left cluster -->
+    <rect x="98"  y="408" width="14" height="52" rx="3" fill="#2D5A27"/>
+    <g class="tree-foliage">
+      <ellipse cx="105" cy="402" rx="32" ry="44" fill="#388E3C"/>
+      <ellipse cx="105" cy="390" rx="22" ry="30" fill="#4CAF50"/>
+    </g>
+    <rect x="175" y="415" width="12" height="42" rx="3" fill="#2D5A27"/>
+    <g class="tree-foliage">
+      <ellipse cx="181" cy="410" rx="26" ry="36" fill="#43A047"/>
+      <ellipse cx="181" cy="400" rx="18" ry="26" fill="#66BB6A"/>
+    </g>
+    <!-- Right cluster -->
+    <rect x="1275" y="412" width="13" height="46" rx="3" fill="#2D5A27"/>
+    <g class="tree-foliage">
+      <ellipse cx="1281" cy="406" rx="30" ry="42" fill="#388E3C"/>
+      <ellipse cx="1281" cy="394" rx="20" ry="28" fill="#4CAF50"/>
+    </g>
+    <rect x="1345" y="418" width="12" height="40" rx="3" fill="#2D5A27"/>
+    <g class="tree-foliage">
+      <ellipse cx="1351" cy="413" rx="24" ry="34" fill="#43A047"/>
+    </g>
+
+    <!-- ── Ground ── -->
+    <g id="groundGroup">
+      <rect x="0" y="440" width="1440" height="40" fill="url(#groundG)"/>
+      <rect x="0" y="455" width="1440" height="25" fill="#4CAF50" opacity=".6"/>
+    </g>
+
+    <!-- ── 給水塔 桃花台中央公園（秋のみ表示）── -->
+    <g id="waterTower" style="display:none">
+      <!-- 支柱 -->
+      <rect x="983"  y="298" width="7" height="142" rx="2" fill="#546E7A"/>
+      <rect x="1005" y="298" width="7" height="142" rx="2" fill="#546E7A"/>
+      <rect x="1028" y="298" width="7" height="142" rx="2" fill="#546E7A"/>
+      <rect x="1050" y="298" width="7" height="142" rx="2" fill="#546E7A"/>
+      <!-- ブレース X 上部 -->
+      <line x1="983" y1="310" x2="1057" y2="355" stroke="#455A64" stroke-width="3" stroke-linecap="round"/>
+      <line x1="983" y1="355" x2="1057" y2="310" stroke="#455A64" stroke-width="3" stroke-linecap="round"/>
+      <!-- ブレース X 下部 -->
+      <line x1="983" y1="375" x2="1057" y2="420" stroke="#455A64" stroke-width="3" stroke-linecap="round"/>
+      <line x1="983" y1="420" x2="1057" y2="375" stroke="#455A64" stroke-width="3" stroke-linecap="round"/>
+      <!-- 上部カラーリング -->
+      <rect x="978" y="291" width="82" height="10" rx="2" fill="#607D8B"/>
+      <!-- タンク本体 -->
+      <rect x="968" y="198" width="102" height="96" rx="3" fill="#78909C"/>
+      <!-- タンクドーム天頂 -->
+      <ellipse cx="1019" cy="198" rx="51" ry="14" fill="#90A4AE"/>
+      <!-- タンク底面 -->
+      <ellipse cx="1019" cy="294" rx="51" ry="11" fill="#607D8B"/>
+      <!-- 縦筋ディテール -->
+      <line x1="993"  y1="201" x2="993"  y2="294" stroke="rgba(255,255,255,.07)" stroke-width="4"/>
+      <line x1="1013" y1="201" x2="1013" y2="294" stroke="rgba(255,255,255,.07)" stroke-width="4"/>
+      <line x1="1033" y1="201" x2="1033" y2="294" stroke="rgba(255,255,255,.07)" stroke-width="4"/>
+      <line x1="1053" y1="201" x2="1053" y2="294" stroke="rgba(255,255,255,.07)" stroke-width="4"/>
+      <!-- ハイライト -->
+      <rect x="972" y="203" width="20" height="88" rx="3" fill="rgba(255,255,255,.09)"/>
+      <!-- 配管 -->
+      <rect x="1015" y="294" width="9" height="12" rx="1" fill="#455A64"/>
+    </g>
+
+    <!-- ── 雪（冬のみ表示）── -->
+    <g id="snowGroup" style="display:none">
+      <!-- ビル屋上の積雪 -->
+      <rect x="-8"   y="55"  width="112" height="9" rx="2" fill="rgba(235,245,255,.92)"/>
+      <rect x="228"  y="35"  width="148" height="9" rx="2" fill="rgba(235,245,255,.92)"/>
+      <rect x="490"  y="15"  width="170" height="9" rx="2" fill="rgba(235,245,255,.92)"/>
+      <rect x="800"  y="68"  width="135" height="9" rx="2" fill="rgba(235,245,255,.92)"/>
+      <rect x="1052" y="75"  width="152" height="9" rx="2" fill="rgba(235,245,255,.92)"/>
+      <rect x="1348" y="45"  width="105" height="9" rx="2" fill="rgba(235,245,255,.92)"/>
+      <rect x="122"  y="145" width="88"  height="7" rx="2" fill="rgba(235,245,255,.85)"/>
+      <rect x="393"  y="162" width="78"  height="7" rx="2" fill="rgba(235,245,255,.85)"/>
+      <rect x="678"  y="108" width="105" height="7" rx="2" fill="rgba(235,245,255,.85)"/>
+      <rect x="950"  y="178" width="82"  height="7" rx="2" fill="rgba(235,245,255,.85)"/>
+      <rect x="1222" y="118" width="108" height="7" rx="2" fill="rgba(235,245,255,.85)"/>
+      <!-- 地面の雪 -->
+      <rect x="0" y="440" width="1440" height="40" fill="rgba(210,230,255,.94)"/>
+      <rect x="0" y="455" width="1440" height="25" fill="rgba(235,245,255,.96)"/>
+    </g>
+  </svg>
+
+  <!-- Floating petals container -->
+  <div class="petals-wrap" id="petalWrap"></div>
+
+  <!-- Scroll hint -->
+  <div class="scroll-hint" aria-hidden="true">
+    SCROLL
+    <svg viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1" y="1" width="22" height="34" rx="11" stroke="white" stroke-width="2" opacity=".5"/>
+      <circle cx="12" cy="10" r="3" fill="white" opacity=".8">
+        <animate attributeName="cy" values="10;22;10" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values=".8;.2;.8" dur="2s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+</section>
+
+<!-- ══════════════════════ ABOUT ══════════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <span class="section-label">CoderDojo とは？</span>
+        <h2>子どもたちが<br>自由にコードを<br>楽しむ場所</h2>
+        <p>CoderDojo は世界90か国以上、2,500以上のチャプターを持つ、子どものための<strong>無料プログラミングクラブ</strong>です。「ニンジャ」と呼ばれる参加者は、ウェブサイト・ゲーム・アプリを自分の力で作り上げます。</p>
+        <p>決まったカリキュラムはありません。Scratch、HTML/CSS、Python、JavaScriptなど、好きな言語を好きなペースで学べます。メンター（ボランティアの先生）が一緒に考え、サポートします。</p>
+        <p>桃花台の子どもたちが「作る楽しさ」を知り、未来の可能性を広げる場所になることを願っています。</p>
+      </div>
+      <div class="fade-in delay-2">
+        <div class="about-card-big">
+          <div class="about-big-icon">👾</div>
+          <h3>ニンジャになろう！</h3>
+          <p>CoderDojo では参加する子どもたちのことを「ニンジャ」と呼びます。コードを武器に、自分だけの作品を生み出そう！</p>
+          <div class="about-pills">
+            <span class="pill">🎮 Scratch</span>
+            <span class="pill">🐍 Python</span>
+            <span class="pill">🌐 HTML/CSS</span>
+            <span class="pill">⚡ JavaScript</span>
+            <span class="pill">🤖 AI入門</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ FEATURES ══════════════════════ -->
+<section class="features-bg">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label">CoderDojo 桃花台の特徴</span>
+      <h2>こんなDojoです</h2>
+      <p>初めてのプログラミングから、本格的なアプリ開発まで。すべての子どもが輝ける場所です。</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card fade-in delay-1">
+        <div class="feature-icon f-peach">🎉</div>
+        <h3>完全無料</h3>
+        <p>参加費は一切かかりません。CoderDojo の精神として、子どもたちが無料でプログラミングを学べる環境を提供します。</p>
+      </div>
+      <div class="feature-card fade-in delay-2">
+        <div class="feature-icon f-green">🌱</div>
+        <h3>自分のペースで</h3>
+        <p>決まったカリキュラムはありません。やりたいことを自分で決め、自分のスピードで進めます。初心者も上級者も歓迎！</p>
+      </div>
+      <div class="feature-card fade-in delay-3">
+        <div class="feature-icon f-sky">🤝</div>
+        <h3>メンターがサポート</h3>
+        <p>経験豊富なメンター（ボランティア）が困ったときに一緒に考えます。教えるのではなく、一緒に「発見」します。</p>
+      </div>
+      <div class="feature-card fade-in delay-1">
+        <div class="feature-icon f-pink">👫</div>
+        <h3>仲間ができる</h3>
+        <p>同じ興味を持つ仲間と出会えます。チームで作品を作ったり、アイデアを共有したり、友達の輪が広がります。</p>
+      </div>
+      <div class="feature-card fade-in delay-2">
+        <div class="feature-icon f-peach">🌸</div>
+        <h3>地域密着</h3>
+        <p>桃花台を拠点とし、地域の子どもたちのための活動を続けています。桃花台から、世界へ羽ばたくエンジニアを！</p>
+      </div>
+      <div class="feature-card fade-in delay-3">
+        <div class="feature-icon f-green">🏆</div>
+        <h3>作品発表の機会</h3>
+        <p>定期的に作品を発表するショーケースを開催。自分の作ったものを誰かに見せる経験が、次の創作意欲につながります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ NEXT EVENT ══════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label">次回開催</span>
+      <h2>次のDojoはこちら</h2>
+    </div>
+    <div class="event-banner fade-in">
+      <div class="event-text">
+        <p class="sub">Next Dojo</p>
+        <h3 data-ev="title">🌸 5月のCoderDojo 桃花台</h3>
+        <p>ご参加お待ちしています！connpassから事前申込をお願いします。</p>
+        <div class="event-meta">
+          <span class="event-meta-item" data-ev="date">📅 2026年5月17日（日）</span>
+          <span class="event-meta-item" data-ev="time">🕐 13:00 〜 16:00</span>
+          <span class="event-meta-item" data-ev="venue">📍 小牧市東部市民センター 学習室</span>
+          <span class="event-meta-item">🎟 無料・要申込</span>
+        </div>
+      </div>
+      <a href="https://connpass.com/event/xxxxxx/" data-ev="link" class="btn btn-primary" target="_blank" rel="noopener" style="flex-shrink:0;">connpassで申込む →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ STATS ══════════════════════ -->
+<section style="background:var(--peach-pale);">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label">CoderDojo の数字</span>
+      <h2>世界と繋がる学びの輪</h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card fade-in delay-1">
+        <div class="stat-number">90+</div>
+        <div class="stat-label">参加国数</div>
+      </div>
+      <div class="stat-card fade-in delay-2">
+        <div class="stat-number">2,500+</div>
+        <div class="stat-label">世界のDojoチャプター</div>
+      </div>
+      <div class="stat-card fade-in delay-3">
+        <div class="stat-number">無料</div>
+        <div class="stat-label">参加費（永久に）</div>
+      </div>
+      <div class="stat-card fade-in delay-4">
+        <div class="stat-number">7〜17</div>
+        <div class="stat-label">対象年齢（歳）</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ CTA ══════════════════════ -->
+<section class="cta-section">
+  <div class="container">
+    <div class="fade-in">
+      <h2>さあ、一緒にコードしよう！🚀</h2>
+      <p>経験不問・親の付き添いOK。桃花台のニンジャたちが待っています！</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn-white">参加申込みはこちら</a>
+        <a href="news.html" class="btn btn-ghost">お知らせを見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ FOOTER ══════════════════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="40" height="40" aria-hidden="true">
+            <defs><linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF7A5C"/><stop offset="100%" stop-color="#FF4E8B"/></linearGradient></defs>
+            <rect width="80" height="80" rx="18" fill="url(#lg1)"/>
+            <g transform="translate(60,18)"><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(0)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(72)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(144)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(216)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(288)"/><circle cx="0" cy="0" r="2.5" fill="#FFE082"/></g>
+            <text x="37" y="53" font-family="'Courier New',monospace" font-size="21" font-weight="900" fill="white" text-anchor="middle">&lt;/&gt;</text>
+          </svg>
+          <div class="footer-brand-name">
+            CoderDojo
+            <span class="footer-brand-sub">桃花台 Tokadai</span>
+          </div>
+        </div>
+        <p class="footer-desc">桃花台の子どもたちが、コードを通じて「作る楽しさ」を知り、未来への可能性を広げるための無料プログラミングクラブです。</p>
+      </div>
+      <div class="footer-col">
+        <h4>ページ</h4>
+        <ul>
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="venue.html">開催場所</a></li>
+          <li><a href="news.html">お知らせ</a></li>
+          <li><a href="mentor.html">メンター募集</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>リンク</h4>
+        <ul>
+          <li><a href="https://coderdojo.com" target="_blank" rel="noopener">CoderDojo 公式</a></li>
+          <li><a href="https://coderdojo.jp" target="_blank" rel="noopener">CoderDojo Japan</a></li>
+          <li><a href="mentor.html">メンター募集</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CoderDojo 桃花台 (Tokadai). Powered by volunteers. 🌸</span>
+      <div class="footer-links">
+        <a href="contact.html">お問い合わせ</a>
+        <a href="#">プライバシー</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="events.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CoderDojo 桃花台 — 子どものためのプログラミングクラブ</title>
-  <meta name="description" content="桃花台で開催する子どものための無料プログラミングクラブ。7〜17歳対象。スクラッチ、Python、HTML/CSSなど自由に学べます。">
+  <meta name="description" content="桃花台 周辺エリア（小牧市東部・春日井市・高蔵寺）の子どものための無料プログラミングクラブ。7〜17歳対象。スクラッチ、JavaScript、HTML/CSSなど自由に学べます。">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -65,12 +66,14 @@
 
 <!-- ══════════════════════ HERO ══════════════════════ -->
 <section class="hero" id="heroSection">
-  <div class="hero-overlay"></div>
+  <div class="hero-overlay" id="heroOverlay"></div>
+  <div class="stars-wrap" id="starsWrap" style="display:none"></div>
+  <div class="hero-moon"  id="heroMoon"  style="display:none"></div>
 
   <div class="hero-content container">
     <div class="hero-badge" id="heroBadge">🌸 CoderDojo 桃花台 — Tokadai</div>
     <h1>コードで未来を<br><span>つくろう！</span></h1>
-    <p>桃花台でプログラミングを楽しく学ぼう。<br>7〜17歳の子どもたちのための<strong>無料</strong>コーディングクラブです。</p>
+    <p>桃花台 周辺エリア（小牧市東部・春日井市・高蔵寺）で<br>プログラミングを楽しく学ぼう。<br>7〜17歳の子どもたちのための<strong>無料</strong>プログラミングクラブです。</p>
     <div class="hero-cta">
       <a href="contact.html" class="btn btn-primary">🚀 参加してみる</a>
       <a href="#about" class="btn btn-ghost">もっと見る ↓</a>
@@ -269,6 +272,17 @@
   </div>
 </section>
 
+<!-- ══════════════════════ LAUNCH NOTICE ══════════════════════ -->
+<div class="launch-notice-bar">
+  <div class="container">
+    <div class="launch-notice-inner">
+      <span class="launch-notice-badge">🚀 準備中</span>
+      <p><strong>2026年 夏以降に活動開始予定！</strong> 現在メンター募集・会場調整を進めています。開催情報はお知らせページとSNSで随時ご案内します。お楽しみに！</p>
+      <a href="news.html" class="btn btn-secondary">最新情報を見る →</a>
+    </div>
+  </div>
+</div>
+
 <!-- ══════════════════════ ABOUT ══════════════════════ -->
 <section id="about">
   <div class="container">
@@ -276,9 +290,9 @@
       <div class="about-text fade-in">
         <span class="section-label">CoderDojo とは？</span>
         <h2>子どもたちが<br>自由にコードを<br>楽しむ場所</h2>
-        <p>CoderDojo は世界90か国以上、2,500以上のチャプターを持つ、子どものための<strong>無料プログラミングクラブ</strong>です。「ニンジャ」と呼ばれる参加者は、ウェブサイト・ゲーム・アプリを自分の力で作り上げます。</p>
-        <p>決まったカリキュラムはありません。Scratch、HTML/CSS、Python、JavaScriptなど、好きな言語を好きなペースで学べます。メンター（ボランティアの先生）が一緒に考え、サポートします。</p>
-        <p>桃花台の子どもたちが「作る楽しさ」を知り、未来の可能性を広げる場所になることを願っています。</p>
+        <p>CoderDojo は世界112か国以上、2,200以上の道場、日本では全国に204以上の道場を持つ(2025年6月時点)、子どものための<strong>無料プログラミングクラブ</strong>です。「ニンジャ」と呼ばれる参加者は、ウェブサイト・ゲーム・アプリを自分の力で作り上げます。</p>
+        <p>決まったカリキュラムはありません。Scratch、HTML/CSS、JavaScript、Pythonなど、好きな言語を好きなペースで学べます。メンター（ボランティアの先生）が一緒に考え、サポートします。</p>
+        <p>桃花台 周辺エリア（小牧市東部・春日井市・高蔵寺）の子どもたちが「作る楽しさ」を知り、未来の可能性を広げる場所になることを願っています。</p>
       </div>
       <div class="fade-in delay-2">
         <div class="about-card-big">
@@ -286,11 +300,17 @@
           <h3>ニンジャになろう！</h3>
           <p>CoderDojo では参加する子どもたちのことを「ニンジャ」と呼びます。コードを武器に、自分だけの作品を生み出そう！</p>
           <div class="about-pills">
-            <span class="pill">🎮 Scratch</span>
-            <span class="pill">🐍 Python</span>
-            <span class="pill">🌐 HTML/CSS</span>
+            <span class="pill">🐱 Scratch</span>
+            <span class="pill">⛏ Minecraft</span>
             <span class="pill">⚡ JavaScript</span>
+            <span class="pill">🐍 Python</span>
+            <span class="pill">🐘 PHP</span>
+            <span class="pill">🌐 Webサイト制作</span>
+            <span class="pill">🎬 動画制作</span>
             <span class="pill">🤖 AI入門</span>
+            <span class="pill">🔌 電子工作・ロボット</span>
+            <span class="pill">🎨 Webデザイン</span>
+            <span class="pill">📱 SNS運用</span>
           </div>
         </div>
       </div>
@@ -341,6 +361,113 @@
   </div>
 </section>
 
+<!-- ══════════════════════ CURRICULUM ══════════════════════ -->
+<section id="curriculum">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label">学べること</span>
+      <h2>多彩なメニューから<br>好きなことを選ぼう</h2>
+      <p>決まったカリキュラムはありません。興味のあるテーマを自由に選んで、自分のペースで挑戦できます。</p>
+    </div>
+    <div class="curriculum-grid">
+
+      <div class="curriculum-card fade-in delay-1">
+        <div class="curr-icon ci-orange">🐱</div>
+        <h3>Scratch</h3>
+        <p>ブロックを組み合わせてゲームやアニメを作る、初心者に最適なビジュアルプログラミング。</p>
+        <span class="curr-tag tag-beginner">初心者OK</span>
+      </div>
+
+      <div class="curriculum-card fade-in delay-2">
+        <div class="curr-icon ci-green">⛏</div>
+        <h3>Minecraft</h3>
+        <p>人気のブロック建築ゲームでプログラミングを体験。コマンドブロックやMod制作（改造）を通じて、遊びながら論理的思考を身につけよう。</p>
+        <span class="curr-tag tag-beginner">初心者OK</span>
+      </div>
+
+      <div class="curriculum-card fade-in delay-3">
+        <div class="curr-icon ci-blue">💻</div>
+        <h3>テキストプログラミング</h3>
+        <p>本格的な言語でアプリ・ゲーム・自動化ツールを作ろう。</p>
+        <div class="curr-langs">
+          <span class="curr-lang">JavaScript</span>
+          <span class="curr-lang">Python</span>
+          <span class="curr-lang">PHP</span>
+        </div>
+      </div>
+
+      <div class="curriculum-card fade-in delay-1">
+        <div class="curr-icon ci-pink">🌐</div>
+        <h3>Webサイト制作</h3>
+        <p>HTML・CSSからはじめて、自分だけのウェブサイトやポートフォリオを作成する。</p>
+        <span class="curr-tag tag-beginner">初心者OK</span>
+      </div>
+
+      <div class="curriculum-card fade-in delay-2">
+        <div class="curr-icon ci-red">🎬</div>
+        <h3>動画制作</h3>
+        <p>スマホやPCで撮影・編集。YouTube・SNS向けのショート動画やコンテンツ制作を学ぶ。</p>
+      </div>
+
+      <div class="curriculum-card fade-in delay-3">
+        <div class="curr-icon ci-dark">🤖</div>
+        <h3>AI入門</h3>
+        <p>AIと対話しながらアプリを爆速で作る次世代スキル「Vibe Coding」に挑戦しよう。</p>
+        <div class="curr-langs">
+          <span class="curr-lang">Claude Code</span>
+          <span class="curr-lang">Vibe Coding</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── こんなこともできる ── -->
+    <div class="also-can-wrap fade-in" style="margin-top:3rem;">
+      <div class="also-can-header">
+        <span class="section-label" style="background:rgba(255,122,92,.12); color:#c0420a;">こんなこともできる</span>
+        <p style="margin-top:.5rem; color:var(--text-light); font-size:.95rem;">プログラミング以外にも、ものづくり・デザイン・発信まで幅広く挑戦できます。</p>
+      </div>
+      <div class="also-can-grid">
+
+        <div class="also-can-card fade-in delay-1">
+          <div class="curr-icon ci-teal" style="font-size:1.8rem; width:60px; height:60px;">🔌</div>
+          <div>
+            <h3 style="font-size:1.05rem; margin-bottom:.4rem;">電子工作 &amp; ロボットプログラミング</h3>
+            <p style="font-size:.875rem; color:var(--text-light); line-height:1.8;">Raspberry Pi・電子工作キットを使ってLEDやセンサーを制御。ロボットを自分でプログラムして動かすIoT・組み込み開発の入口を体験しよう。</p>
+            <div class="curr-langs" style="margin-top:.75rem;">
+              <span class="curr-lang">Raspberry Pi</span>
+              <span class="curr-lang">ロボット制御</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="also-can-card fade-in delay-2">
+          <div class="curr-icon ci-purple" style="font-size:1.8rem; width:60px; height:60px;">🎨</div>
+          <div>
+            <h3 style="font-size:1.05rem; margin-bottom:.4rem;">Webデザイン</h3>
+            <p style="font-size:.875rem; color:var(--text-light); line-height:1.8;">CanvaやSTUDIOを使って、デザインの基礎からノーコードでのWebサイト公開まで。センスを磨きながら形にする。</p>
+            <div class="curr-langs" style="margin-top:.75rem;">
+              <span class="curr-lang">Canva</span>
+              <span class="curr-lang">STUDIO</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="also-can-card fade-in delay-3">
+          <div class="curr-icon ci-yellow" style="font-size:1.8rem; width:60px; height:60px;">📱</div>
+          <div>
+            <h3 style="font-size:1.05rem; margin-bottom:.4rem;">SNS運用</h3>
+            <p style="font-size:.875rem; color:var(--text-light); line-height:1.8;">ブランディング・コンテンツ戦略・分析ツールを学び、自分や道場の発信力を高める。</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <p class="curr-note fade-in">上記はあくまでも例です。「やってみたい！」と思ったことなら何でも挑戦OK。メンターと一緒に可能性を広げましょう。</p>
+  </div>
+</section>
+
 <!-- ══════════════════════ NEXT EVENT ══════════════════════ -->
 <section>
   <div class="container">
@@ -352,11 +479,11 @@
       <div class="event-text">
         <p class="sub">Next Dojo</p>
         <h3 data-ev="title">🌸 5月のCoderDojo 桃花台</h3>
-        <p>ご参加お待ちしています！connpassから事前申込をお願いします。</p>
+        <p>月1回、いずれかの日曜日に2時間開催します。connpassから事前申込をお願いします。</p>
         <div class="event-meta">
           <span class="event-meta-item" data-ev="date">📅 2026年5月17日（日）</span>
-          <span class="event-meta-item" data-ev="time">🕐 13:00 〜 16:00</span>
-          <span class="event-meta-item" data-ev="venue">📍 小牧市東部市民センター 学習室</span>
+          <span class="event-meta-item" data-ev="time">🕐 13:00 〜 15:00（2時間）</span>
+          <span class="event-meta-item" data-ev="venue">📍 小牧市東部の公共施設（予定）</span>
           <span class="event-meta-item">🎟 無料・要申込</span>
         </div>
       </div>
@@ -374,11 +501,11 @@
     </div>
     <div class="stats-grid">
       <div class="stat-card fade-in delay-1">
-        <div class="stat-number">90+</div>
+        <div class="stat-number">112+</div>
         <div class="stat-label">参加国数</div>
       </div>
       <div class="stat-card fade-in delay-2">
-        <div class="stat-number">2,500+</div>
+        <div class="stat-number">2,200+</div>
         <div class="stat-label">世界のDojoチャプター</div>
       </div>
       <div class="stat-card fade-in delay-3">
@@ -424,7 +551,7 @@
             <span class="footer-brand-sub">桃花台 Tokadai</span>
           </div>
         </div>
-        <p class="footer-desc">桃花台の子どもたちが、コードを通じて「作る楽しさ」を知り、未来への可能性を広げるための無料プログラミングクラブです。</p>
+        <p class="footer-desc">桃花台 周辺エリア（小牧市東部・春日井市・高蔵寺）の子どもたちが、コードを通じて「作る楽しさ」を知り、可能性を広げる無料プログラミングクラブです。</p>
       </div>
       <div class="footer-col">
         <h4>ページ</h4>
@@ -441,7 +568,6 @@
         <ul>
           <li><a href="https://coderdojo.com" target="_blank" rel="noopener">CoderDojo 公式</a></li>
           <li><a href="https://coderdojo.jp" target="_blank" rel="noopener">CoderDojo Japan</a></li>
-          <li><a href="mentor.html">メンター募集</a></li>
         </ul>
       </div>
     </div>
@@ -457,5 +583,62 @@
 
 <script src="events.js"></script>
 <script src="script.js"></script>
+
+<!-- ══════════════════════ MASCOT ピコ ══════════════════════ -->
+<div class="mascot-wrap" aria-hidden="true">
+  <div class="mascot-bubble">一緒にコードしよう！🚀</div>
+  <svg class="mascot-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 188">
+    <defs>
+      <radialGradient id="pico-suit" cx="40%" cy="35%" r="65%">
+        <stop offset="0%" stop-color="#D95E00"/><stop offset="100%" stop-color="#F5913A"/>
+      </radialGradient>
+      <radialGradient id="pico-helm" cx="36%" cy="32%" r="60%">
+        <stop offset="0%" stop-color="#FFF5E6" stop-opacity=".97"/><stop offset="100%" stop-color="#FFDCB4" stop-opacity=".93"/>
+      </radialGradient>
+    </defs>
+    <ellipse cx="53" cy="180" rx="11" ry="5" fill="#FF8A65" opacity=".5"/>
+    <ellipse cx="87" cy="180" rx="11" ry="5" fill="#FF8A65" opacity=".5"/>
+    <rect x="43" y="156" width="22" height="23" rx="10" fill="#1565C0"/>
+    <rect x="75" y="156" width="22" height="23" rx="10" fill="#1565C0"/>
+    <rect x="43" y="166" width="22" height="5" rx="2" fill="rgba(255,255,255,.25)"/>
+    <rect x="75" y="166" width="22" height="5" rx="2" fill="rgba(255,255,255,.25)"/>
+    <rect x="37" y="104" width="66" height="55" rx="20" fill="url(#pico-suit)"/>
+    <rect x="37" y="118" width="11" height="27" rx="5" fill="rgba(255,255,255,.18)"/>
+    <rect x="92" y="118" width="11" height="27" rx="5" fill="rgba(255,255,255,.18)"/>
+    <circle cx="70" cy="129" r="14" fill="rgba(255,255,255,.22)"/>
+    <text x="70" y="134" font-family="'Courier New',monospace" font-size="12" font-weight="900" fill="white" text-anchor="middle">&lt;/&gt;</text>
+    <g transform="translate(42,110) rotate(-60)">
+      <rect x="-9" y="-32" width="18" height="32" rx="9" fill="url(#pico-suit)"/>
+      <circle cx="0" cy="-32" r="10" fill="#1565C0"/>
+    </g>
+    <rect x="97" y="110" width="28" height="18" rx="9" fill="url(#pico-suit)"/>
+    <circle cx="128" cy="119" r="10" fill="#1565C0"/>
+    <circle cx="70" cy="68" r="46" fill="rgba(91,192,235,.18)" stroke="rgba(255,255,255,.55)" stroke-width="2.5"/>
+    <circle cx="70" cy="68" r="39" fill="url(#pico-helm)"/>
+    <ellipse cx="87" cy="44" rx="15" ry="9" fill="white" opacity=".22" transform="rotate(-20,87,44)"/>
+    <circle cx="55" cy="65" r="8" fill="#1A0A3D"/><circle cx="85" cy="65" r="8" fill="#1A0A3D"/>
+    <circle cx="57.5" cy="62.5" r="3" fill="white"/><circle cx="87.5" cy="62.5" r="3" fill="white"/>
+    <circle cx="56.5" cy="63.5" r="1.3" fill="#5BC0EB"/><circle cx="86.5" cy="63.5" r="1.3" fill="#5BC0EB"/>
+    <ellipse cx="43" cy="78" rx="8" ry="5" fill="#FFB3C6" opacity=".55"/>
+    <ellipse cx="97" cy="78" rx="8" ry="5" fill="#FFB3C6" opacity=".55"/>
+    <path d="M 53 82 Q 70 96 87 82" stroke="#1A0A3D" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+    <line x1="70" y1="23" x2="70" y2="10" stroke="#6B3FA0" stroke-width="3" stroke-linecap="round"/>
+    <polygon points="70,3 72,9 78,9 73,12.5 75,18.5 70,15 65,18.5 67,12.5 62,9 68,9" fill="#FFE082"/>
+    <g transform="translate(106,37)">
+      <ellipse cx="0" cy="-5.5" rx="3.2" ry="5.2" fill="#FFB6C1" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-5.5" rx="3.2" ry="5.2" fill="#FFCCE4" transform="rotate(72)"/>
+      <ellipse cx="0" cy="-5.5" rx="3.2" ry="5.2" fill="#FFB6C1" transform="rotate(144)"/>
+      <ellipse cx="0" cy="-5.5" rx="3.2" ry="5.2" fill="#FFCCE4" transform="rotate(216)"/>
+      <ellipse cx="0" cy="-5.5" rx="3.2" ry="5.2" fill="#FFB6C1" transform="rotate(288)"/>
+      <circle cx="0" cy="0" r="2.2" fill="#FFE082"/>
+    </g>
+    <circle cx="18" cy="32" r="3.5" fill="#FFE082" opacity=".85"/>
+    <circle cx="122" cy="46" r="2.5" fill="#FFE082" opacity=".85"/>
+    <circle cx="120" cy="60" r="1.5" fill="#B3E5FC" opacity=".8"/>
+    <circle cx="14" cy="74" r="1.2" fill="#B3E5FC" opacity=".7"/>
+    <circle cx="25" cy="148" r="1.8" fill="#FFE082" opacity=".65"/>
+    <circle cx="115" cy="153" r="1.5" fill="#FFAAB5" opacity=".7"/>
+  </svg>
+</div>
 </body>
 </html>

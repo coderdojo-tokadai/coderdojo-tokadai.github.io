@@ -2,6 +2,109 @@
    CoderDojo 桃花台 — script.js
    ============================================ */
 
+/* ── Time-of-day detection ───────────────────── */
+function getTimeOfDay() {
+  const h = new Date().getHours();
+  if (h >= 5  && h < 10) return 'morning';
+  if (h >= 10 && h < 17) return 'day';
+  if (h >= 17 && h < 20) return 'evening';
+  return 'night';
+}
+
+const TIME_OF_DAY = getTimeOfDay();
+
+const TIME_CONFIG = {
+  // 朝 (5〜10時): 日の出・暖かい夜明け
+  morning: {
+    heroGradient: 'linear-gradient(155deg,#FF7043 0%,#FFCA28 30%,#FFF9C4 60%,#E3F2FD 100%)',
+    overlay:      'linear-gradient(to right,rgba(26,10,61,.38) 0%,rgba(26,10,61,.10) 55%,transparent 100%)',
+    badgeEmoji:   '🌅',
+    accentColor:  '#FFE082',
+    stars: false, moon: false,
+  },
+  // 昼 (10〜17時): 季節テーマそのまま
+  day: {
+    heroGradient: null,
+    overlay:      null,
+    badgeEmoji:   null,
+    accentColor:  '#FFE082',
+    stars: false, moon: false,
+  },
+  // 夕方 (17〜20時): 夕焼け・トワイライト
+  evening: {
+    heroGradient: 'linear-gradient(155deg,#311B92 0%,#C62828 30%,#E64A19 60%,#FF8A65 100%)',
+    overlay:      'linear-gradient(to right,rgba(49,27,146,.62) 0%,rgba(49,27,146,.22) 55%,transparent 100%)',
+    badgeEmoji:   '🌇',
+    accentColor:  '#FFAB91',
+    stars: false, moon: false,
+  },
+  // 夜 (20〜翌5時): 星空・月
+  night: {
+    heroGradient: 'linear-gradient(155deg,#050517 0%,#0D1B4A 35%,#0A2A5E 70%,#0D2840 100%)',
+    overlay:      'linear-gradient(to right,rgba(0,0,20,.82) 0%,rgba(0,0,20,.42) 55%,transparent 100%)',
+    badgeEmoji:   '🌙',
+    accentColor:  '#90CAF9',
+    stars: true,  moon: true,
+  },
+};
+
+function applyTimeTheme() {
+  const tcfg = TIME_CONFIG[TIME_OF_DAY];
+
+  // ヒーロー背景（昼は季節テーマを優先）
+  if (tcfg.heroGradient) {
+    const hero = document.getElementById('heroSection');
+    if (hero) hero.style.background = tcfg.heroGradient;
+  }
+
+  // オーバーレイ
+  if (tcfg.overlay) {
+    const overlay = document.getElementById('heroOverlay');
+    if (overlay) overlay.style.background = tcfg.overlay;
+  }
+
+  // バッジ絵文字（昼は季節バッジを優先）
+  if (tcfg.badgeEmoji) {
+    const badge = document.getElementById('heroBadge');
+    if (badge) badge.textContent = tcfg.badgeEmoji + ' CoderDojo 桃花台 — Tokadai';
+  }
+
+  // h1 アクセントカラー
+  const accentSpan = document.querySelector('.hero h1 span');
+  if (accentSpan) accentSpan.style.color = tcfg.accentColor;
+
+  // 星空（夜のみ）
+  const starsWrap = document.getElementById('starsWrap');
+  if (starsWrap) {
+    if (tcfg.stars) {
+      starsWrap.style.display = '';
+      if (!starsWrap.children.length) {
+        for (let i = 0; i < 90; i++) {
+          const s  = document.createElement('div');
+          const sz = Math.random() * 2.2 + 0.6;
+          s.className = 'star';
+          s.style.cssText = [
+            `left:${(Math.random() * 100).toFixed(1)}%`,
+            `top:${(Math.random() * 62).toFixed(1)}%`,
+            `width:${sz.toFixed(1)}px`,
+            `height:${sz.toFixed(1)}px`,
+            `animation-duration:${(Math.random() * 3 + 2).toFixed(1)}s`,
+            `animation-delay:${(Math.random() * 5).toFixed(1)}s`,
+            `opacity:${(Math.random() * .45 + .25).toFixed(2)}`,
+          ].join(';');
+          starsWrap.appendChild(s);
+        }
+      }
+    } else {
+      starsWrap.style.display = 'none';
+    }
+  }
+
+  // 月（夜のみ）
+  const moon = document.getElementById('heroMoon');
+  if (moon) moon.style.display = tcfg.moon ? '' : 'none';
+}
+
 /* ── Season detection ────────────────────────── */
 function getSeason() {
   const m = new Date().getMonth() + 1; // 1–12
@@ -142,12 +245,13 @@ function applySeasonalTheme() {
    Formspree (https://formspree.io) でフォームを作成し、
    YOUR_FORM_ID を取得したIDに差し替えてください。
    例: 'https://formspree.io/f/xabcdefg'          */
-const FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+const FORM_ENDPOINT = 'https://formspree.io/f/xyklekqz';
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ── 季節テーマ適用 ──────────────────────── */
+  /* ── 季節テーマ → 時間帯テーマの順で適用 ─── */
   applySeasonalTheme();
+  applyTimeTheme();   // 時間帯が季節グラデーションを上書き（昼は除く）
 
   /* ── Mobile nav ──────────────────────────── */
   const toggle    = document.getElementById('navToggle');

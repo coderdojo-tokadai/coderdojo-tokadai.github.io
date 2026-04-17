@@ -173,7 +173,12 @@ section { padding:5rem 0; }
 }
 .hero h1 { color:var(--white); text-shadow:0 2px 16px rgba(26,10,61,.3); max-width:640px; margin-bottom:1rem; }
 .hero h1 span { color:#FFE082; }
-.hero p { color:rgba(255,255,255,.92); font-size:1.1rem; max-width:500px; margin-bottom:2rem; }
+.hero p {
+  color:rgba(255,255,255,.92); font-size:1.1rem; max-width:500px; margin-bottom:2rem;
+  background:rgba(26,10,61,.40);
+  padding:.6rem 1rem;
+  border-radius:6px;
+}
 .hero p strong { color:#FFE082; }
 .hero-cta { display:flex; gap:1rem; flex-wrap:wrap; }
 
@@ -208,6 +213,27 @@ section { padding:5rem 0; }
   100% { transform:translateY(110vh) translateX(6px) rotate(360deg); opacity:0; }
 }
 .petal--snow { animation-name:snowFall !important; }
+
+/* Stars (night) */
+.stars-wrap { position:absolute; inset:0; z-index:1; pointer-events:none; overflow:hidden; }
+.star {
+  position:absolute; background:#fff; border-radius:50%;
+  animation:twinkle linear infinite;
+}
+@keyframes twinkle {
+  0%,100% { opacity:.2; transform:scale(1); }
+  50%      { opacity:1;  transform:scale(1.4); }
+}
+
+/* Moon (night) */
+.hero-moon {
+  position:absolute; z-index:1; pointer-events:none;
+  top:10%; right:12%;
+  width:62px; height:62px;
+  background:radial-gradient(circle at 38% 36%,#FFFDE7,#FFE082);
+  border-radius:50%;
+  box-shadow:0 0 28px rgba(255,224,130,.55),0 0 60px rgba(255,224,130,.22);
+}
 
 /* Scroll hint */
 .scroll-hint {
@@ -443,6 +469,142 @@ section { padding:5rem 0; }
 .footer-links { display:flex; gap:1.5rem; }
 .footer-links a:hover { color:var(--peach-light); }
 
+/* ── Launch Notice Bar ──────────────────── */
+.launch-notice-bar {
+  background:linear-gradient(135deg,#FFF8E1,#FFECE3);
+  border-bottom:2px solid var(--peach-light);
+  padding:1.1rem 0;
+}
+.launch-notice-inner {
+  display:flex; align-items:center; gap:1.25rem; flex-wrap:wrap;
+}
+.launch-notice-badge {
+  display:inline-flex; align-items:center;
+  background:var(--peach); color:var(--white);
+  font-size:.75rem; font-weight:700; letter-spacing:.08em;
+  padding:.3rem .85rem; border-radius:999px;
+  white-space:nowrap; flex-shrink:0;
+}
+.launch-notice-inner p {
+  flex:1; min-width:200px; color:var(--text); font-size:.95rem; margin:0;
+}
+.launch-notice-inner p strong { color:var(--peach); }
+
+/* ── Curriculum ─────────────────────────── */
+.curriculum-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1.25rem; margin-bottom:1.5rem;
+}
+.curriculum-card {
+  background:var(--white); border-radius:var(--radius-lg);
+  padding:1.75rem 1.5rem; box-shadow:var(--shadow-sm);
+  border:2px solid var(--border);
+  transition:transform var(--t) var(--ease),border-color var(--t),box-shadow var(--t);
+}
+.curriculum-card:hover {
+  transform:translateY(-5px); border-color:var(--peach-light);
+  box-shadow:var(--shadow);
+}
+.curr-icon {
+  width:56px; height:56px; border-radius:14px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.75rem; margin-bottom:1rem;
+}
+.ci-orange { background:#FFF0EB; }
+.ci-green  { background:#E8F7F0; }
+.ci-blue   { background:#E0F5FF; }
+.ci-pink   { background:#FFF0F5; }
+.ci-red    { background:#FFF3EE; }
+.ci-teal   { background:#E0F7F4; }
+.ci-purple { background:#F3E8FF; }
+.ci-yellow { background:#FFFDE7; }
+.ci-dark   { background:#EDE7F6; }
+.curriculum-card h3 { font-size:1.05rem; margin-bottom:.4rem; }
+.curriculum-card p  { color:var(--text-light); font-size:.88rem; line-height:1.7; }
+
+/* ── "こんなこともできる" ─────────────────────────── */
+.also-can-wrap {
+  background: linear-gradient(135deg, #FFF8F0 0%, #FFF0EB 100%);
+  border: 2px dashed var(--peach-light);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem 2rem;
+}
+.also-can-header { text-align: center; margin-bottom: 2rem; }
+.also-can-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+.also-can-card {
+  background: var(--white); border-radius: var(--radius-lg);
+  padding: 1.5rem; box-shadow: var(--shadow-sm);
+  border: 1.5px solid var(--border);
+  display: flex; gap: 1rem; align-items: flex-start;
+  transition: transform var(--t) var(--ease), border-color var(--t), box-shadow var(--t);
+}
+.also-can-card:hover {
+  transform: translateY(-4px); border-color: var(--peach-light);
+  box-shadow: var(--shadow);
+}
+.curr-tag {
+  display:inline-block; margin-top:.75rem;
+  padding:.18rem .65rem; border-radius:999px;
+  font-size:.72rem; font-weight:700;
+}
+.tag-beginner { background:#E8F7F0; color:var(--green-dark); }
+.curr-langs { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.75rem; }
+.curr-lang {
+  display:inline-block;
+  background:var(--peach-pale); color:var(--peach);
+  border-radius:999px; padding:.18rem .65rem;
+  font-size:.72rem; font-weight:700;
+}
+.curr-note {
+  text-align:center; color:var(--text-light);
+  font-size:.9rem; margin-top:.25rem;
+}
+
+/* ── Mascot Character "ピコ" ─────────────── */
+.mascot-wrap {
+  position:fixed; bottom:1.75rem; right:1.75rem;
+  z-index:500; pointer-events:none;
+  display:flex; flex-direction:column; align-items:flex-end;
+  width:110px;
+  animation:mascotFloat 4.5s ease-in-out infinite;
+}
+
+.mascot-bubble {
+  background:#fff; border-radius:14px;
+  padding:.45rem .95rem;
+  font-size:.76rem; font-weight:700;
+  color:var(--dark); white-space:nowrap;
+  box-shadow:0 4px 18px rgba(0,0,0,.14);
+  margin-bottom:.5rem; position:relative;
+  animation:bubblePop .7s .5s var(--ease) both;
+  line-height:1.5;
+}
+.mascot-bubble::after {
+  content:''; position:absolute;
+  bottom:-8px; right:26px;
+  border:8px solid transparent;
+  border-top-color:#fff;
+}
+.mascot-svg { width:100%; height:auto; display:block; }
+
+@keyframes mascotFloat {
+  0%,100% { transform:translateY(0)    rotate(0deg); }
+  30%     { transform:translateY(-13px) rotate(2.2deg); }
+  70%     { transform:translateY(-8px)  rotate(-1.5deg); }
+}
+@keyframes bubblePop {
+  from { transform:scale(.45) translateY(10px); opacity:0; }
+  to   { transform:scale(1)   translateY(0);    opacity:1; }
+}
+@media (max-width:900px) {
+  .mascot-wrap { width:86px; bottom:1.25rem; right:1.25rem; }
+  .mascot-bubble { font-size:.7rem; padding:.35rem .75rem; }
+}
+@media (max-width:600px) { .mascot-wrap { display:none; } }
+
 /* ── Animations ──────────────────────────── */
 .fade-in { opacity:0; transform:translateY(24px); transition:opacity .7s var(--ease),transform .7s var(--ease); }
 .fade-in.visible { opacity:1; transform:none; }
@@ -462,10 +624,15 @@ section { padding:5rem 0; }
   .footer-top { grid-template-columns:1fr 1fr; }
   .event-banner { flex-direction:column; text-align:center; }
   .event-meta { justify-content:center; }
+  .curriculum-grid { grid-template-columns:1fr 1fr; }
+  .also-can-grid   { grid-template-columns:1fr; }
+  .launch-notice-inner { justify-content:center; text-align:center; }
+  .launch-notice-inner p { min-width:unset; text-align:center; }
 }
 @media (max-width:600px) {
   section { padding:3.5rem 0; }
   .features-grid,.access-cards,.stats-grid { grid-template-columns:1fr; }
+  .curriculum-grid { grid-template-columns:1fr; }
   .footer-top { grid-template-columns:1fr; }
   .news-card { flex-direction:column; gap:.75rem; }
   .news-date { display:flex; align-items:center; gap:.6rem; text-align:left; }

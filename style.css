@@ -70,10 +70,11 @@ section { padding:5rem 0; }
 }
 .nav.scrolled { box-shadow:var(--shadow); }
 .nav-inner {
-  display:flex; align-items:center; justify-content:space-between;
+  display:flex; align-items:center; gap:1rem;
   height:68px; max-width:1100px; margin:0 auto; padding:0 1.5rem;
 }
 .nav-logo {
+  flex-shrink:0;
   display:flex; align-items:center; gap:.7rem;
   font-weight:800; font-size:1rem; color:var(--dark);
 }
@@ -82,7 +83,7 @@ section { padding:5rem 0; }
 .nav-logo-text strong { font-size:1rem; }
 .brand-sub { font-size:.65rem; font-weight:600; color:var(--peach); letter-spacing:.06em; text-transform:uppercase; }
 
-.nav-links { display:flex; align-items:center; gap:.2rem; }
+.nav-links { margin-left:auto; display:flex; align-items:center; gap:.2rem; flex-shrink:0; white-space:nowrap; }
 .nav-links a {
   padding:.5rem .9rem; border-radius:var(--radius-sm);
   font-size:.88rem; font-weight:600; color:var(--text);
@@ -98,6 +99,7 @@ section { padding:5rem 0; }
 
 /* ── Language switcher ── */
 .lang-switcher {
+  flex-shrink:0;
   position:relative; display:flex; align-items:center;
 }
 .lang-btn {
@@ -125,6 +127,7 @@ section { padding:5rem 0; }
 .lang-option.lang-active { color:var(--peach); background:var(--peach-pale); }
 
 .nav-toggle {
+  flex-shrink:0;
   display:none; flex-direction:column; justify-content:center;
   gap:5px; width:36px; height:36px;
   background:none; border:none; cursor:pointer; padding:4px;
@@ -644,8 +647,7 @@ section { padding:5rem 0; }
 /* ── Responsive ──────────────────────────── */
 @media (max-width:900px) {
   .nav-links { display:none; }
-  .lang-switcher { order:-1; margin-left:auto; margin-right:.5rem; }
-  .nav-toggle { display:flex; }
+  .nav-toggle { display:flex; margin-left:auto; }
   .about-grid,.venue-info-grid,.contact-grid { grid-template-columns:1fr; }
   .features-grid { grid-template-columns:1fr 1fr; }
   .access-cards { grid-template-columns:1fr 1fr; }

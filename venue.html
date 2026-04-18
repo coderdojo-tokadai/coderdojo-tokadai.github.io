@@ -121,8 +121,8 @@
             <div class="info-item">
               <div class="info-icon">📍</div>
               <div class="info-text">
-                <dt>対象エリア</dt>
-                <dd>桃花台 周辺エリア（小牧市東部・春日井市・高蔵寺）</dd>
+                <dt data-i18n="venue-dt-area">対象エリア</dt>
+                <dd data-i18n="venue-dd-area">桃花台 周辺エリア（小牧市東部・春日井市・高蔵寺）</dd>
               </div>
             </div>
             <div class="info-item">
@@ -135,8 +135,8 @@
             <div class="info-item">
               <div class="info-icon">💻</div>
               <div class="info-text">
-                <dt>持ち物</dt>
-                <dd>ノートPC（お持ちの方）、充電器</dd>
+                <dt data-i18n="venue-dt-items">持ち物</dt>
+                <dd data-i18n="venue-dd-items">ノートPC（お持ちの方）、充電器</dd>
               </div>
             </div>
           </dl>
@@ -145,8 +145,8 @@
 
       <!-- Right: map placeholder -->
       <div class="fade-in delay-2">
-        <span class="section-label">アクセスマップ</span>
-        <h2 style="margin-bottom:1.75rem;">地図</h2>
+        <span class="section-label" data-i18n="venue-map-label">アクセスマップ</span>
+        <h2 style="margin-bottom:1.75rem;" data-i18n="venue-map-h2">地図</h2>
         <div style="border-radius:var(--radius);overflow:hidden;border:2px solid var(--border);box-shadow:var(--shadow-sm);">
           <!-- Google マップ埋め込み
                より正確な地図が必要な場合は Google マップで会場を検索し、
@@ -160,10 +160,11 @@
           </iframe>
         </div>
         <div style="margin-top:1rem;padding:1rem 1.25rem;background:var(--white);border-radius:var(--radius-sm);border:2px solid var(--border);font-size:.875rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;">
-          <span style="color:var(--text-light);">📍 小牧市東部エリア（会場詳細は決定後お知らせ）</span>
+          <span style="color:var(--text-light);" data-i18n="venue-map-note">📍 小牧市東部エリア（会場詳細は決定後お知らせ）</span>
           <a href="https://maps.google.com/maps?q=小牧市東部+愛知県小牧市"
              target="_blank" rel="noopener"
-             style="color:var(--peach);font-weight:700;font-size:.85rem;">Google マップで開く ↗</a>
+             style="color:var(--peach);font-weight:700;font-size:.85rem;"
+             data-i18n="venue-map-link">Google マップで開く ↗</a>
         </div>
       </div>
 
@@ -175,26 +176,26 @@
 <section style="background:var(--peach-pale);">
   <div class="container">
     <div class="section-header fade-in">
-      <span class="section-label">アクセス</span>
-      <h2>会場へのアクセス方法</h2>
-      <p>桃花台エリアから徒歩・バスでもお越しいただけます。</p>
+      <span class="section-label" data-i18n="venue-access-label">アクセス</span>
+      <h2 data-i18n="venue-access-h2">会場へのアクセス方法</h2>
+      <p data-i18n="venue-access-desc">桃花台エリアから徒歩・バスでもお越しいただけます。</p>
     </div>
 
     <div class="access-cards">
       <div class="access-card fade-in delay-1">
         <div class="a-icon">🚌</div>
-        <h4>バスをご利用の方</h4>
-        <p>名鉄バス・あおい交通 ピーチバス/桃花台バス、小牧市コミュニティバス「こまくる」をご利用ください。最寄りバス停から徒歩でお越しいただけます。詳細は Google マップでご確認ください。</p>
+        <h4 data-i18n="venue-bus-h4">バスをご利用の方</h4>
+        <p data-i18n="venue-bus-p">名鉄バス・あおい交通 ピーチバス/桃花台バス、小牧市コミュニティバス「こまくる」をご利用ください。最寄りバス停から徒歩でお越しいただけます。詳細は Google マップでご確認ください。</p>
       </div>
       <div class="access-card fade-in delay-2">
         <div class="a-icon">🚗</div>
-        <h4>お車をご利用の方</h4>
-        <p>駐車場をご利用いただけます。詳細な駐車場情報は会場決定後にお知らせします。</p>
+        <h4 data-i18n="venue-car-h4">お車をご利用の方</h4>
+        <p data-i18n="venue-car-p">駐車場をご利用いただけます。詳細な駐車場情報は会場決定後にお知らせします。</p>
       </div>
       <div class="access-card fade-in delay-3">
         <div class="a-icon">🚶</div>
-        <h4>徒歩・自転車</h4>
-        <p>周辺からは徒歩・自転車でもお越しいただけます。駐輪場もご利用いただけます。</p>
+        <h4 data-i18n="venue-walk-h4">徒歩・自転車</h4>
+        <p data-i18n="venue-walk-p">周辺からは徒歩・自転車でもお越しいただけます。駐輪場もご利用いただけます。</p>
       </div>
     </div>
   </div>
@@ -205,33 +206,33 @@
   <div class="container">
     <div class="about-grid">
       <div class="fade-in">
-        <span class="section-label">桃花台について</span>
-        <h2>私たちの街、<br>桃花台ニュータウン。</h2>
-        <p style="color:var(--text-light);margin-bottom:1rem;">桃花台（Tokadai）は、愛知県小牧市東部に位置する大規模ニュータウンとして1970年代から開発が進められた街です。桃の花にちなんだ名前の通り、春には美しい花が咲き誇ります。</p>
-        <p style="color:var(--text-light);margin-bottom:1rem;">この街にはファミリー世帯だけでなく、シニア世代、単身世帯、若い人たちなど多様な世代・世帯が共存しています。世代を超えた交流が生まれる地域コミュニティとして、CoderDojo 桃花台はその橋渡し役も担いたいと考えています。</p>
-        <p style="color:var(--text-light);">緑豊かな公園と高層マンションが共存するこの街から、すべての世代の人々がデジタルの力で可能性を広げられる場所をめざしています。</p>
+        <span class="section-label" data-i18n="venue-about-label">桃花台について</span>
+        <h2 data-i18n-html="venue-about-h2">私たちの街、<br>桃花台ニュータウン。</h2>
+        <p style="color:var(--text-light);margin-bottom:1rem;" data-i18n="venue-about-p1">桃花台（Tokadai）は、愛知県小牧市東部に位置する大規模ニュータウンとして1970年代から開発が進められた街です。桃の花にちなんだ名前の通り、春には美しい花が咲き誇ります。</p>
+        <p style="color:var(--text-light);margin-bottom:1rem;" data-i18n="venue-about-p2">この街にはファミリー世帯だけでなく、シニア世代、単身世帯、若い人たちなど多様な世代・世帯が共存しています。世代を超えた交流が生まれる地域コミュニティとして、CoderDojo 桃花台はその橋渡し役も担いたいと考えています。</p>
+        <p style="color:var(--text-light);" data-i18n="venue-about-p3">緑豊かな公園と高層マンションが共存するこの街から、すべての世代の人々がデジタルの力で可能性を広げられる場所をめざしています。</p>
       </div>
       <div class="fade-in delay-2">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
           <div style="background:linear-gradient(135deg,#FFE8DC,#FFD4C2);border-radius:var(--radius);padding:1.75rem;text-align:center;">
             <div style="font-size:2.5rem;margin-bottom:.5rem;">🌸</div>
-            <div style="font-weight:700;font-size:.95rem;">桃の花</div>
-            <div style="font-size:.8rem;color:var(--text-light);margin-top:.25rem;">名前の由来</div>
+            <div style="font-weight:700;font-size:.95rem;" data-i18n="venue-card1-title">桃の花</div>
+            <div style="font-size:.8rem;color:var(--text-light);margin-top:.25rem;" data-i18n="venue-card1-sub">名前の由来</div>
           </div>
           <div style="background:linear-gradient(135deg,#E8F7F0,#C8EFE0);border-radius:var(--radius);padding:1.75rem;text-align:center;">
             <div style="font-size:2.5rem;margin-bottom:.5rem;">🏢</div>
-            <div style="font-weight:700;font-size:.95rem;">高層マンション</div>
-            <div style="font-size:.8rem;color:var(--text-light);margin-top:.25rem;">街のランドマーク</div>
+            <div style="font-weight:700;font-size:.95rem;" data-i18n="venue-card2-title">高層マンション</div>
+            <div style="font-size:.8rem;color:var(--text-light);margin-top:.25rem;" data-i18n="venue-card2-sub">街のランドマーク</div>
           </div>
           <div style="background:linear-gradient(135deg,#E0F5FF,#C4E8FF);border-radius:var(--radius);padding:1.75rem;text-align:center;">
             <div style="font-size:2.5rem;margin-bottom:.5rem;">🌳</div>
-            <div style="font-weight:700;font-size:.95rem;">緑豊かな公園</div>
-            <div style="font-size:.8rem;color:var(--text-light);margin-top:.25rem;">自然との共生</div>
+            <div style="font-weight:700;font-size:.95rem;" data-i18n="venue-card3-title">緑豊かな公園</div>
+            <div style="font-size:.8rem;color:var(--text-light);margin-top:.25rem;" data-i18n="venue-card3-sub">自然との共生</div>
           </div>
           <div style="background:linear-gradient(135deg,#F5E8FF,#E0C8FF);border-radius:var(--radius);padding:1.75rem;text-align:center;">
             <div style="font-size:2.5rem;margin-bottom:.5rem;">🏘️</div>
-            <div style="font-weight:700;font-size:.95rem;">多様な世帯</div>
-            <div style="font-size:.8rem;color:var(--text-light);margin-top:.25rem;">ファミリー・シニア・単身など</div>
+            <div style="font-weight:700;font-size:.95rem;" data-i18n="venue-card4-title">多様な世帯</div>
+            <div style="font-size:.8rem;color:var(--text-light);margin-top:.25rem;" data-i18n="venue-card4-sub">ファミリー・シニア・単身など</div>
           </div>
         </div>
       </div>
@@ -243,11 +244,11 @@
 <section class="cta-section">
   <div class="container">
     <div class="fade-in">
-      <h2>ぜひ遊びに来てください！🌸</h2>
-      <p>見学だけでもOKです。まずはお気軽にお問い合わせください。</p>
+      <h2 data-i18n="venue-cta-h2">ぜひ遊びに来てください！🌸</h2>
+      <p data-i18n="venue-cta-p">見学だけでもOKです。まずはお気軽にお問い合わせください。</p>
       <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-        <a href="contact.html" class="btn btn-white">参加申込み・お問い合わせ</a>
-        <a href="news.html" class="btn btn-ghost">最新のお知らせ</a>
+        <a href="contact.html" class="btn btn-white" data-i18n="venue-cta-btn1">参加申込み・お問い合わせ</a>
+        <a href="news.html" class="btn btn-ghost" data-i18n="venue-cta-btn2">最新のお知らせ</a>
       </div>
     </div>
   </div>
@@ -306,7 +307,7 @@
 
 <!-- ══════════════════════ MASCOT ピコ ══════════════════════ -->
 <div class="mascot-wrap" aria-hidden="true">
-  <div class="mascot-bubble">ここがDojo会場だよ！📍</div>
+  <div class="mascot-bubble" data-i18n="venue-mascot-bubble">ここがDojo会場だよ！📍</div>
   <svg class="mascot-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 188">
     <defs><radialGradient id="ps-v" cx="40%" cy="35%" r="65%"><stop offset="0%" stop-color="#D95E00"/><stop offset="100%" stop-color="#F5913A"/></radialGradient><radialGradient id="ph-v" cx="36%" cy="32%" r="60%"><stop offset="0%" stop-color="#FFF5E6" stop-opacity=".97"/><stop offset="100%" stop-color="#FFDCB4" stop-opacity=".93"/></radialGradient></defs>
     <ellipse cx="53" cy="180" rx="11" ry="5" fill="#FF8A65" opacity=".5"/>

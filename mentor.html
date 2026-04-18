@@ -162,35 +162,44 @@
       </span>
     </a>
     <div class="nav-links">
-      <a href="index.html">ホーム</a>
-      <a href="venue.html">開催場所</a>
-      <a href="news.html">お知らせ</a>
-      <a href="mentor.html" class="active">メンター募集</a>
-      <a href="contact.html" class="nav-cta">参加申込み</a>
+      <a href="index.html" data-i18n="nav-home">ホーム</a>
+      <a href="venue.html" data-i18n="nav-venue">開催場所</a>
+      <a href="news.html" data-i18n="nav-news">お知らせ</a>
+      <a href="mentor.html" class="active" data-i18n="nav-mentor">メンター募集</a>
+      <a href="contact.html" class="nav-cta" data-i18n="nav-contact">参加申込み</a>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="メニューを開く">
+    <div class="lang-switcher">
+      <button class="lang-btn" id="langBtn"><span id="langDisplay">🇯🇵 日本語</span> ▾</button>
+      <div class="lang-dropdown" id="langDropdown">
+        <button class="lang-option lang-active" data-lang="ja" onclick="setLang('ja')">🇯🇵 日本語</button>
+        <button class="lang-option" data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
+        <button class="lang-option" data-lang="pt" onclick="setLang('pt')">🇧🇷 Português</button>
+        <button class="lang-option" data-lang="vi" onclick="setLang('vi')">🇻🇳 Tiếng Việt</button>
+      </div>
+    </div>
+    <button class="nav-toggle" id="navToggle" data-i18n-aria="nav-toggle-aria" aria-label="メニューを開く">
       <span></span><span></span><span></span>
     </button>
   </div>
   <div class="nav-mobile" id="mobileNav">
-    <a href="index.html">🏠 ホーム</a>
-    <a href="venue.html">📍 開催場所</a>
-    <a href="news.html">📢 お知らせ</a>
-    <a href="mentor.html">🧑‍💻 メンター募集</a>
-    <a href="contact.html" class="nav-cta-mobile">🚀 参加申込み</a>
+    <a href="index.html" data-i18n="nav-m-home">🏠 ホーム</a>
+    <a href="venue.html" data-i18n="nav-m-venue">📍 開催場所</a>
+    <a href="news.html" data-i18n="nav-m-news">📢 お知らせ</a>
+    <a href="mentor.html" data-i18n="nav-m-mentor">🧑‍💻 メンター募集</a>
+    <a href="contact.html" class="nav-cta-mobile" data-i18n="nav-m-contact">🚀 参加申込み</a>
   </div>
 </nav>
 
 <!-- ══════════════════════ HERO ══════════════════════ -->
 <div class="mentor-hero">
   <div class="breadcrumb">
-    <a href="index.html">ホーム</a>
+    <a href="index.html" data-i18n="bc-home">ホーム</a>
     <span>›</span>
-    <span>メンター募集</span>
+    <span data-i18n="mentor-bc-current">メンター募集</span>
   </div>
-  <div class="mentor-hero-badge">🧑‍💻 エンジニア経験者 歓迎</div>
-  <h1>あなたの技術で、<br>子どもたちの未来を開こう</h1>
-  <p>月1回・2時間から始められるボランティア。18歳以上の学生・社会人なら誰でも参加できます。プログラミングの楽しさを、次の世代へ。</p>
+  <div class="mentor-hero-badge" data-i18n="mentor-badge">🧑‍💻 エンジニア経験者 歓迎</div>
+  <h1 data-i18n-html="mentor-h1">あなたの技術で、<br>子どもたちの未来を開こう</h1>
+  <p data-i18n="mentor-desc">月1回・2時間から始められるボランティア。18歳以上の学生・社会人なら誰でも参加できます。プログラミングの楽しさを、次の世代へ。</p>
   <div class="skill-tags">
     <span class="skill-tag">🐱 Scratch</span>
     <span class="skill-tag">⛏ Minecraft</span>
@@ -214,40 +223,40 @@
 <section>
   <div class="container">
     <div class="section-header fade-in">
-      <span class="section-label">メンターになる理由</span>
-      <h2>こんないいことがあります</h2>
-      <p>子どもたちへの貢献だけでなく、エンジニアとしての自分にも返ってくるものがあります。</p>
+      <span class="section-label" data-i18n="mentor-why-label">メンターになる理由</span>
+      <h2 data-i18n="mentor-why-h2">こんないいことがあります</h2>
+      <p data-i18n="mentor-why-desc">子どもたちへの貢献だけでなく、エンジニアとしての自分にも返ってくるものがあります。</p>
     </div>
     <div class="why-grid">
       <div class="why-card fade-in delay-1">
         <div class="why-icon">🗣️</div>
-        <h3>教えると自分が深まる</h3>
-        <p>「なぜこう動くの？」という子どもの素朴な質問が、自分の理解の盲点を突いてきます。技術の本質を言葉にする力が鍛えられます。</p>
+        <h3 data-i18n="mentor-why1-h3">教えると自分が深まる</h3>
+        <p data-i18n="mentor-why1-p">「なぜこう動くの？」という子どもの素朴な質問が、自分の理解の盲点を突いてきます。技術の本質を言葉にする力が鍛えられます。</p>
       </div>
       <div class="why-card fade-in delay-2">
         <div class="why-icon">🌱</div>
-        <h3>地域に貢献できる</h3>
-        <p>桃花台という地元コミュニティで、次世代のエンジニアを育てる活動に直接関われます。技術を社会に還元する実感が持てます。</p>
+        <h3 data-i18n="mentor-why2-h3">地域に貢献できる</h3>
+        <p data-i18n="mentor-why2-p">桃花台という地元コミュニティで、次世代のエンジニアを育てる活動に直接関われます。技術を社会に還元する実感が持てます。</p>
       </div>
       <div class="why-card fade-in delay-3">
         <div class="why-icon">🤝</div>
-        <h3>仲間のエンジニアと繋がる</h3>
-        <p>異なる業種・技術背景を持つメンター仲間と自然に交流できます。副業・転職・勉強会などの情報交換も生まれています。</p>
+        <h3 data-i18n="mentor-why3-h3">仲間のエンジニアと繋がる</h3>
+        <p data-i18n="mentor-why3-p">異なる業種・技術背景を持つメンター仲間と自然に交流できます。副業・転職・勉強会などの情報交換も生まれています。</p>
       </div>
       <div class="why-card fade-in delay-1">
         <div class="why-icon">😄</div>
-        <h3>子どもたちの「できた！」が最高</h3>
-        <p>子どもが初めてコードを動かした瞬間の顔は格別です。業務では味わえない、純粋な喜びがあります。</p>
+        <h3 data-i18n="mentor-why4-h3">子どもたちの「できた！」が最高</h3>
+        <p data-i18n="mentor-why4-p">子どもが初めてコードを動かした瞬間の顔は格別です。業務では味わえない、純粋な喜びがあります。</p>
       </div>
       <div class="why-card fade-in delay-2">
         <div class="why-icon">⏰</div>
-        <h3>月1回・2時間だけ</h3>
-        <p>活動は月1回、いずれかの日曜日の午後2時間のみ。忙しい社会人でも無理なく続けられます。参加できない月は事前連絡でOK。</p>
+        <h3 data-i18n="mentor-why5-h3">月1回・2時間だけ</h3>
+        <p data-i18n="mentor-why5-p">活動は月1回、いずれかの日曜日の午後2時間のみ。忙しい社会人でも無理なく続けられます。参加できない月は事前連絡でOK。</p>
       </div>
       <div class="why-card fade-in delay-3">
         <div class="why-icon">📄</div>
-        <h3>実績・経歴にもなる</h3>
-        <p>継続的なボランティア活動はポートフォリオや職務経歴書に記載できます。転職活動でも人柄や社会性をアピールする材料になります。</p>
+        <h3 data-i18n="mentor-why6-h3">実績・経歴にもなる</h3>
+        <p data-i18n="mentor-why6-p">継続的なボランティア活動はポートフォリオや職務経歴書に記載できます。転職活動でも人柄や社会性をアピールする材料になります。</p>
       </div>
     </div>
   </div>
@@ -497,20 +506,20 @@
             <span class="footer-brand-sub">桃花台 Tokadai</span>
           </div>
         </div>
-        <p class="footer-desc">桃花台 周辺エリア（小牧市東部・春日井市・高蔵寺）の子どもたちが、コードを通じて「作る楽しさ」を知り、可能性を広げる無料プログラミングクラブです。</p>
+        <p class="footer-desc" data-i18n="footer-desc">桃花台 周辺エリア（小牧市東部・春日井市・高蔵寺）の子どもたちが、コードを通じて「作る楽しさ」を知り、可能性を広げる無料プログラミングクラブです。</p>
       </div>
       <div class="footer-col">
-        <h4>ページ</h4>
+        <h4 data-i18n="footer-nav-title">ページ</h4>
         <ul>
-          <li><a href="index.html">ホーム</a></li>
-          <li><a href="venue.html">開催場所</a></li>
-          <li><a href="news.html">お知らせ</a></li>
-          <li><a href="mentor.html">メンター募集</a></li>
-          <li><a href="contact.html">お問い合わせ</a></li>
+          <li><a href="index.html" data-i18n="nav-home">ホーム</a></li>
+          <li><a href="venue.html" data-i18n="nav-venue">開催場所</a></li>
+          <li><a href="news.html" data-i18n="nav-news">お知らせ</a></li>
+          <li><a href="mentor.html" data-i18n="nav-mentor">メンター募集</a></li>
+          <li><a href="contact.html" data-i18n="footer-contact-link">お問い合わせ</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>リンク</h4>
+        <h4 data-i18n="footer-links-title">リンク</h4>
         <ul>
           <li><a href="https://coderdojo.com" target="_blank" rel="noopener">CoderDojo 公式</a></li>
           <li><a href="https://coderdojo.jp" target="_blank" rel="noopener">CoderDojo Japan</a></li>
@@ -518,9 +527,9 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 CoderDojo 桃花台 (Tokadai). Powered by volunteers. 🌸</span>
+      <span data-i18n="footer-copyright">© 2026 CoderDojo 桃花台 (Tokadai). Powered by volunteers. 🌸</span>
       <div class="footer-links">
-        <a href="contact.html">お問い合わせ</a>
+        <a href="contact.html" data-i18n="footer-contact-link">お問い合わせ</a>
         <!-- <a href="#">プライバシー</a> -->
         プライバシー
       </div>
@@ -530,6 +539,7 @@
 
 <script src="events.js"></script>
 <script src="script.js"></script>
+<script src="i18n.js"></script>
 
 <!-- ══════════════════════ MASCOT ピコ ══════════════════════ -->
 <div class="mascot-wrap" aria-hidden="true">

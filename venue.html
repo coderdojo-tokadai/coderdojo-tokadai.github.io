@@ -27,34 +27,43 @@
       </span>
     </a>
     <div class="nav-links">
-      <a href="index.html">ホーム</a>
-      <a href="venue.html">開催場所</a>
-      <a href="news.html">お知らせ</a>
-      <a href="mentor.html">メンター募集</a>
-      <a href="contact.html" class="nav-cta">参加申込み</a>
+      <a href="index.html" data-i18n="nav-home">ホーム</a>
+      <a href="venue.html" data-i18n="nav-venue">開催場所</a>
+      <a href="news.html" data-i18n="nav-news">お知らせ</a>
+      <a href="mentor.html" data-i18n="nav-mentor">メンター募集</a>
+      <a href="contact.html" class="nav-cta" data-i18n="nav-contact">参加申込み</a>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="メニューを開く">
+    <div class="lang-switcher">
+      <button class="lang-btn" id="langBtn"><span id="langDisplay">🇯🇵 日本語</span> ▾</button>
+      <div class="lang-dropdown" id="langDropdown">
+        <button class="lang-option lang-active" data-lang="ja" onclick="setLang('ja')">🇯🇵 日本語</button>
+        <button class="lang-option" data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
+        <button class="lang-option" data-lang="pt" onclick="setLang('pt')">🇧🇷 Português</button>
+        <button class="lang-option" data-lang="vi" onclick="setLang('vi')">🇻🇳 Tiếng Việt</button>
+      </div>
+    </div>
+    <button class="nav-toggle" id="navToggle" data-i18n-aria="nav-toggle-aria" aria-label="メニューを開く">
       <span></span><span></span><span></span>
     </button>
   </div>
   <div class="nav-mobile" id="mobileNav">
-    <a href="index.html">🏠 ホーム</a>
-    <a href="venue.html">📍 開催場所</a>
-    <a href="news.html">📢 お知らせ</a>
-    <a href="mentor.html">🧑‍💻 メンター募集</a>
-    <a href="contact.html" class="nav-cta-mobile">🚀 参加申込み</a>
+    <a href="index.html" data-i18n="nav-m-home">🏠 ホーム</a>
+    <a href="venue.html" data-i18n="nav-m-venue">📍 開催場所</a>
+    <a href="news.html" data-i18n="nav-m-news">📢 お知らせ</a>
+    <a href="mentor.html" data-i18n="nav-m-mentor">🧑‍💻 メンター募集</a>
+    <a href="contact.html" class="nav-cta-mobile" data-i18n="nav-m-contact">🚀 参加申込み</a>
   </div>
 </nav>
 
 <!-- ══════════════════════ PAGE HERO ══════════════════════ -->
 <div class="page-hero">
   <div class="breadcrumb">
-    <a href="index.html">ホーム</a>
+    <a href="index.html" data-i18n="bc-home">ホーム</a>
     <span>›</span>
-    <span>開催場所</span>
+    <span data-i18n="venue-bc-current">開催場所</span>
   </div>
-  <h1>📍 開催場所</h1>
-  <p>小牧市東部の公共施設にて、月1回いずれかの日曜日に2時間開催予定（2026年夏以降）。</p>
+  <h1 data-i18n="venue-h1">📍 開催場所</h1>
+  <p data-i18n="venue-page-desc">小牧市東部の公共施設にて、月1回いずれかの日曜日に2時間開催予定（2026年夏以降）。</p>
 </div>
 
 <!-- ══════════════════════ VENUE INFO ══════════════════════ -->
@@ -64,12 +73,12 @@
 
       <!-- Left: info -->
       <div class="fade-in">
-        <span class="section-label">会場情報</span>
-        <h2 style="margin-bottom:1.75rem;">小牧市東部の<br>公共施設（予定）</h2>
+        <span class="section-label" data-i18n="venue-label">会場情報</span>
+        <h2 data-i18n-html="venue-section-h2" style="margin-bottom:1.75rem;">小牧市東部の<br>公共施設（予定）</h2>
 
         <div style="background:linear-gradient(135deg,#FFF8E1,#FFECE3);border-radius:var(--radius-sm);padding:.85rem 1.25rem;border-left:4px solid var(--peach);margin-bottom:1.25rem;font-size:.9rem;">
-          🚀 <strong style="color:var(--peach);">2026年 夏以降に活動開始予定！</strong><br>
-          <span style="color:var(--text-light);">現在会場を調整中です。詳細が決まり次第お知らせします。</span>
+          🚀 <strong style="color:var(--peach);" data-i18n="venue-soon">2026年 夏以降に活動開始予定！</strong><br>
+          <span style="color:var(--text-light);" data-i18n="venue-soon-sub">現在会場を調整中です。詳細が決まり次第お知らせします。</span>
         </div>
 
         <div class="info-card">
@@ -77,36 +86,36 @@
             <div class="info-item">
               <div class="info-icon">🏢</div>
               <div class="info-text">
-                <dt>施設名</dt>
-                <dd>小牧市東部の公共施設（調整中）</dd>
+                <dt data-i18n="venue-dt-facility">施設名</dt>
+                <dd data-i18n="venue-dd-facility">小牧市東部の公共施設（調整中）</dd>
               </div>
             </div>
             <div class="info-item">
               <div class="info-icon">📮</div>
               <div class="info-text">
-                <dt>住所</dt>
-                <dd>愛知県小牧市東部エリア（詳細決定後お知らせ）</dd>
+                <dt data-i18n="venue-dt-address">住所</dt>
+                <dd data-i18n="venue-dd-address">愛知県小牧市東部エリア（詳細決定後お知らせ）</dd>
               </div>
             </div>
             <div class="info-item">
               <div class="info-icon">📅</div>
               <div class="info-text">
-                <dt>開催日</dt>
-                <dd>月1回 いずれかの日曜日（2026年夏以降開始予定）</dd>
+                <dt data-i18n="venue-dt-date">開催日</dt>
+                <dd data-i18n="venue-dd-date">月1回 いずれかの日曜日（2026年夏以降開始予定）</dd>
               </div>
             </div>
             <div class="info-item">
               <div class="info-icon">🕐</div>
               <div class="info-text">
-                <dt>時間</dt>
-                <dd>13:00 〜 15:00（2時間・受付 12:45〜）</dd>
+                <dt data-i18n="venue-dt-time">時間</dt>
+                <dd data-i18n="venue-dd-time">13:00 〜 15:00（2時間・受付 12:45〜）</dd>
               </div>
             </div>
             <div class="info-item">
               <div class="info-icon">👦</div>
               <div class="info-text">
-                <dt>対象</dt>
-                <dd>7歳〜17歳のお子さん</dd>
+                <dt data-i18n="venue-dt-target">対象</dt>
+                <dd data-i18n="venue-dd-target">7歳〜17歳のお子さん</dd>
               </div>
             </div>
             <div class="info-item">
@@ -119,8 +128,8 @@
             <div class="info-item">
               <div class="info-icon">💰</div>
               <div class="info-text">
-                <dt>参加費</dt>
-                <dd>無料（事前申込が必要です）</dd>
+                <dt data-i18n="venue-dt-fee">参加費</dt>
+                <dd data-i18n="venue-dd-fee">無料</dd>
               </div>
             </div>
             <div class="info-item">
@@ -261,20 +270,20 @@
             <span class="footer-brand-sub">桃花台 Tokadai</span>
           </div>
         </div>
-        <p class="footer-desc">桃花台 周辺エリア（小牧市東部・春日井市・高蔵寺）の子どもたちが、コードを通じて「作る楽しさ」を知り、可能性を広げる無料プログラミングクラブです。</p>
+        <p class="footer-desc" data-i18n="footer-desc">桃花台 周辺エリア（小牧市東部・春日井市・高蔵寺）の子どもたちが、コードを通じて「作る楽しさ」を知り、可能性を広げる無料プログラミングクラブです。</p>
       </div>
       <div class="footer-col">
-        <h4>ページ</h4>
+        <h4 data-i18n="footer-nav-title">ページ</h4>
         <ul>
-          <li><a href="index.html">ホーム</a></li>
-          <li><a href="venue.html">開催場所</a></li>
-          <li><a href="news.html">お知らせ</a></li>
-          <li><a href="mentor.html">メンター募集</a></li>
-          <li><a href="contact.html">お問い合わせ</a></li>
+          <li><a href="index.html" data-i18n="nav-home">ホーム</a></li>
+          <li><a href="venue.html" data-i18n="nav-venue">開催場所</a></li>
+          <li><a href="news.html" data-i18n="nav-news">お知らせ</a></li>
+          <li><a href="mentor.html" data-i18n="nav-mentor">メンター募集</a></li>
+          <li><a href="contact.html" data-i18n="footer-contact-link">お問い合わせ</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>リンク</h4>
+        <h4 data-i18n="footer-links-title">リンク</h4>
         <ul>
           <li><a href="https://coderdojo.com" target="_blank" rel="noopener">CoderDojo 公式</a></li>
           <li><a href="https://coderdojo.jp" target="_blank" rel="noopener">CoderDojo Japan</a></li>
@@ -282,9 +291,9 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 CoderDojo 桃花台 (Tokadai). Powered by volunteers. 🌸</span>
+      <span data-i18n="footer-copyright">© 2026 CoderDojo 桃花台 (Tokadai). Powered by volunteers. 🌸</span>
       <div class="footer-links">
-        <a href="contact.html">お問い合わせ</a>
+        <a href="contact.html" data-i18n="footer-contact-link">お問い合わせ</a>
         <!-- <a href="#">プライバシー</a> -->
         プライバシー
       </div>
@@ -293,6 +302,7 @@
 </footer>
 
 <script src="script.js"></script>
+<script src="i18n.js"></script>
 
 <!-- ══════════════════════ MASCOT ピコ ══════════════════════ -->
 <div class="mascot-wrap" aria-hidden="true">

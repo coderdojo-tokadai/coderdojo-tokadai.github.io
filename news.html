@@ -27,34 +27,43 @@
       </span>
     </a>
     <div class="nav-links">
-      <a href="index.html">ホーム</a>
-      <a href="venue.html">開催場所</a>
-      <a href="news.html">お知らせ</a>
-      <a href="mentor.html">メンター募集</a>
-      <a href="contact.html" class="nav-cta">参加申込み</a>
+      <a href="index.html" data-i18n="nav-home">ホーム</a>
+      <a href="venue.html" data-i18n="nav-venue">開催場所</a>
+      <a href="news.html" data-i18n="nav-news">お知らせ</a>
+      <a href="mentor.html" data-i18n="nav-mentor">メンター募集</a>
+      <a href="contact.html" class="nav-cta" data-i18n="nav-contact">参加申込み</a>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="メニューを開く">
+    <div class="lang-switcher">
+      <button class="lang-btn" id="langBtn"><span id="langDisplay">🇯🇵 日本語</span> ▾</button>
+      <div class="lang-dropdown" id="langDropdown">
+        <button class="lang-option lang-active" data-lang="ja" onclick="setLang('ja')">🇯🇵 日本語</button>
+        <button class="lang-option" data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
+        <button class="lang-option" data-lang="pt" onclick="setLang('pt')">🇧🇷 Português</button>
+        <button class="lang-option" data-lang="vi" onclick="setLang('vi')">🇻🇳 Tiếng Việt</button>
+      </div>
+    </div>
+    <button class="nav-toggle" id="navToggle" data-i18n-aria="nav-toggle-aria" aria-label="メニューを開く">
       <span></span><span></span><span></span>
     </button>
   </div>
   <div class="nav-mobile" id="mobileNav">
-    <a href="index.html">🏠 ホーム</a>
-    <a href="venue.html">📍 開催場所</a>
-    <a href="news.html">📢 お知らせ</a>
-    <a href="mentor.html">🧑‍💻 メンター募集</a>
-    <a href="contact.html" class="nav-cta-mobile">🚀 参加申込み</a>
+    <a href="index.html" data-i18n="nav-m-home">🏠 ホーム</a>
+    <a href="venue.html" data-i18n="nav-m-venue">📍 開催場所</a>
+    <a href="news.html" data-i18n="nav-m-news">📢 お知らせ</a>
+    <a href="mentor.html" data-i18n="nav-m-mentor">🧑‍💻 メンター募集</a>
+    <a href="contact.html" class="nav-cta-mobile" data-i18n="nav-m-contact">🚀 参加申込み</a>
   </div>
 </nav>
 
 <!-- ══════════════════════ PAGE HERO ══════════════════════ -->
 <div class="page-hero">
   <div class="breadcrumb">
-    <a href="index.html">ホーム</a>
+    <a href="index.html" data-i18n="bc-home">ホーム</a>
     <span>›</span>
-    <span>お知らせ</span>
+    <span data-i18n="news-bc-current">お知らせ</span>
   </div>
-  <h1>📢 お知らせ</h1>
-  <p>開催情報・活動報告・メンター募集など、最新情報をお届けします。</p>
+  <h1 data-i18n="news-h1">📢 お知らせ</h1>
+  <p data-i18n="news-page-desc">開催情報・活動報告・メンター募集など、最新情報をお届けします。</p>
 </div>
 
 <!-- ══════════════════════ NEWS LIST ══════════════════════ -->
@@ -74,11 +83,11 @@
 
     <!-- Tag filter bar -->
     <div style="display:flex;gap:.6rem;margin-bottom:1.75rem;flex-wrap:wrap;" class="fade-in">
-      <span style="font-size:.85rem;font-weight:700;color:var(--text-light);line-height:2.2;">絞り込み：</span>
-      <button onclick="filterNews('all')"    class="filter-btn active" data-filter="all"   style="padding:.4rem 1rem;border-radius:999px;border:2px solid var(--border);background:var(--white);font-size:.82rem;font-weight:700;cursor:pointer;">すべて</button>
-      <button onclick="filterNews('event')"  class="filter-btn"        data-filter="event" style="padding:.4rem 1rem;border-radius:999px;border:2px solid var(--border);background:var(--white);font-size:.82rem;font-weight:700;cursor:pointer;">開催情報</button>
-      <button onclick="filterNews('report')" class="filter-btn"        data-filter="report" style="padding:.4rem 1rem;border-radius:999px;border:2px solid var(--border);background:var(--white);font-size:.82rem;font-weight:700;cursor:pointer;">活動報告</button>
-      <button onclick="filterNews('info')"   class="filter-btn"        data-filter="info"   style="padding:.4rem 1rem;border-radius:999px;border:2px solid var(--border);background:var(--white);font-size:.82rem;font-weight:700;cursor:pointer;">お知らせ</button>
+      <span style="font-size:.85rem;font-weight:700;color:var(--text-light);line-height:2.2;" data-i18n="filter-label">絞り込み：</span>
+      <button onclick="filterNews('all')"    class="filter-btn active" data-filter="all"   style="padding:.4rem 1rem;border-radius:999px;border:2px solid var(--border);background:var(--white);font-size:.82rem;font-weight:700;cursor:pointer;" data-i18n="filter-all">すべて</button>
+      <button onclick="filterNews('event')"  class="filter-btn"        data-filter="event" style="padding:.4rem 1rem;border-radius:999px;border:2px solid var(--border);background:var(--white);font-size:.82rem;font-weight:700;cursor:pointer;" data-i18n="filter-event">開催情報</button>
+      <button onclick="filterNews('report')" class="filter-btn"        data-filter="report" style="padding:.4rem 1rem;border-radius:999px;border:2px solid var(--border);background:var(--white);font-size:.82rem;font-weight:700;cursor:pointer;" data-i18n="filter-report">活動報告</button>
+      <button onclick="filterNews('info')"   class="filter-btn"        data-filter="info"   style="padding:.4rem 1rem;border-radius:999px;border:2px solid var(--border);background:var(--white);font-size:.82rem;font-weight:700;cursor:pointer;" data-i18n="filter-info">お知らせ</button>
     </div>
 
     <div class="news-list" id="newsList">
@@ -155,20 +164,20 @@
             <span class="footer-brand-sub">桃花台 Tokadai</span>
           </div>
         </div>
-        <p class="footer-desc">桃花台 周辺エリア（小牧市東部・春日井市・高蔵寺）の子どもたちが、コードを通じて「作る楽しさ」を知り、可能性を広げる無料プログラミングクラブです。</p>
+        <p class="footer-desc" data-i18n="footer-desc">桃花台 周辺エリア（小牧市東部・春日井市・高蔵寺）の子どもたちが、コードを通じて「作る楽しさ」を知り、可能性を広げる無料プログラミングクラブです。</p>
       </div>
       <div class="footer-col">
-        <h4>ページ</h4>
+        <h4 data-i18n="footer-nav-title">ページ</h4>
         <ul>
-          <li><a href="index.html">ホーム</a></li>
-          <li><a href="venue.html">開催場所</a></li>
-          <li><a href="news.html">お知らせ</a></li>
-          <li><a href="mentor.html">メンター募集</a></li>
-          <li><a href="contact.html">お問い合わせ</a></li>
+          <li><a href="index.html" data-i18n="nav-home">ホーム</a></li>
+          <li><a href="venue.html" data-i18n="nav-venue">開催場所</a></li>
+          <li><a href="news.html" data-i18n="nav-news">お知らせ</a></li>
+          <li><a href="mentor.html" data-i18n="nav-mentor">メンター募集</a></li>
+          <li><a href="contact.html" data-i18n="footer-contact-link">お問い合わせ</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>リンク</h4>
+        <h4 data-i18n="footer-links-title">リンク</h4>
         <ul>
           <li><a href="https://coderdojo.com" target="_blank" rel="noopener">CoderDojo 公式</a></li>
           <li><a href="https://coderdojo.jp" target="_blank" rel="noopener">CoderDojo Japan</a></li>
@@ -176,9 +185,9 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 CoderDojo 桃花台 (Tokadai). Powered by volunteers. 🌸</span>
+      <span data-i18n="footer-copyright">© 2026 CoderDojo 桃花台 (Tokadai). Powered by volunteers. 🌸</span>
       <div class="footer-links">
-        <a href="contact.html">お問い合わせ</a>
+        <a href="contact.html" data-i18n="footer-contact-link">お問い合わせ</a>
         <!-- <a href="#">プライバシー</a> -->
         プライバシー
       </div>
@@ -188,6 +197,7 @@
 
 <script src="events.js"></script>
 <script src="script.js"></script>
+<script src="i18n.js"></script>
 <script>
   // News filter
   function filterNews(type) {

@@ -45,22 +45,31 @@
     </a>
 
     <div class="nav-links">
-      <a href="index.html">ホーム</a>
-      <a href="venue.html">開催場所</a>
-      <a href="news.html">お知らせ</a>
-      <a href="mentor.html">メンター募集</a>
-      <a href="contact.html" class="nav-cta">参加申込み</a>
+      <a href="index.html" data-i18n="nav-home">ホーム</a>
+      <a href="venue.html" data-i18n="nav-venue">開催場所</a>
+      <a href="news.html" data-i18n="nav-news">お知らせ</a>
+      <a href="mentor.html" data-i18n="nav-mentor">メンター募集</a>
+      <a href="contact.html" class="nav-cta" data-i18n="nav-contact">参加申込み</a>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="メニューを開く">
+    <div class="lang-switcher">
+      <button class="lang-btn" id="langBtn"><span id="langDisplay">🇯🇵 日本語</span> ▾</button>
+      <div class="lang-dropdown" id="langDropdown">
+        <button class="lang-option lang-active" data-lang="ja" onclick="setLang('ja')">🇯🇵 日本語</button>
+        <button class="lang-option" data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
+        <button class="lang-option" data-lang="pt" onclick="setLang('pt')">🇧🇷 Português</button>
+        <button class="lang-option" data-lang="vi" onclick="setLang('vi')">🇻🇳 Tiếng Việt</button>
+      </div>
+    </div>
+    <button class="nav-toggle" id="navToggle" data-i18n-aria="nav-toggle-aria" aria-label="メニューを開く">
       <span></span><span></span><span></span>
     </button>
   </div>
   <div class="nav-mobile" id="mobileNav">
-    <a href="index.html">🏠 ホーム</a>
-    <a href="venue.html">📍 開催場所</a>
-    <a href="news.html">📢 お知らせ</a>
-    <a href="mentor.html">🧑‍💻 メンター募集</a>
-    <a href="contact.html" class="nav-cta-mobile">🚀 参加申込み</a>
+    <a href="index.html" data-i18n="nav-m-home">🏠 ホーム</a>
+    <a href="venue.html" data-i18n="nav-m-venue">📍 開催場所</a>
+    <a href="news.html" data-i18n="nav-m-news">📢 お知らせ</a>
+    <a href="mentor.html" data-i18n="nav-m-mentor">🧑‍💻 メンター募集</a>
+    <a href="contact.html" class="nav-cta-mobile" data-i18n="nav-m-contact">🚀 参加申込み</a>
   </div>
 </nav>
 
@@ -71,12 +80,12 @@
   <div class="hero-moon"  id="heroMoon"  style="display:none"></div>
 
   <div class="hero-content container">
-    <div class="hero-badge" id="heroBadge">🌸 CoderDojo 桃花台 — Tokadai</div>
-    <h1>コードで未来を<br><span>つくろう！</span></h1>
-    <p>桃花台 周辺エリア（小牧市東部・春日井市・高蔵寺）で<br>プログラミングを楽しく学ぼう。<br>7〜17歳の子どもたちのための<strong>無料</strong>プログラミングクラブです。</p>
+    <div class="hero-badge" id="heroBadge" data-i18n="hero-badge">🌸 CoderDojo 桃花台 — Tokadai</div>
+    <h1 data-i18n-html="hero-h1">コードで未来を<br><span>つくろう！</span></h1>
+    <p data-i18n-html="hero-desc">桃花台 周辺エリア（小牧市東部・春日井市・高蔵寺）で<br>プログラミングを楽しく学ぼう。<br>7〜17歳の子どもたちのための<strong>無料</strong>プログラミングクラブです。</p>
     <div class="hero-cta">
-      <a href="contact.html" class="btn btn-primary">🚀 参加してみる</a>
-      <a href="#about" class="btn btn-ghost">もっと見る ↓</a>
+      <a href="contact.html" class="btn btn-primary" data-i18n="hero-btn-join">🚀 参加してみる</a>
+      <a href="#about" class="btn btn-ghost" data-i18n="hero-btn-more">もっと見る ↓</a>
     </div>
   </div>
 
@@ -276,9 +285,9 @@
 <div class="launch-notice-bar">
   <div class="container">
     <div class="launch-notice-inner">
-      <span class="launch-notice-badge">🚀 準備中</span>
-      <p><strong>2026年 夏以降に活動開始予定！</strong> 現在メンター募集・会場調整を進めています。開催情報はお知らせページとSNSで随時ご案内します。お楽しみに！</p>
-      <a href="news.html" class="btn btn-secondary">最新情報を見る →</a>
+      <span class="launch-notice-badge" data-i18n="notice-badge">🚀 準備中</span>
+      <p data-i18n-html="notice-p"><strong>2026年 夏以降に活動開始予定！</strong> 現在メンター募集・会場調整を進めています。開催情報はお知らせページとSNSで随時ご案内します。お楽しみに！</p>
+      <a href="news.html" class="btn btn-secondary" data-i18n="notice-link">最新情報を見る →</a>
     </div>
   </div>
 </div>
@@ -288,17 +297,17 @@
   <div class="container">
     <div class="about-grid">
       <div class="about-text fade-in">
-        <span class="section-label">CoderDojo とは？</span>
-        <h2>子どもたちが<br>自由にコードを<br>楽しむ場所</h2>
-        <p>CoderDojo は世界112か国以上、2,200以上の道場、日本では全国に204以上の道場を持つ(2025年6月時点)、子どものための<strong>無料プログラミングクラブ</strong>です。「ニンジャ」と呼ばれる参加者は、ウェブサイト・ゲーム・アプリを自分の力で作り上げます。</p>
-        <p>決まったカリキュラムはありません。Scratch、HTML/CSS、JavaScript、Pythonなど、好きな言語を好きなペースで学べます。メンター（ボランティアの先生）が一緒に考え、サポートします。</p>
-        <p>桃花台 周辺エリア（小牧市東部・春日井市・高蔵寺）の子どもたちが「作る楽しさ」を知り、未来の可能性を広げる場所になることを願っています。</p>
+        <span class="section-label" data-i18n="about-label">CoderDojo とは？</span>
+        <h2 data-i18n-html="about-h2">子どもたちが<br>自由にコードを<br>楽しむ場所</h2>
+        <p data-i18n="about-p1">CoderDojo は世界112か国以上、2,200以上の道場、日本では全国に204以上の道場を持つ(2025年6月時点)、子どものための無料プログラミングクラブです。「ニンジャ」と呼ばれる参加者は、ウェブサイト・ゲーム・アプリを自分の力で作り上げます。</p>
+        <p data-i18n="about-p2">決まったカリキュラムはありません。Scratch、HTML/CSS、JavaScript、Pythonなど、好きな言語を好きなペースで学べます。メンター（ボランティアの先生）が一緒に考え、サポートします。</p>
+        <p data-i18n="about-p3">桃花台 周辺エリア（小牧市東部・春日井市・高蔵寺）の子どもたちが「作る楽しさ」を知り、未来の可能性を広げる場所になることを願っています。</p>
       </div>
       <div class="fade-in delay-2">
         <div class="about-card-big">
           <div class="about-big-icon">👾</div>
-          <h3>ニンジャになろう！</h3>
-          <p>CoderDojo では参加する子どもたちのことを「ニンジャ」と呼びます。コードを武器に、自分だけの作品を生み出そう！</p>
+          <h3 data-i18n="ninja-h3">ニンジャになろう！</h3>
+          <p data-i18n="ninja-p">CoderDojo では参加する子どもたちのことを「ニンジャ」と呼びます。コードを武器に、自分だけの作品を生み出そう！</p>
           <div class="about-pills">
             <span class="pill">🐱 Scratch</span>
             <span class="pill">⛏ Minecraft</span>
@@ -322,40 +331,40 @@
 <section class="features-bg">
   <div class="container">
     <div class="section-header fade-in">
-      <span class="section-label">CoderDojo 桃花台の特徴</span>
-      <h2>こんなDojoです</h2>
-      <p>初めてのプログラミングから、本格的なアプリ開発まで。すべての子どもが輝ける場所です。</p>
+      <span class="section-label" data-i18n="features-label">CoderDojo 桃花台の特徴</span>
+      <h2 data-i18n="features-h2">こんなDojoです</h2>
+      <p data-i18n="features-desc">初めてのプログラミングから、本格的なアプリ開発まで。すべての子どもが輝ける場所です。</p>
     </div>
     <div class="features-grid">
       <div class="feature-card fade-in delay-1">
         <div class="feature-icon f-peach">🎉</div>
-        <h3>完全無料</h3>
-        <p>参加費は一切かかりません。CoderDojo の精神として、子どもたちが無料でプログラミングを学べる環境を提供します。</p>
+        <h3 data-i18n="feat1-h3">完全無料</h3>
+        <p data-i18n="feat1-p">参加費は一切かかりません。CoderDojo の精神として、子どもたちが無料でプログラミングを学べる環境を提供します。</p>
       </div>
       <div class="feature-card fade-in delay-2">
         <div class="feature-icon f-green">🌱</div>
-        <h3>自分のペースで</h3>
-        <p>決まったカリキュラムはありません。やりたいことを自分で決め、自分のスピードで進めます。初心者も上級者も歓迎！</p>
+        <h3 data-i18n="feat2-h3">自分のペースで</h3>
+        <p data-i18n="feat2-p">決まったカリキュラムはありません。やりたいことを自分で決め、自分のスピードで進めます。初心者も上級者も歓迎！</p>
       </div>
       <div class="feature-card fade-in delay-3">
         <div class="feature-icon f-sky">🤝</div>
-        <h3>メンターがサポート</h3>
-        <p>経験豊富なメンター（ボランティア）が困ったときに一緒に考えます。教えるのではなく、一緒に「発見」します。</p>
+        <h3 data-i18n="feat3-h3">メンターがサポート</h3>
+        <p data-i18n="feat3-p">経験豊富なメンター（ボランティア）が困ったときに一緒に考えます。教えるのではなく、一緒に「発見」します。</p>
       </div>
       <div class="feature-card fade-in delay-1">
         <div class="feature-icon f-pink">👫</div>
-        <h3>仲間ができる</h3>
-        <p>同じ興味を持つ仲間と出会えます。チームで作品を作ったり、アイデアを共有したり、友達の輪が広がります。</p>
+        <h3 data-i18n="feat4-h3">仲間ができる</h3>
+        <p data-i18n="feat4-p">同じ興味を持つ仲間と出会えます。チームで作品を作ったり、アイデアを共有したり、友達の輪が広がります。</p>
       </div>
       <div class="feature-card fade-in delay-2">
         <div class="feature-icon f-peach">🌸</div>
-        <h3>地域密着</h3>
-        <p>桃花台を拠点とし、地域の子どもたちのための活動を続けています。桃花台から、世界へ羽ばたくエンジニアを！</p>
+        <h3 data-i18n="feat5-h3">地域密着</h3>
+        <p data-i18n="feat5-p">桃花台を拠点とし、地域の子どもたちのための活動を続けています。桃花台から、世界へ羽ばたくエンジニアを！</p>
       </div>
       <div class="feature-card fade-in delay-3">
         <div class="feature-icon f-green">🏆</div>
-        <h3>作品発表の機会</h3>
-        <p>定期的に作品を発表するショーケースを開催。自分の作ったものを誰かに見せる経験が、次の創作意欲につながります。</p>
+        <h3 data-i18n="feat6-h3">作品発表の機会</h3>
+        <p data-i18n="feat6-p">定期的に作品を発表するショーケースを開催。自分の作ったものを誰かに見せる経験が、次の創作意欲につながります。</p>
       </div>
     </div>
   </div>
@@ -496,25 +505,25 @@
 <section style="background:var(--peach-pale);">
   <div class="container">
     <div class="section-header fade-in">
-      <span class="section-label">CoderDojo の数字</span>
-      <h2>世界と繋がる学びの輪</h2>
+      <span class="section-label" data-i18n="stats-label">CoderDojo の数字</span>
+      <h2 data-i18n="stats-h2">世界と繋がる学びの輪</h2>
     </div>
     <div class="stats-grid">
       <div class="stat-card fade-in delay-1">
         <div class="stat-number">112+</div>
-        <div class="stat-label">参加国数</div>
+        <div class="stat-label" data-i18n="stat-countries">参加国数</div>
       </div>
       <div class="stat-card fade-in delay-2">
         <div class="stat-number">2,200+</div>
-        <div class="stat-label">世界のDojoチャプター</div>
+        <div class="stat-label" data-i18n="stat-dojos">世界のDojoチャプター</div>
       </div>
       <div class="stat-card fade-in delay-3">
-        <div class="stat-number">無料</div>
-        <div class="stat-label">参加費（永久に）</div>
+        <div class="stat-number" data-i18n="stat-free-num">無料</div>
+        <div class="stat-label" data-i18n="stat-free">参加費（永久に）</div>
       </div>
       <div class="stat-card fade-in delay-4">
         <div class="stat-number">7〜17</div>
-        <div class="stat-label">対象年齢（歳）</div>
+        <div class="stat-label" data-i18n="stat-age">対象年齢（歳）</div>
       </div>
     </div>
   </div>
@@ -524,11 +533,11 @@
 <section class="cta-section">
   <div class="container">
     <div class="fade-in">
-      <h2>さあ、一緒にコードしよう！🚀</h2>
-      <p>経験不問・親の付き添いOK。桃花台のニンジャたちが待っています！</p>
+      <h2 data-i18n="cta-h2">さあ、一緒にコードしよう！🚀</h2>
+      <p data-i18n="cta-p">経験不問・親の付き添いOK。桃花台のニンジャたちが待っています！</p>
       <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-        <a href="contact.html" class="btn btn-white">参加申込みはこちら</a>
-        <a href="news.html" class="btn btn-ghost">お知らせを見る</a>
+        <a href="contact.html" class="btn btn-white" data-i18n="cta-btn1">参加申込みはこちら</a>
+        <a href="news.html" class="btn btn-ghost" data-i18n="cta-btn2">お知らせを見る</a>
       </div>
     </div>
   </div>
@@ -551,20 +560,20 @@
             <span class="footer-brand-sub">桃花台 Tokadai</span>
           </div>
         </div>
-        <p class="footer-desc">桃花台 周辺エリア（小牧市東部・春日井市・高蔵寺）の子どもたちが、コードを通じて「作る楽しさ」を知り、可能性を広げる無料プログラミングクラブです。</p>
+        <p class="footer-desc" data-i18n="footer-desc">桃花台 周辺エリア（小牧市東部・春日井市・高蔵寺）の子どもたちが、コードを通じて「作る楽しさ」を知り、可能性を広げる無料プログラミングクラブです。</p>
       </div>
       <div class="footer-col">
-        <h4>ページ</h4>
+        <h4 data-i18n="footer-nav-title">ページ</h4>
         <ul>
-          <li><a href="index.html">ホーム</a></li>
-          <li><a href="venue.html">開催場所</a></li>
-          <li><a href="news.html">お知らせ</a></li>
-          <li><a href="mentor.html">メンター募集</a></li>
-          <li><a href="contact.html">お問い合わせ</a></li>
+          <li><a href="index.html" data-i18n="nav-home">ホーム</a></li>
+          <li><a href="venue.html" data-i18n="nav-venue">開催場所</a></li>
+          <li><a href="news.html" data-i18n="nav-news">お知らせ</a></li>
+          <li><a href="mentor.html" data-i18n="nav-mentor">メンター募集</a></li>
+          <li><a href="contact.html" data-i18n="footer-contact-link">お問い合わせ</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>リンク</h4>
+        <h4 data-i18n="footer-links-title">リンク</h4>
         <ul>
           <li><a href="https://coderdojo.com" target="_blank" rel="noopener">CoderDojo 公式</a></li>
           <li><a href="https://coderdojo.jp" target="_blank" rel="noopener">CoderDojo Japan</a></li>
@@ -572,9 +581,9 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 CoderDojo 桃花台 (Tokadai). Powered by volunteers. 🌸</span>
+      <span data-i18n="footer-copyright">© 2026 CoderDojo 桃花台 (Tokadai). Powered by volunteers. 🌸</span>
       <div class="footer-links">
-        <a href="contact.html">お問い合わせ</a>
+        <a href="contact.html" data-i18n="footer-contact-link">お問い合わせ</a>
         <!-- <a href="#">プライバシー</a> -->
         プライバシー
       </div>
@@ -584,6 +593,7 @@
 
 <script src="events.js"></script>
 <script src="script.js"></script>
+<script src="i18n.js"></script>
 
 <!-- ══════════════════════ MASCOT ピコ ══════════════════════ -->
 <div class="mascot-wrap" aria-hidden="true">

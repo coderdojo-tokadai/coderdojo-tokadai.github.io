@@ -109,8 +109,8 @@
 
         <!-- Next event reminder -->
         <div style="margin-top:2rem;background:var(--peach-pale);border-radius:var(--radius);padding:1.5rem;border-left:4px solid var(--peach);">
-          <p style="font-size:.78rem;font-weight:700;color:var(--peach);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem;">次回開催</p>
-          <p style="font-weight:700;margin-bottom:.25rem;">🚀 2026年夏以降に活動開始予定！</p>
+          <p style="font-size:.78rem;font-weight:700;color:var(--peach);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem;" data-i18n="event-label">次回開催</p>
+          <p style="font-weight:700;margin-bottom:.25rem;" data-i18n="contact-next-p1">🚀 2026年夏以降に活動開始予定！</p>
           <p style="font-size:.88rem;color:var(--text-light);">月1回・日曜日・13:00〜15:00（2時間）<br><span data-ev="venue-short">小牧市東部の公共施設（予定）</span><br>開催確定後は<a href="news.html" style="color:var(--peach);text-decoration:underline;">お知らせページ</a>でご案内します。</p>
         </div>
       </div>
@@ -144,28 +144,28 @@
               <div class="form-group">
                 <label for="age" data-i18n="form-label-age">お子さんの年齢</label>
                 <select id="age" name="age">
-                  <option value="">選択してください</option>
-                  <option value="7">7歳</option>
-                  <option value="8">8歳</option>
-                  <option value="9">9歳</option>
-                  <option value="10">10歳</option>
-                  <option value="11">11歳</option>
-                  <option value="12">12歳</option>
-                  <option value="13">13歳</option>
-                  <option value="14">14歳</option>
-                  <option value="15">15歳</option>
-                  <option value="16">16歳</option>
-                  <option value="17">17歳</option>
+                  <option value="" data-i18n="form-select-default">選択してください</option>
+                  <option value="7" data-i18n="age-7">7歳</option>
+                  <option value="8" data-i18n="age-8">8歳</option>
+                  <option value="9" data-i18n="age-9">9歳</option>
+                  <option value="10" data-i18n="age-10">10歳</option>
+                  <option value="11" data-i18n="age-11">11歳</option>
+                  <option value="12" data-i18n="age-12">12歳</option>
+                  <option value="13" data-i18n="age-13">13歳</option>
+                  <option value="14" data-i18n="age-14">14歳</option>
+                  <option value="15" data-i18n="age-15">15歳</option>
+                  <option value="16" data-i18n="age-16">16歳</option>
+                  <option value="17" data-i18n="age-17">17歳</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="type"><span data-i18n="form-label-type">お問い合わせ種別</span><span class="required">*</span></label>
                 <select id="type" name="type" required>
-                  <option value="">選択してください</option>
-                  <option value="参加申込み">参加申込み</option>
-                  <option value="見学希望">見学希望</option>
-                  <option value="メンター参加">メンター参加</option>
-                  <option value="その他">その他</option>
+                  <option value="" data-i18n="form-select-default">選択してください</option>
+                  <option value="参加申込み" data-i18n="form-type-join">参加申込み</option>
+                  <option value="見学希望" data-i18n="form-type-visit">見学希望</option>
+                  <option value="メンター参加" data-i18n="form-type-mentor">メンター参加</option>
+                  <option value="その他" data-i18n="form-type-other">その他</option>
                 </select>
               </div>
             </div>
@@ -173,11 +173,11 @@
             <div class="form-group">
               <label for="experience" data-i18n="form-label-exp">プログラミング経験</label>
               <select id="experience" name="experience">
-                <option value="">選択してください（任意）</option>
-                <option value="まったくない（初めて）">まったくない（初めて）</option>
-                <option value="Scratchを少し触ったことがある">Scratchを少し触ったことがある</option>
-                <option value="少し学んだことがある">少し学んだことがある</option>
-                <option value="ある程度できる">ある程度できる</option>
+                <option value="" data-i18n="form-select-opt-exp">選択してください（任意）</option>
+                <option value="まったくない（初めて）" data-i18n="form-exp-none">まったくない（初めて）</option>
+                <option value="Scratchを少し触ったことがある" data-i18n="form-exp-scratch">Scratchを少し触ったことがある</option>
+                <option value="少し学んだことがある" data-i18n="form-exp-some">少し学んだことがある</option>
+                <option value="ある程度できる" data-i18n="form-exp-mid">ある程度できる</option>
               </select>
             </div>
 
@@ -186,7 +186,7 @@
               <textarea id="message" name="message" placeholder="例）X月のDojoに参加したいです。初めての参加ですが、Scratchを学びたいと思っています。よろしくお願いします。" data-i18n-placeholder="form-ph-msg" required></textarea>
             </div>
 
-            <div style="background:var(--peach-pale);border-radius:var(--radius-sm);padding:1rem;font-size:.83rem;color:var(--text-light);margin-bottom:1.25rem;">
+            <div style="background:var(--peach-pale);border-radius:var(--radius-sm);padding:1rem;font-size:.83rem;color:var(--text-light);margin-bottom:1.25rem;" data-i18n-html="form-confirm">
               📋 <strong>ご確認ください：</strong>12歳未満のお子さんは保護者の付き添いをお願いしています。ご質問があればお気軽にどうぞ。
             </div>
 
@@ -198,7 +198,7 @@
             <div class="s-icon">🎉</div>
             <h3 data-i18n="form-success-h3">送信完了！</h3>
             <p data-i18n-html="form-success-p">お問い合わせありがとうございます。<br>3営業日以内にご登録のメールアドレスへご返信いたします。</p>
-            <p style="margin-top:1rem;font-size:.88rem;color:var(--text-light);">次のDojoでお会いできることを楽しみにしています！🌸</p>
+            <p style="margin-top:1rem;font-size:.88rem;color:var(--text-light);" data-i18n="form-success-extra">次のDojoでお会いできることを楽しみにしています！🌸</p>
           </div>
         </div>
       </div>
@@ -211,78 +211,78 @@
 <section style="background:var(--peach-pale);">
   <div class="container">
     <div class="section-header fade-in">
-      <span class="section-label">よくあるご質問</span>
-      <h2>FAQ</h2>
-      <p>よくいただくご質問をまとめました。解決しない場合はお気軽にお問い合わせください。</p>
+      <span class="section-label" data-i18n="faq-label">よくあるご質問</span>
+      <h2 data-i18n="faq-h2">FAQ</h2>
+      <p data-i18n="faq-desc">よくいただくご質問をまとめました。解決しない場合はお気軽にお問い合わせください。</p>
     </div>
     <div class="faq-list fade-in" style="max-width:720px;margin:0 auto;">
 
       <div class="faq-item">
         <div class="faq-q">
-          <span class="faq-q-text"><span class="faq-q-badge">Q</span>参加費はかかりますか？</span>
+          <span class="faq-q-text" data-i18n-html="faq1-q"><span class="faq-q-badge">Q</span>参加費はかかりますか？</span>
           <span class="faq-chevron">▼</span>
         </div>
-        <div class="faq-a">
+        <div class="faq-a" data-i18n="faq1-a">
           参加費は完全無料です。CoderDojo の基本方針として、すべての子どもたちが無料でプログラミングを学べる環境を提供しています。材料費や会場費なども一切かかりません。
         </div>
       </div>
 
       <div class="faq-item">
         <div class="faq-q">
-          <span class="faq-q-text"><span class="faq-q-badge">Q</span>プログラミング経験がなくても参加できますか？</span>
+          <span class="faq-q-text" data-i18n-html="faq2-q"><span class="faq-q-badge">Q</span>プログラミング経験がなくても参加できますか？</span>
           <span class="faq-chevron">▼</span>
         </div>
-        <div class="faq-a">
+        <div class="faq-a" data-i18n="faq2-a">
           もちろんです！むしろ初めての方を大歓迎しています。メンターが丁寧にサポートしますので、キーボード操作が苦手な方でも安心して参加できます。まずは「コンピューターで何かを作る楽しさ」を体験してみてください。
         </div>
       </div>
 
       <div class="faq-item">
         <div class="faq-q">
-          <span class="faq-q-text"><span class="faq-q-badge">Q</span>保護者の付き添いは必要ですか？</span>
+          <span class="faq-q-text" data-i18n-html="faq3-q"><span class="faq-q-badge">Q</span>保護者の付き添いは必要ですか？</span>
           <span class="faq-chevron">▼</span>
         </div>
-        <div class="faq-a">
+        <div class="faq-a" data-i18n="faq3-a">
           12歳未満のお子さんは保護者の付き添いをお願いしています。保護者の方はDojoの見学・参加も歓迎です。12歳以上は一人での参加もOKです（事前にご連絡ください）。
         </div>
       </div>
 
       <div class="faq-item">
         <div class="faq-q">
-          <span class="faq-q-text"><span class="faq-q-badge">Q</span>パソコンは持参が必要ですか？</span>
+          <span class="faq-q-text" data-i18n-html="faq4-q"><span class="faq-q-badge">Q</span>パソコンは持参が必要ですか？</span>
           <span class="faq-chevron">▼</span>
         </div>
-        <div class="faq-a">
+        <div class="faq-a" data-i18n="faq4-a">
           お持ちであればノートPCをご持参ください。台数に余裕がある場合は会場のPCも使えますが、保証はできないため、可能であれば持参をおすすめします。タブレットでも一部の活動に参加できます。
         </div>
       </div>
 
       <div class="faq-item">
         <div class="faq-q">
-          <span class="faq-q-text"><span class="faq-q-badge">Q</span>何を学べますか？</span>
+          <span class="faq-q-text" data-i18n-html="faq5-q"><span class="faq-q-badge">Q</span>何を学べますか？</span>
           <span class="faq-chevron">▼</span>
         </div>
-        <div class="faq-a">
+        <div class="faq-a" data-i18n="faq5-a">
           決まったカリキュラムはありません。興味のあるテーマを自由に選んで取り組めます。メニューの例として、Scratch・Minecraft・テキストプログラミング（JavaScript／PHP／Python）・Webサイト制作・動画制作・電子工作（Raspberry Pi・電子工作キット・組み込み開発）・Webデザイン（Canva・STUDIO）・SNS運用・AI入門（Claude Code・Vibe Codingなど）があります。「やってみたい！」と思ったことならなんでもOK。メンターが一緒に考えてサポートします。
         </div>
       </div>
 
       <div class="faq-item">
         <div class="faq-q">
-          <span class="faq-q-text"><span class="faq-q-badge">Q</span>毎回参加しなくてもいいですか？</span>
+          <span class="faq-q-text" data-i18n-html="faq6-q"><span class="faq-q-badge">Q</span>毎回参加しなくてもいいですか？</span>
           <span class="faq-chevron">▼</span>
         </div>
-        <div class="faq-a">
+        <div class="faq-a" data-i18n="faq6-a">
           参加は任意で、毎回出席する義務はありません。都合の良い月だけ参加してください。ただし、会場の定員がありますので、参加を希望される月は事前にお申込みをお願いします。
         </div>
       </div>
 
       <div class="faq-item">
         <div class="faq-q">
-          <span class="faq-q-text"><span class="faq-q-badge">Q</span>メンターとして参加したいのですが？</span>
+          <span class="faq-q-text" data-i18n-html="faq7-q"><span class="faq-q-badge">Q</span>メンターとして参加したいのですが？</span>
           <span class="faq-chevron">▼</span>
         </div>
-        <div class="faq-a">
+        <div class="faq-a" data-i18n="faq7-a">
           大歓迎です！プログラミング経験があれば年齢・職業は問いません。月1回・いずれかの日曜日・午後2時間の活動です。特別な資格も不要です。Scratch・Minecraft・JavaScript・PHP・Python・動画制作・電子工作（Raspberry Pi・組み込み開発）・Webデザイン（Canva・STUDIO）・AI入門など、得意分野でサポートしてください。お問い合わせフォームから「メンター参加」を選んでご連絡ください。
         </div>
       </div>
@@ -345,7 +345,7 @@
 
 <!-- ══════════════════════ MASCOT ピコ ══════════════════════ -->
 <div class="mascot-wrap" aria-hidden="true">
-  <div class="mascot-bubble">気軽に連絡してね！💬</div>
+  <div class="mascot-bubble" data-i18n="contact-mascot">気軽に連絡してね！💬</div>
   <svg class="mascot-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 188">
     <defs><radialGradient id="ps-c" cx="40%" cy="35%" r="65%"><stop offset="0%" stop-color="#D95E00"/><stop offset="100%" stop-color="#F5913A"/></radialGradient><radialGradient id="ph-c" cx="36%" cy="32%" r="60%"><stop offset="0%" stop-color="#FFF5E6" stop-opacity=".97"/><stop offset="100%" stop-color="#FFDCB4" stop-opacity=".93"/></radialGradient></defs>
     <ellipse cx="53" cy="180" rx="11" ry="5" fill="#FF8A65" opacity=".5"/>

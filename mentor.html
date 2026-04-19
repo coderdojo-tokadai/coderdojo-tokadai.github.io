@@ -140,6 +140,7 @@
       .why-grid { grid-template-columns: 1fr; }
       .voice-grid { grid-template-columns: 1fr; }
       .apply-banner { padding: 2.5rem 1.5rem; }
+      .style-grid { grid-template-columns: 1fr !important; }
     }
   </style>
 </head>
@@ -338,6 +339,47 @@
   </div>
 </section>
 
+<!-- ══════════════════════ PARTICIPATION STYLES ══════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label" data-i18n="supporter-label">参加スタイル</span>
+      <h2 data-i18n="supporter-h2">2つの参加スタイルがあります</h2>
+      <p data-i18n="supporter-desc">子どもへの技術指導が「メンター」、会場運営のサポートが「サポーター」です。どちらもDojoに欠かせない存在です。</p>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;" class="fade-in style-grid">
+
+      <!-- Mentor card -->
+      <div style="background:linear-gradient(135deg,#F5E8FF,#E0C8FF); border-radius:var(--radius-lg); padding:2.5rem 2rem; border:2px solid #C9A8E8;">
+        <div style="font-size:2.5rem; margin-bottom:1rem;">🧑‍💻</div>
+        <h3 style="font-size:1.3rem; margin-bottom:.5rem; color:var(--purple);" data-i18n="supporter-mentor-title">メンター</h3>
+        <p style="font-size:.9rem; color:var(--text); line-height:1.8; margin-bottom:1.25rem;" data-i18n="supporter-mentor-desc">プログラミングの知識を活かして、ニンジャ（子どもたち）の制作をサポートします。答えを教えるのではなく、一緒に考えるのがスタイルです。</p>
+        <ul style="font-size:.85rem; color:var(--text-light); line-height:2; list-style:none; padding:0;">
+          <li>✅ <span data-i18n="supporter-mentor-li1">プログラミング・技術系の知識がある方</span></li>
+          <li>✅ <span data-i18n="supporter-mentor-li2">ニンジャと一緒にコードを考えたい方</span></li>
+          <li>✅ <span data-i18n="supporter-mentor-li3">子どもの「できた！」をそばで見たい方</span></li>
+        </ul>
+      </div>
+
+      <!-- Supporter card -->
+      <div style="background:linear-gradient(135deg,#E8F7F0,#C8EFE0); border-radius:var(--radius-lg); padding:2.5rem 2rem; border:2px solid #7ECBA5;">
+        <div style="font-size:2.5rem; margin-bottom:1rem;">🤲</div>
+        <h3 style="font-size:1.3rem; margin-bottom:.5rem; color:var(--green-dark);" data-i18n="supporter-title">サポーター</h3>
+        <p style="font-size:.9rem; color:var(--text); line-height:1.8; margin-bottom:1.25rem;" data-i18n="supporter-main-desc">プログラミングの知識は不要です。受付・会場設営・記録撮影などの運営面でDojoを支えます。Dojoを陰から支えてくれる、大切な存在です。</p>
+        <ul style="font-size:.85rem; color:var(--text-light); line-height:2; list-style:none; padding:0;">
+          <li>✅ <span data-i18n="supporter-li1">参加者の受付・案内</span></li>
+          <li>✅ <span data-i18n="supporter-li2">会場の設営・片付けの補助</span></li>
+          <li>✅ <span data-i18n="supporter-li3">活動の写真・記録係</span></li>
+          <li>✅ <span data-i18n="supporter-li4">子どもたちの見守り・安全管理</span></li>
+          <li>✅ <span data-i18n="supporter-li5">SNS・広報サポート</span></li>
+        </ul>
+      </div>
+
+    </div>
+    <p style="text-align:center; margin-top:2rem; font-size:.88rem; color:var(--text-light); background:var(--bg); border-radius:var(--radius); padding:1rem 2rem; display:inline-block; width:100%; box-sizing:border-box;" data-i18n="supporter-note">💡 サポーターは運営支援が中心のため、プログラミング経験は一切不要です。Dojoの雰囲気が好きな方、地域に貢献したい方など、お気軽にご参加ください。</p>
+  </div>
+</section>
+
 <!-- ══════════════════════ DAY FLOW ══════════════════════ -->
 <section>
   <div class="container">
@@ -483,6 +525,7 @@
       </div>
       <div class="btn-group">
         <a href="contact.html?type=mentor" class="btn btn-white" data-i18n="mentor-apply-btn1">メンターとして応募する</a>
+        <a href="contact.html?type=supporter" class="btn btn-white" data-i18n="mentor-apply-btn3">サポーターとして参加する</a>
         <a href="contact.html" class="btn btn-ghost" data-i18n="mentor-apply-btn2">まずは見学したい</a>
       </div>
     </div>

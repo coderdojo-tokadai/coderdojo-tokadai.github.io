@@ -670,4 +670,5 @@ section { padding:5rem 0; }
   .news-date .day { font-size:1.5rem; }
   .hero-content { padding:5rem 1.5rem 16rem; }
   .form-row { grid-template-columns:1fr; }
+  .volunteer-cards { grid-template-columns:1fr !important; }
 }

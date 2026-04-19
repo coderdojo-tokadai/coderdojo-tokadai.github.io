@@ -266,6 +266,49 @@ section { padding:5rem 0; }
   box-shadow:0 0 28px rgba(255,224,130,.55),0 0 60px rgba(255,224,130,.22);
 }
 
+.hero-sun {
+  position:absolute; z-index:1; pointer-events:none;
+  border-radius:50%;
+  transition:top .6s ease, right .6s ease;
+}
+/* 朝: 右下寄り・オレンジ・やや大きめ */
+.hero-sun--morning {
+  top:58%; right:7%;
+  width:90px; height:90px;
+  background:radial-gradient(circle at 45% 42%,#FFFDE7 0%,#FFD54F 40%,#FF8A50 100%);
+  box-shadow:
+    0 0 30px rgba(255,183,77,.7),
+    0 0 70px rgba(255,138,50,.4),
+    0 0 130px rgba(255,138,50,.18);
+  animation:sunPulse 4s ease-in-out infinite;
+}
+/* 昼: 右上・明るい黄白・中サイズ */
+.hero-sun--day {
+  top:7%; right:10%;
+  width:76px; height:76px;
+  background:radial-gradient(circle at 44% 40%,#FFFFFF 0%,#FFF9C4 35%,#FFE082 75%,#FFB300 100%);
+  box-shadow:
+    0 0 28px rgba(255,236,130,.9),
+    0 0 65px rgba(255,220,80,.45),
+    0 0 120px rgba(255,200,50,.2);
+  animation:sunPulse 5s ease-in-out infinite;
+}
+/* 夕方: 右下・赤みがかったオレンジ・大きめ */
+.hero-sun--evening {
+  top:52%; right:5%;
+  width:100px; height:100px;
+  background:radial-gradient(circle at 46% 44%,#FFECB3 0%,#FF8A65 45%,#E64A19 100%);
+  box-shadow:
+    0 0 35px rgba(255,100,50,.75),
+    0 0 80px rgba(230,74,25,.45),
+    0 0 150px rgba(200,50,20,.2);
+  animation:sunPulse 3.5s ease-in-out infinite;
+}
+@keyframes sunPulse {
+  0%,100% { filter:brightness(1) blur(0px); }
+  50%      { filter:brightness(1.1) blur(.4px); }
+}
+
 /* Scroll hint */
 .scroll-hint {
   position:absolute; bottom:1.75rem; left:50%; transform:translateX(-50%);

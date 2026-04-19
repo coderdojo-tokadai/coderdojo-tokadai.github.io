@@ -20,7 +20,7 @@ const TIME_CONFIG = {
     overlay:      'linear-gradient(to right,rgba(26,10,61,.38) 0%,rgba(26,10,61,.10) 55%,transparent 100%)',
     badgeEmoji:   '🌅',
     accentColor:  '#FFE082',
-    stars: false, moon: false,
+    stars: false, moon: false, sun: true,  sunClass: 'hero-sun--morning',
   },
   // 昼 (10〜17時): 季節テーマそのまま
   day: {
@@ -28,7 +28,7 @@ const TIME_CONFIG = {
     overlay:      null,
     badgeEmoji:   null,
     accentColor:  '#FFE082',
-    stars: false, moon: false,
+    stars: false, moon: false, sun: true,  sunClass: 'hero-sun--day',
   },
   // 夕方 (17〜20時): 夕焼け・トワイライト
   evening: {
@@ -36,7 +36,7 @@ const TIME_CONFIG = {
     overlay:      'linear-gradient(to right,rgba(49,27,146,.62) 0%,rgba(49,27,146,.22) 55%,transparent 100%)',
     badgeEmoji:   '🌇',
     accentColor:  '#FFAB91',
-    stars: false, moon: false,
+    stars: false, moon: false, sun: true,  sunClass: 'hero-sun--evening',
   },
   // 夜 (20〜翌5時): 星空・月
   night: {
@@ -44,7 +44,7 @@ const TIME_CONFIG = {
     overlay:      'linear-gradient(to right,rgba(0,0,20,.82) 0%,rgba(0,0,20,.42) 55%,transparent 100%)',
     badgeEmoji:   '🌙',
     accentColor:  '#90CAF9',
-    stars: true,  moon: true,
+    stars: true,  moon: true,  sun: false, sunClass: '',
   },
 };
 
@@ -103,6 +103,13 @@ function applyTimeTheme() {
   // 月（夜のみ）
   const moon = document.getElementById('heroMoon');
   if (moon) moon.style.display = tcfg.moon ? '' : 'none';
+
+  // 太陽（日照時間のみ）
+  const sun = document.getElementById('heroSun');
+  if (sun) {
+    sun.style.display = tcfg.sun ? '' : 'none';
+    sun.className = 'hero-sun' + (tcfg.sunClass ? ' ' + tcfg.sunClass : '');
+  }
 }
 
 /* ── Season detection ────────────────────────── */

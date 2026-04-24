@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>チラシ作成 — CoderDojo 桃花台</title>
+  <meta name="description" content="CoderDojo 桃花台の開催チラシを作成・ダウンロードできます。">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── Page Layout ─────────────────────── */
+    .flyer-page-header {
+      padding: 5rem 1.5rem 2.5rem;
+      text-align: center;
+      background: linear-gradient(180deg, #F0E8FF 0%, var(--bg) 100%);
+    }
+    .flyer-page-header .section-label { margin-bottom: .5rem; }
+    .flyer-page-header h1 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin: .4rem 0 .8rem; }
+    .flyer-page-header p { color: var(--text-light); max-width: 520px; margin: 0 auto; line-height: 1.8; }
+
+    .flyer-page {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 2rem auto 5rem;
+      padding: 0 1.5rem;
+      align-items: start;
+    }
+    @media (max-width: 860px) {
+      .flyer-page { grid-template-columns: 1fr; }
+    }
+
+    /* ── Controls Panel ───────────────────── */
+    .flyer-controls {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 88px;
+    }
+    .flyer-controls h2 { font-size: 1.1rem; margin-bottom: .3rem; color: var(--dark); }
+    .flyer-controls .ctrl-lead { font-size: .82rem; color: var(--text-light); margin-bottom: 1.4rem; line-height: 1.6; }
+    .form-group { margin-bottom: 1.1rem; }
+    .form-group label {
+      display: block; font-size: .8rem; font-weight: 700; color: var(--dark);
+      margin-bottom: .35rem; letter-spacing: .02em;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%; padding: .55rem .75rem;
+      border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+      font-family: var(--font); font-size: .88rem; color: var(--text); background: var(--bg);
+      transition: border-color var(--t) var(--ease), box-shadow var(--t) var(--ease);
+      box-sizing: border-box;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none; border-color: var(--purple); box-shadow: 0 0 0 3px rgba(107,63,160,.12);
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; }
+    .form-hint { font-size: .74rem; color: var(--text-light); margin-top: .25rem; }
+    .flyer-actions {
+      display: flex; flex-direction: column; gap: .7rem;
+      margin-top: 1.4rem; padding-top: 1.4rem; border-top: 1px solid var(--border);
+    }
+    .flyer-actions .btn { width: 100%; text-align: center; justify-content: center; }
+    .btn-pdf {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: .65rem 1.2rem; border-radius: var(--radius-sm); font-weight: 700;
+      font-size: .9rem; cursor: pointer; border: none; font-family: var(--font);
+      background: #1B7A48; color: #fff; transition: opacity .2s;
+    }
+    .btn-pdf:hover { opacity: .85; }
+
+    /* ── Preview Area ─────────────────────── */
+    .flyer-preview-area { display: flex; flex-direction: column; align-items: flex-start; }
+    .preview-label { font-size: .75rem; color: var(--text-light); letter-spacing: .08em; text-transform: uppercase; margin-bottom: .75rem; }
+    .flyer-scaler-wrap { width: 100%; overflow: hidden; }
+    #flyerScaler { transform-origin: top left; display: inline-block; }
+
+    /* ── Loading Overlay ──────────────────── */
+    .dl-loading {
+      display: none; position: fixed; inset: 0;
+      background: rgba(26,10,61,.6); z-index: 9999;
+      align-items: center; justify-content: center; flex-direction: column;
+      gap: 1rem; color: #fff; font-size: 1rem; backdrop-filter: blur(3px);
+    }
+    .dl-loading.active { display: flex; }
+    .dl-spinner {
+      width: 40px; height: 40px; border: 3px solid rgba(255,255,255,.3);
+      border-top-color: #fff; border-radius: 50%; animation: spin .8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ════════════════════════════════════════════
+       FLYER A4  595 × 842px (A4 @ 72dpi)
+    ════════════════════════════════════════════ */
+    .flyer-a4 {
+      width: 595px;
+      min-height: 842px;
+      background: #fff;
+      font-family: 'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP','Meiryo',sans-serif;
+      color: #1A0A3D;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 48px rgba(0,0,0,.2);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ── Header ──────────────────────────── */
+    .fl-header {
+      background: linear-gradient(135deg, #4A1D96 0%, #7C3AED 45%, #EC4899 100%);
+      color: #fff;
+      padding: 28px 32px 24px;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .fl-deco-circle {
+      position: absolute; border-radius: 50%; background: rgba(255,255,255,.07); pointer-events: none;
+    }
+    .fl-header-blossom {
+      position: absolute; right: 20px; top: 16px; opacity: .18; pointer-events: none;
+    }
+    .fl-logo-row {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 12px; position: relative;
+    }
+    .fl-logo-badge {
+      width: 52px; height: 52px; background: rgba(255,255,255,.2); border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; flex-shrink: 0; backdrop-filter: blur(4px);
+    }
+    .fl-brand-main { font-size: 2rem; font-weight: 900; letter-spacing: -.03em; line-height: 1; }
+    .fl-brand-loc { font-size: 1.05rem; font-weight: 500; opacity: .85; margin-left: 6px; }
+    .fl-brand-sub { font-size: .78rem; opacity: .65; letter-spacing: .1em; margin-top: 4px; }
+    .fl-tagline-pill {
+      position: relative;
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 999px;
+      padding: 7px 18px;
+      font-size: .92rem; font-weight: 700; letter-spacing: .03em;
+      backdrop-filter: blur(4px);
+    }
+    .fl-tagline-free {
+      background: #FFE082; color: #7C2D12;
+      border-radius: 4px; padding: 1px 6px; font-size: .78rem; font-weight: 900;
+      margin-right: 4px; display: inline-block; vertical-align: middle;
+    }
+
+    /* ── Catch Copy ──────────────────────── */
+    .fl-catchcopy {
+      background: #F5F0FF;
+      padding: 14px 32px;
+      text-align: center;
+      border-bottom: 2px solid #E2D5F8;
+      flex-shrink: 0;
+    }
+    .fl-cc-text {
+      font-size: 1rem; font-weight: 800; color: #4A1D96; line-height: 1.5; letter-spacing: .02em;
+    }
+    .fl-cc-accent { color: #EC4899; }
+
+    /* ── Badges strip ────────────────────── */
+    .fl-badges {
+      background: #FFF0EB; padding: 10px 32px;
+      display: flex; gap: 14px; align-items: center; flex-wrap: wrap; flex-shrink: 0;
+    }
+    .fl-badge-free {
+      background: linear-gradient(90deg, #EC4899, #F97316);
+      color: #fff; font-size: .85rem; font-weight: 800;
+      padding: 5px 16px; border-radius: 999px; letter-spacing: .02em;
+    }
+    .fl-badge-age { font-size: .85rem; color: #6B3FA0; font-weight: 700; }
+
+    /* ── Info cards (date + venue) ───────── */
+    .fl-info-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+      padding: 16px 32px; background: #fff; flex-shrink: 0;
+    }
+    .fl-info-card {
+      background: #FAFAFA; border-radius: 10px; padding: 12px 14px;
+      border-left: 4px solid; min-height: 72px;
+    }
+    .fl-info-card-date  { border-left-color: #7C3AED; }
+    .fl-info-card-venue { border-left-color: #F97316; }
+    .fl-info-label { font-size: .68rem; font-weight: 700; color: #6B7280; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 4px; }
+    .fl-info-value { font-size: .95rem; font-weight: 800; color: #1A0A3D; line-height: 1.4; }
+    .fl-info-sub   { font-size: .75rem; color: #6B7280; margin-top: 3px; line-height: 1.4; }
+
+    /* ── Divider ─────────────────────────── */
+    .fl-hr { height: 1px; background: #EEE6F8; margin: 0 32px; flex-shrink: 0; }
+
+    /* ── Activities ──────────────────────── */
+    .fl-activities { background: #F5F0FF; padding: 16px 32px; flex-shrink: 0; }
+    .fl-act-title { font-size: .88rem; font-weight: 800; color: #4A1D96; margin-bottom: 12px; letter-spacing: .02em; }
+    .fl-act-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+    }
+    .fl-act-item { display: flex; flex-direction: column; align-items: center; gap: 5px; text-align: center; }
+    .fl-act-icon {
+      width: 46px; height: 46px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.35rem;
+    }
+    .fl-act-name { font-size: .68rem; font-weight: 700; color: #1A0A3D; line-height: 1.3; }
+
+    /* ── Checklist ───────────────────────── */
+    .fl-checklist { padding: 14px 32px; flex-shrink: 0; }
+    .fl-check-required {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: #FFF4ED; border: 2px solid #F97316; border-radius: 10px;
+      padding: 11px 14px; margin-bottom: 8px;
+    }
+    .fl-check-req-icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1.1; }
+    .fl-check-req-title { font-size: .9rem; font-weight: 800; color: #7C2D12; line-height: 1.4; }
+    .fl-check-req-sub { font-size: .73rem; color: #9A3412; margin-top: 2px; opacity: .8; }
+    .fl-check-ok {
+      background: #F0FFF8; border: 1.5px solid #52B788; border-radius: 10px;
+      padding: 9px 14px; display: flex; gap: 20px; flex-wrap: wrap;
+    }
+    .fl-check-ok-item { font-size: .8rem; color: #1B7A48; font-weight: 700; line-height: 1.7; }
+
+    /* ── Notes (conditional) ─────────────── */
+    .fl-notes {
+      padding: 12px 32px; background: #FFFBF0;
+      border-left: 4px solid #F59E0B; flex-shrink: 0;
+    }
+    .fl-notes-label { font-size: .7rem; font-weight: 700; color: #B45309; margin-bottom: 4px; text-transform: uppercase; letter-spacing: .05em; }
+    .fl-notes-text { font-size: .82rem; color: #2D2D2D; white-space: pre-wrap; line-height: 1.7; }
+
+    /* ── Flex spacer ─────────────────────── */
+    .fl-spacer { flex: 1; min-height: 12px; }
+
+    /* ── Footer ──────────────────────────── */
+    .fl-footer {
+      background: linear-gradient(135deg, #1A0A3D 0%, #2D1B69 100%);
+      color: #fff; padding: 18px 32px;
+      display: flex; align-items: center; gap: 18px; flex-shrink: 0;
+    }
+    .fl-qr-box {
+      background: #fff; padding: 8px; border-radius: 10px;
+      flex-shrink: 0; line-height: 0;
+      box-shadow: 0 2px 12px rgba(0,0,0,.3);
+    }
+    .fl-footer-text { flex: 1; }
+    .fl-footer-cta { font-size: 1rem; font-weight: 800; margin-bottom: 5px; letter-spacing: .01em; }
+    .fl-footer-url {
+      font-size: .88rem; color: #C4B5FD;
+      font-family: 'SFMono-Regular','Consolas',monospace; margin-bottom: 3px;
+    }
+    .fl-footer-org { font-size: .7rem; opacity: .45; }
+
+    /* ── Print CSS ────────────────────────── */
+    @media print {
+      .nav, .flyer-page-header, .flyer-controls,
+      .preview-label, .dl-loading, footer { display: none !important; }
+      .flyer-page { display: block; padding: 0; margin: 0; }
+      .flyer-preview-area { display: block; }
+      .flyer-scaler-wrap { overflow: visible; width: auto; }
+      #flyerScaler { transform: none !important; }
+      .flyer-a4 { box-shadow: none; width: 100%; }
+      @page { size: A4 portrait; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════ NAV ══════════════════════ -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" aria-hidden="true">
+        <defs>
+          <linearGradient id="lg0" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FF7A5C"/><stop offset="100%" stop-color="#FF4E8B"/>
+          </linearGradient>
+        </defs>
+        <rect width="80" height="80" rx="18" fill="url(#lg0)"/>
+        <g transform="translate(60,18)">
+          <ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(0)"/>
+          <ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(72)"/>
+          <ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(144)"/>
+          <ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(216)"/>
+          <ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(288)"/>
+          <circle cx="0" cy="0" r="2.5" fill="#FFE082"/>
+        </g>
+        <text x="37" y="53" font-family="'Courier New',monospace" font-size="21" font-weight="900" fill="white" text-anchor="middle">&lt;/&gt;</text>
+        <circle cx="14" cy="24" r="2.5" fill="rgba(255,255,255,.55)"/>
+        <circle cx="22" cy="63" r="1.8" fill="rgba(255,255,255,.40)"/>
+      </svg>
+      <span class="nav-logo-text">
+        <strong>CoderDojo</strong>
+        <span class="brand-sub">桃花台 Tokadai</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">ホーム</a>
+      <a href="venue.html">開催場所</a>
+      <a href="news.html">お知らせ</a>
+      <a href="mentor.html">メンター募集</a>
+      <a href="flyer.html" style="color:var(--purple);font-weight:700;">チラシ作成</a>
+      <a href="contact.html" class="nav-cta">参加申込み</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="mobileNav">
+    <a href="index.html">🏠 ホーム</a>
+    <a href="venue.html">📍 開催場所</a>
+    <a href="news.html">📢 お知らせ</a>
+    <a href="mentor.html">🧑‍💻 メンター募集</a>
+    <a href="flyer.html">🖨 チラシ作成</a>
+    <a href="contact.html" class="nav-cta-mobile">🚀 参加申込み</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════ PAGE HEADER ══════════════════════ -->
+<div class="flyer-page-header">
+  <span class="section-label">✨ ツール</span>
+  <h1>チラシ作成</h1>
+  <p>開催情報を入力するとプレビューにリアルタイム反映されます。<br>PNG・PDF でダウンロードするか、印刷して地域の掲示板や学校に配ってください！</p>
+</div>
+
+<!-- ══════════════════════ MAIN ══════════════════════ -->
+<div class="flyer-page">
+
+  <!-- Controls -->
+  <aside class="flyer-controls">
+    <h2>📝 開催情報を入力</h2>
+    <p class="ctrl-lead">入力内容がリアルタイムでプレビューに反映されます。</p>
+
+    <div class="form-group">
+      <label for="inputDate">開催日</label>
+      <input type="date" id="inputDate">
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="inputStart">開始時間</label>
+        <input type="time" id="inputStart" value="13:00">
+      </div>
+      <div class="form-group">
+        <label for="inputEnd">終了時間</label>
+        <input type="time" id="inputEnd" value="16:00">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputVenue">会場名</label>
+      <input type="text" id="inputVenue" placeholder="例：小牧市東部市民センター">
+    </div>
+
+    <div class="form-group">
+      <label for="inputAddr">会場住所（任意）</label>
+      <input type="text" id="inputAddr" placeholder="例：愛知県小牧市...">
+    </div>
+
+    <div class="form-group">
+      <label for="inputNotes">備考・メッセージ（任意）</label>
+      <textarea id="inputNotes" rows="3" placeholder="例：初めての方も大歓迎！&#10;お気軽にお越しください。"></textarea>
+      <p class="form-hint">入力した場合のみチラシに表示されます。</p>
+    </div>
+
+    <div class="flyer-actions">
+      <button id="downloadPngBtn" class="btn btn-primary">⬇ PNG ダウンロード</button>
+      <button id="downloadPdfBtn" class="btn-pdf">📄 PDF ダウンロード</button>
+      <button id="printBtn" class="btn btn-ghost">🖨 印刷する</button>
+    </div>
+  </aside>
+
+  <!-- Preview -->
+  <div class="flyer-preview-area">
+    <p class="preview-label">▼ プレビュー</p>
+    <div class="flyer-scaler-wrap" id="flyerScalerWrap">
+      <div id="flyerScaler">
+        <div class="flyer-a4" id="flyerA4">
+
+          <!-- ── Header ─────────────────────── -->
+          <div class="fl-header">
+            <!-- decorative circles -->
+            <div class="fl-deco-circle" style="width:200px;height:200px;top:-80px;right:-50px;"></div>
+            <div class="fl-deco-circle" style="width:90px;height:90px;bottom:-30px;right:70px;"></div>
+            <div class="fl-deco-circle" style="width:40px;height:40px;top:16px;right:170px;background:rgba(255,255,255,.12);"></div>
+            <!-- cherry blossom SVG decoration -->
+            <svg class="fl-header-blossom" width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g transform="translate(50,50)">
+                <ellipse cx="0" cy="-22" rx="10" ry="16" fill="white" transform="rotate(0)"/>
+                <ellipse cx="0" cy="-22" rx="10" ry="16" fill="white" transform="rotate(72)"/>
+                <ellipse cx="0" cy="-22" rx="10" ry="16" fill="white" transform="rotate(144)"/>
+                <ellipse cx="0" cy="-22" rx="10" ry="16" fill="white" transform="rotate(216)"/>
+                <ellipse cx="0" cy="-22" rx="10" ry="16" fill="white" transform="rotate(288)"/>
+                <circle cx="0" cy="0" r="8" fill="#FFE082"/>
+              </g>
+            </svg>
+            <svg class="fl-header-blossom" style="right:100px;top:52px;width:44px;height:44px;opacity:.12;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g transform="translate(50,50)">
+                <ellipse cx="0" cy="-22" rx="10" ry="16" fill="white" transform="rotate(0)"/>
+                <ellipse cx="0" cy="-22" rx="10" ry="16" fill="white" transform="rotate(72)"/>
+                <ellipse cx="0" cy="-22" rx="10" ry="16" fill="white" transform="rotate(144)"/>
+                <ellipse cx="0" cy="-22" rx="10" ry="16" fill="white" transform="rotate(216)"/>
+                <ellipse cx="0" cy="-22" rx="10" ry="16" fill="white" transform="rotate(288)"/>
+                <circle cx="0" cy="0" r="8" fill="#FFE082"/>
+              </g>
+            </svg>
+
+            <div class="fl-logo-row">
+              <div class="fl-logo-badge">🌸</div>
+              <div>
+                <div class="fl-brand-main">CoderDojo<span class="fl-brand-loc">桃花台</span></div>
+                <div class="fl-brand-sub">Tokadai — プログラミング道場</div>
+              </div>
+            </div>
+            <div class="fl-tagline-pill">
+              <span class="fl-tagline-free">無料</span>子どもたちのプログラミングクラブ
+            </div>
+          </div>
+
+          <!-- ── Catch Copy ─────────────────── -->
+          <div class="fl-catchcopy">
+            <div class="fl-cc-text">プログラミングで、君の<span class="fl-cc-accent">「作りたい」</span>を形にしよう！</div>
+          </div>
+
+          <!-- ── Badges ─────────────────────── -->
+          <div class="fl-badges">
+            <span class="fl-badge-free">🎉 参加費：完全無料</span>
+            <span class="fl-badge-age">👶 対象：7〜17歳の子どもたち</span>
+          </div>
+
+          <!-- ── Info cards ─────────────────── -->
+          <div class="fl-info-row">
+            <div class="fl-info-card fl-info-card-date">
+              <div class="fl-info-label">📅 開催日時</div>
+              <div class="fl-info-value" id="fl-datetime">開催日・時間を入力してください</div>
+            </div>
+            <div class="fl-info-card fl-info-card-venue">
+              <div class="fl-info-label">📍 会場</div>
+              <div class="fl-info-value" id="fl-venue">会場名を入力してください</div>
+              <div class="fl-info-sub" id="fl-addr"></div>
+            </div>
+          </div>
+
+          <div class="fl-hr"></div>
+
+          <!-- ── Activities ─────────────────── -->
+          <div class="fl-activities">
+            <div class="fl-act-title">💻 こんなことができます！</div>
+            <div class="fl-act-grid">
+              <div class="fl-act-item">
+                <div class="fl-act-icon" style="background:#FFE4F0;">🐱</div>
+                <div class="fl-act-name">Scratch</div>
+              </div>
+              <div class="fl-act-item">
+                <div class="fl-act-icon" style="background:#E4F4E8;">⛏</div>
+                <div class="fl-act-name">Minecraft</div>
+              </div>
+              <div class="fl-act-item">
+                <div class="fl-act-icon" style="background:#FFF9D6;">⚡</div>
+                <div class="fl-act-name">JavaScript</div>
+              </div>
+              <div class="fl-act-item">
+                <div class="fl-act-icon" style="background:#E4EEF8;">🐍</div>
+                <div class="fl-act-name">Python</div>
+              </div>
+              <div class="fl-act-item">
+                <div class="fl-act-icon" style="background:#E8F4FF;">🌐</div>
+                <div class="fl-act-name">Web制作</div>
+              </div>
+              <div class="fl-act-item">
+                <div class="fl-act-icon" style="background:#F0E8FF;">🤖</div>
+                <div class="fl-act-name">AI入門</div>
+              </div>
+              <div class="fl-act-item">
+                <div class="fl-act-icon" style="background:#FFF0E4;">🎬</div>
+                <div class="fl-act-name">動画制作</div>
+              </div>
+              <div class="fl-act-item">
+                <div class="fl-act-icon" style="background:#FFFDE4;">💡</div>
+                <div class="fl-act-name">自由制作</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="fl-hr"></div>
+
+          <!-- ── Checklist ─────────────────── -->
+          <div class="fl-checklist">
+            <div class="fl-check-required">
+              <div class="fl-check-req-icon">💻</div>
+              <div>
+                <div class="fl-check-req-title">ノートパソコンを持参してください（必須）</div>
+                <div class="fl-check-req-sub">自分のノートPCを使って作業します。</div>
+              </div>
+            </div>
+            <div class="fl-check-ok">
+              <div class="fl-check-ok-item">✅ プログラミング未経験でも大丈夫！</div>
+              <div class="fl-check-ok-item">✅ 保護者の方もご一緒にどうぞ</div>
+            </div>
+          </div>
+
+          <!-- ── Notes (conditional) ────────── -->
+          <div class="fl-notes" id="fl-notes-section" style="display:none;">
+            <div class="fl-notes-label">📌 お知らせ</div>
+            <div class="fl-notes-text" id="fl-notes-text"></div>
+          </div>
+
+          <div class="fl-spacer"></div>
+
+          <!-- ── Footer ────────────────────── -->
+          <div class="fl-footer">
+            <div class="fl-qr-box">
+              <div id="fl-qrcode"></div>
+            </div>
+            <div class="fl-footer-text">
+              <div class="fl-footer-cta">詳細・お申し込みはこちら ↗</div>
+              <div class="fl-footer-url">coderdojo-tokadai.github.io</div>
+              <div class="fl-footer-org">CoderDojo 桃花台 公式ウェブサイト</div>
+            </div>
+          </div>
+
+        </div><!-- /.flyer-a4 -->
+      </div><!-- /#flyerScaler -->
+    </div><!-- /.flyer-scaler-wrap -->
+  </div><!-- /.flyer-preview-area -->
+
+</div><!-- /.flyer-page -->
+
+<!-- ══════════════════════ FOOTER ══════════════════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="40" height="40" aria-hidden="true">
+            <defs><linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF7A5C"/><stop offset="100%" stop-color="#FF4E8B"/></linearGradient></defs>
+            <rect width="80" height="80" rx="18" fill="url(#lg1)"/>
+            <g transform="translate(60,18)"><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(0)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(72)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(144)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(216)"/><ellipse cx="0" cy="-9" rx="4.5" ry="7.5" fill="rgba(255,255,255,.75)" transform="rotate(288)"/><circle cx="0" cy="0" r="2.5" fill="#FFE082"/></g>
+            <text x="37" y="53" font-family="'Courier New',monospace" font-size="21" font-weight="900" fill="white" text-anchor="middle">&lt;/&gt;</text>
+          </svg>
+          <div class="footer-brand-name">CoderDojo<span class="footer-brand-sub">桃花台 Tokadai</span></div>
+        </div>
+        <p class="footer-desc">桃花台 周辺エリア（小牧市東部・春日井市・高蔵寺）の子どもたちが、コードを通じて「作る楽しさ」を知り、可能性を広げる無料プログラミングクラブです。</p>
+      </div>
+      <div class="footer-col">
+        <h4>ページ</h4>
+        <ul>
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="venue.html">開催場所</a></li>
+          <li><a href="news.html">お知らせ</a></li>
+          <li><a href="mentor.html">メンター募集</a></li>
+          <li><a href="flyer.html">チラシ作成</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>リンク</h4>
+        <ul>
+          <li><a href="https://coderdojo.com" target="_blank" rel="noopener">CoderDojo 公式</a></li>
+          <li><a href="https://coderdojo.jp" target="_blank" rel="noopener">CoderDojo Japan</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CoderDojo 桃花台 (Tokadai). Powered by volunteers. 🌸</span>
+      <div class="footer-links">
+        <a href="contact.html">お問い合わせ</a>
+        プライバシー
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════ LOADING OVERLAY ══════════════════════ -->
+<div class="dl-loading" id="dlLoading">
+  <div class="dl-spinner"></div>
+  <div id="dlLoadingText">生成中…</div>
+</div>
+
+<!-- ══════════════════════ SCRIPTS ══════════════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="events.js"></script>
+<script src="script.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  const SITE_URL = 'https://coderdojo-tokadai.github.io/';
+  const DAYS = ['日','月','火','水','木','金','土'];
+
+  /* ── QR Code ──────────────────────────── */
+  function initQR() {
+    const el = document.getElementById('fl-qrcode');
+    el.innerHTML = '';
+    new QRCode(el, {
+      text: SITE_URL,
+      width: 100,
+      height: 100,
+      colorDark: '#1A0A3D',
+      colorLight: '#ffffff',
+      correctLevel: QRCode.CorrectLevel.M
+    });
+    setTimeout(function () {
+      const img = el.querySelector('img');
+      if (img) img.style.display = 'none';
+    }, 200);
+  }
+
+  /* ── Date Formatter ───────────────────── */
+  function formatDate(dateStr) {
+    if (!dateStr) return '';
+    const d = new Date(dateStr + 'T00:00:00');
+    return d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日（' + DAYS[d.getDay()] + '）';
+  }
+
+  /* ── Update Flyer Preview ─────────────── */
+  function updateFlyer() {
+    var date  = document.getElementById('inputDate').value;
+    var start = document.getElementById('inputStart').value;
+    var end   = document.getElementById('inputEnd').value;
+    var venue = document.getElementById('inputVenue').value.trim();
+    var addr  = document.getElementById('inputAddr').value.trim();
+    var notes = document.getElementById('inputNotes').value.trim();
+
+    var dtEl = document.getElementById('fl-datetime');
+    if (date) {
+      var txt = formatDate(date);
+      if (start) txt += '　' + start;
+      if (start && end) txt += ' 〜 ' + end;
+      dtEl.textContent = txt;
+    } else {
+      dtEl.textContent = '開催日・時間を入力してください';
+    }
+
+    document.getElementById('fl-venue').textContent = venue || '会場名を入力してください';
+
+    var addrEl = document.getElementById('fl-addr');
+    addrEl.textContent = addr;
+    addrEl.style.display = addr ? '' : 'none';
+
+    var notesSection = document.getElementById('fl-notes-section');
+    var notesText    = document.getElementById('fl-notes-text');
+    if (notes) {
+      notesText.textContent = notes;
+      notesSection.style.display = '';
+    } else {
+      notesSection.style.display = 'none';
+    }
+
+    setTimeout(scaleFlyer, 30);
+  }
+
+  /* ── Scale Preview ────────────────────── */
+  function scaleFlyer() {
+    var wrap   = document.getElementById('flyerScalerWrap');
+    var scaler = document.getElementById('flyerScaler');
+    var flyer  = document.getElementById('flyerA4');
+    var avail  = wrap.clientWidth;
+    var scale  = Math.min(1, avail / 595);
+    scaler.style.transform = 'scale(' + scale + ')';
+    scaler.style.transformOrigin = 'top left';
+    wrap.style.height = (flyer.offsetHeight * scale) + 'px';
+  }
+
+  /* ── Pre-fill from events.js ──────────── */
+  function prefill() {
+    if (typeof getNextEvent !== 'function') return;
+    var ev = getNextEvent();
+    if (!ev || ev.tbd || !ev.date) return;
+    document.getElementById('inputDate').value  = ev.date;
+    if (ev.startTime) document.getElementById('inputStart').value = ev.startTime;
+    if (ev.endTime)   document.getElementById('inputEnd').value   = ev.endTime;
+    if (ev.venue)     document.getElementById('inputVenue').value = ev.venue;
+  }
+
+  /* ── Capture Canvas ───────────────────── */
+  async function captureFlyer() {
+    var scaler = document.getElementById('flyerScaler');
+    var flyer  = document.getElementById('flyerA4');
+    scaler.style.transform = 'none';
+    await new Promise(function(r) { setTimeout(r, 100); });
+    var canvas = await html2canvas(flyer, {
+      scale: 2,
+      backgroundColor: '#ffffff',
+      useCORS: true,
+      allowTaint: true,
+      logging: false,
+      width: 595,
+      height: flyer.offsetHeight
+    });
+    return { canvas: canvas, prevTransform: scaler.style.transform };
+  }
+
+  /* ── Download PNG ─────────────────────── */
+  async function downloadPNG() {
+    var loading = document.getElementById('dlLoading');
+    var ldText  = document.getElementById('dlLoadingText');
+    var scaler  = document.getElementById('flyerScaler');
+    var prevTransform = scaler.style.transform;
+    loading.classList.add('active');
+    ldText.textContent = 'PNG を生成中…';
+    try {
+      var result = await captureFlyer();
+      var link = document.createElement('a');
+      var date = document.getElementById('inputDate').value.replace(/-/g, '');
+      link.download = 'coderdojo-tokadai' + (date ? '-' + date : '') + '.png';
+      link.href = result.canvas.toDataURL('image/png');
+      link.click();
+    } catch (err) {
+      console.error(err);
+      alert('ダウンロードに失敗しました。印刷機能をお試しください。');
+    } finally {
+      scaler.style.transform = prevTransform;
+      loading.classList.remove('active');
+      scaleFlyer();
+    }
+  }
+
+  /* ── Download PDF ─────────────────────── */
+  async function downloadPDF() {
+    var loading = document.getElementById('dlLoading');
+    var ldText  = document.getElementById('dlLoadingText');
+    var scaler  = document.getElementById('flyerScaler');
+    var flyer   = document.getElementById('flyerA4');
+    var prevTransform = scaler.style.transform;
+    loading.classList.add('active');
+    ldText.textContent = 'PDF を生成中…';
+    try {
+      var result = await captureFlyer();
+      var imgData = result.canvas.toDataURL('image/jpeg', 0.95);
+      var jsPDFLib = window.jspdf ? window.jspdf.jsPDF : window.jsPDF;
+      if (!jsPDFLib) throw new Error('jsPDF が読み込まれていません');
+      var pdf = new jsPDFLib({ orientation: 'portrait', unit: 'pt', format: 'a4' });
+      var pageW = pdf.internal.pageSize.getWidth();
+      var pageH = pdf.internal.pageSize.getHeight();
+      var imgH  = (flyer.offsetHeight / 595) * pageW;
+      pdf.addImage(imgData, 'JPEG', 0, 0, pageW, Math.min(imgH, pageH));
+      var date = document.getElementById('inputDate').value.replace(/-/g, '');
+      pdf.save('coderdojo-tokadai' + (date ? '-' + date : '') + '.pdf');
+    } catch (err) {
+      console.error(err);
+      alert('PDF のダウンロードに失敗しました。PNG または印刷をお試しください。');
+    } finally {
+      scaler.style.transform = prevTransform;
+      loading.classList.remove('active');
+      scaleFlyer();
+    }
+  }
+
+  /* ── Print ────────────────────────────── */
+  function printFlyer() { window.print(); }
+
+  /* ── Init ─────────────────────────────── */
+  document.addEventListener('DOMContentLoaded', function () {
+    initQR();
+    prefill();
+    updateFlyer();
+
+    ['inputDate','inputStart','inputEnd','inputVenue','inputAddr','inputNotes']
+      .forEach(function (id) {
+        document.getElementById(id).addEventListener('input', updateFlyer);
+      });
+
+    document.getElementById('downloadPngBtn').addEventListener('click', downloadPNG);
+    document.getElementById('downloadPdfBtn').addEventListener('click', downloadPDF);
+    document.getElementById('printBtn').addEventListener('click', printFlyer);
+
+    var toggle    = document.getElementById('navToggle');
+    var mobileNav = document.getElementById('mobileNav');
+    if (toggle && mobileNav) {
+      toggle.addEventListener('click', function () {
+        var open = mobileNav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open);
+      });
+    }
+
+    window.addEventListener('resize', scaleFlyer);
+    scaleFlyer();
+  });
+}());
+</script>
+
+</body>
+</html>

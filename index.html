@@ -58,6 +58,8 @@
         <button class="lang-option" data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
         <button class="lang-option" data-lang="pt" onclick="setLang('pt')">🇧🇷 Português</button>
         <button class="lang-option" data-lang="vi" onclick="setLang('vi')">🇻🇳 Tiếng Việt</button>
+        <button class="lang-option" data-lang="es" onclick="setLang('es')">🇪🇸 Español</button>
+        <button class="lang-option" data-lang="zh" onclick="setLang('zh')">🇨🇳 中文</button>
       </div>
     </div>
     <button class="nav-toggle" id="navToggle" data-i18n-aria="nav-toggle-aria" aria-label="メニューを開く">
@@ -212,38 +214,6 @@
     <g id="groundGroup">
       <rect x="0" y="440" width="1440" height="40" fill="url(#groundG)"/>
       <rect x="0" y="455" width="1440" height="25" fill="#4CAF50" opacity=".6"/>
-    </g>
-
-    <!-- ── 給水塔 桃花台中央公園（秋のみ表示）── -->
-    <g id="waterTower" style="display:none">
-      <!-- 支柱 -->
-      <rect x="983"  y="298" width="7" height="142" rx="2" fill="#546E7A"/>
-      <rect x="1005" y="298" width="7" height="142" rx="2" fill="#546E7A"/>
-      <rect x="1028" y="298" width="7" height="142" rx="2" fill="#546E7A"/>
-      <rect x="1050" y="298" width="7" height="142" rx="2" fill="#546E7A"/>
-      <!-- ブレース X 上部 -->
-      <line x1="983" y1="310" x2="1057" y2="355" stroke="#455A64" stroke-width="3" stroke-linecap="round"/>
-      <line x1="983" y1="355" x2="1057" y2="310" stroke="#455A64" stroke-width="3" stroke-linecap="round"/>
-      <!-- ブレース X 下部 -->
-      <line x1="983" y1="375" x2="1057" y2="420" stroke="#455A64" stroke-width="3" stroke-linecap="round"/>
-      <line x1="983" y1="420" x2="1057" y2="375" stroke="#455A64" stroke-width="3" stroke-linecap="round"/>
-      <!-- 上部カラーリング -->
-      <rect x="978" y="291" width="82" height="10" rx="2" fill="#607D8B"/>
-      <!-- タンク本体 -->
-      <rect x="968" y="198" width="102" height="96" rx="3" fill="#78909C"/>
-      <!-- タンクドーム天頂 -->
-      <ellipse cx="1019" cy="198" rx="51" ry="14" fill="#90A4AE"/>
-      <!-- タンク底面 -->
-      <ellipse cx="1019" cy="294" rx="51" ry="11" fill="#607D8B"/>
-      <!-- 縦筋ディテール -->
-      <line x1="993"  y1="201" x2="993"  y2="294" stroke="rgba(255,255,255,.07)" stroke-width="4"/>
-      <line x1="1013" y1="201" x2="1013" y2="294" stroke="rgba(255,255,255,.07)" stroke-width="4"/>
-      <line x1="1033" y1="201" x2="1033" y2="294" stroke="rgba(255,255,255,.07)" stroke-width="4"/>
-      <line x1="1053" y1="201" x2="1053" y2="294" stroke="rgba(255,255,255,.07)" stroke-width="4"/>
-      <!-- ハイライト -->
-      <rect x="972" y="203" width="20" height="88" rx="3" fill="rgba(255,255,255,.09)"/>
-      <!-- 配管 -->
-      <rect x="1015" y="294" width="9" height="12" rx="1" fill="#455A64"/>
     </g>
 
     <!-- ── 雪（冬のみ表示）── -->

@@ -169,7 +169,7 @@ const SEASON_CONFIG = {
     treeColors:      ['#BF360C','#E64A19','#E65100','#FF6D00','#BF360C','#E64A19','#E65100'],
     groundColor:     '#5D4037',
     scatteredOpacity: 0.8,
-    waterTower:      true,
+    waterTower:      false,
     snow:            false,
   },
   winter: {
@@ -239,9 +239,6 @@ function applySeasonalTheme() {
     if (rects[1]) rects[1].setAttribute('fill', cfg.groundColor);
   }
 
-  // 給水塔（秋のみ表示）
-  const waterTower = document.getElementById('waterTower');
-  if (waterTower) waterTower.style.display = cfg.waterTower ? '' : 'none';
 
   // 積雪（冬のみ表示）
   const snowGroup = document.getElementById('snowGroup');

@@ -689,6 +689,7 @@ section { padding:5rem 0; }
 
 /* ── Responsive ──────────────────────────── */
 @media (max-width:900px) {
+  .flyer-desktop-only { display:none; }
   .nav-links { display:none; }
   .nav-toggle { display:flex; margin-left:auto; }
   .about-grid,.venue-info-grid,.contact-grid { grid-template-columns:1fr; }

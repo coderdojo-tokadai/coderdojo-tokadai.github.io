@@ -28,7 +28,7 @@ const EVENTS = [
     endTime:     '15:30',
     seasonEmoji: '🌸',
     monthLabel:  '次回',
-    venue:       '小牧市東部の公共施設（予定）',
+    venue:       '小牧市東部市民センター2F 学習室',
     connpassUrl: null,            // 確定したら connpass URL を設定
     notes:       '',
   },

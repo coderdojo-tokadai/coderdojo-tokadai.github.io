@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Validates that all data-i18n keys used in HTML files exist in all 4 language
-sections of i18n.js, and reports HTML default text vs i18n.js ja mismatches.
+Validates that all data-i18n keys used in HTML files exist in i18n/ja.json,
+and reports HTML default text vs ja.json value mismatches.
 """
 import sys
 import os
@@ -11,7 +11,7 @@ from html.parser import HTMLParser
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HTML_FILES = ["index.html", "mentor.html", "venue.html", "news.html", "contact.html"]
-LANGS = ["ja", "en", "pt", "vi"]
+LANGS = ["ja", "en", "pt", "vi", "es", "zh", "id"]
 
 
 class I18nParser(HTMLParser):
@@ -65,35 +65,12 @@ def extract_html_keys(filepath):
     return parser.keys  # {key: (default_text, is_html)}
 
 
-def parse_i18n_js(filepath):
-    with open(filepath, encoding="utf-8") as f:
-        src = f.read()
-    sections = {}
-    for lang in LANGS:
-        # Find "  ja: {" style section inside const T = { ... }
-        pattern = rf"^\s+{lang}\s*:\s*\{{(.*?)\n\s+\}}[,\n]"
-        m = re.search(pattern, src, re.DOTALL | re.MULTILINE)
-        if not m:
-            continue
-        block = m.group(1)
-        keys = {}
-        # Single-quoted key + backtick value
-        for km in re.finditer(r"'([^']+)'\s*:\s*`(.*?)`", block, re.DOTALL):
-            keys[km.group(1)] = km.group(2).strip()
-        # Single-quoted key + single-quoted value
-        for km in re.finditer(r"'([^']+)'\s*:\s*'((?:[^'\\]|\\.)*)'", block):
-            if km.group(1) not in keys:
-                keys[km.group(1)] = km.group(2).strip()
-        # Single-quoted key + double-quoted value (e.g. value contains apostrophe)
-        for km in re.finditer(r"'([^']+)'\s*:\s*\"((?:[^\"\\]|\\.)*)\"", block):
-            if km.group(1) not in keys:
-                keys[km.group(1)] = km.group(2).strip()
-        # Double-quoted key + double-quoted value
-        for km in re.finditer(r'"([^"]+)"\s*:\s*"((?:[^"\\]|\\.)*)"', block):
-            if km.group(1) not in keys:
-                keys[km.group(1)] = km.group(2).strip()
-        sections[lang] = keys
-    return sections
+def load_lang_json(lang):
+    path = os.path.join(BASE, "i18n", f"{lang}.json")
+    if not os.path.exists(path):
+        return None
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
 
 
 def normalize(s):
@@ -101,15 +78,24 @@ def normalize(s):
 
 
 def main():
-    i18n_path = os.path.join(BASE, "i18n.js")
-    if not os.path.exists(i18n_path):
-        print("ERROR: i18n.js not found")
+    # Load ja.json as the reference
+    ja = load_lang_json("ja")
+    if ja is None:
+        print("ERROR: i18n/ja.json not found")
         sys.exit(1)
 
-    sections = parse_i18n_js(i18n_path)
-    missing_langs = [l for l in LANGS if l not in sections]
-    if missing_langs:
-        print(f"ERROR: Could not parse language sections: {missing_langs}")
+    # Load all language JSON files
+    sections = {}
+    missing_files = []
+    for lang in LANGS:
+        data = load_lang_json(lang)
+        if data is None:
+            missing_files.append(lang)
+        else:
+            sections[lang] = data
+
+    if missing_files:
+        print(f"ERROR: Missing language JSON files: {missing_files}")
         sys.exit(1)
 
     all_html_keys = {}  # key -> (default_text, is_html, source_file)
@@ -130,7 +116,7 @@ def main():
             if key not in sections[lang]:
                 issues.append(f"MISSING  [{lang}] '{key}'  (used in {all_html_keys[key][2]})")
 
-    # Check HTML ja default text vs i18n.js ja value (text-only keys)
+    # Check HTML ja default text vs ja.json value (text-only keys)
     for key, (html_text, is_html, fname) in sorted(all_html_keys.items()):
         if is_html:
             continue  # skip data-i18n-html, markup differences are expected
@@ -144,7 +130,7 @@ def main():
             issues.append(
                 f"MISMATCH '{key}'\n"
                 f"  HTML default : {html_stripped[:120]}\n"
-                f"  i18n.js [ja] : {ja_val[:120]}"
+                f"  i18n/ja.json : {ja_val[:120]}"
             )
 
     if issues:

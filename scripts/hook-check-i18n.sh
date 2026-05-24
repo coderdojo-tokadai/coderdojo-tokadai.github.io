@@ -11,7 +11,7 @@ FILE_PATH=$(echo "$INPUT" | python3 -c "import sys,json; d=json.load(sys.stdin);
 
 # Only run for .html and i18n.js files
 case "$FILE_PATH" in
-  *.html|*/i18n.js|*i18n.js) ;;
+  *.html|*/i18n.js|*i18n.js|*/i18n/*.json) ;;
   *) exit 0 ;;
 esac
 

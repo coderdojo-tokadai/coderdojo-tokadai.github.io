@@ -24,8 +24,8 @@ const EVENTS = [
     tbd:         true,            // 日程未定: true / 日程確定: false
     date:        null,            // 確定したら 'YYYY-MM-DD' 形式で設定
     dayOfWeek:   null,            // 確定したら曜日を設定（例: '日'）
-    startTime:   '13:00',
-    endTime:     '16:00',
+    startTime:   '13:30',
+    endTime:     '15:30',
     seasonEmoji: '🌸',
     monthLabel:  '次回',
     venue:       '小牧市東部の公共施設（予定）',

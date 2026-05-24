@@ -81,8 +81,8 @@ EVENTS 配列の先頭（コメント行の直下）に新しい項目を追加�
     tbd:         true,
     date:        null,
     dayOfWeek:   null,
-    startTime:   '13:00',
-    endTime:     '16:00',
+    startTime:   '13:30',
+    endTime:     '15:30',
     seasonEmoji: '🌿',   ← 季節に合わせて変更（下記参照）
     monthLabel:  '次回',
     venue:       '小牧市東部の公共施設（予定）',

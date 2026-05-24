@@ -288,11 +288,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (a.getAttribute('href') === page) a.classList.add('active');
   });
 
-  /* ── Scroll-reveal (fade-in) ─────────────── */
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  /* ── Scroll-reveal (fade-in) — disabled; elements visible by default ── */
+  document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
 
   /* ── Floating petals / particles ─────────── */
   const wrap = document.getElementById('petalWrap');

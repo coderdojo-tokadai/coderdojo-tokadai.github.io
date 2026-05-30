@@ -1,4 +1,4 @@
-/* ─── CoderDojo 桃花台 — i18n runtime ─── */
+/* ─── 桃花台コードクラブ — i18n runtime ─── */
 const LANG_LABELS = { ja:'日本語', en:'English', pt:'Português', vi:'Tiếng Việt', es:'Español', zh:'中文', id:'Bahasa Indonesia' };
 const LANG_FLAGS  = { ja:'🇯🇵', en:'🇬🇧', pt:'🇧🇷', vi:'🇻🇳', es:'🇪🇸', zh:'🇨🇳', id:'🇮🇩' };
 

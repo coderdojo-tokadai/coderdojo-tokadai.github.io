@@ -1,5 +1,5 @@
 /* ============================================================
-   CoderDojo 桃花台 — events.js  【開催予定 管理ファイル】
+   桃花台コードクラブ — events.js  【開催予定 管理ファイル】
 
    ▼ 日程が決まったら
      1. tbd: false に変更
@@ -70,7 +70,7 @@ function populateNextEvent() {
   const timeStr = isTbd ? '―'       : `${ev.startTime} 〜 ${ev.endTime}`;
 
   const fill = {
-    'title':        `${ev.seasonEmoji} ${ev.monthLabel}のCoderDojo 桃花台`,
+    'title':        `${ev.seasonEmoji} ${ev.monthLabel}の桃花台コードクラブ`,
     'date':         isTbd ? '📅 日程未定'                      : `📅 ${dateStr}`,
     'time':         isTbd ? '🕐 ―'                             : `🕐 ${timeStr}`,
     'venue':        `📍 ${ev.venue}`,

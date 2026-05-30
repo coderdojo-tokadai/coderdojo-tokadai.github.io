@@ -1,5 +1,5 @@
 /* ============================================
-   CoderDojo 桃花台 — script.js
+   桃花台コードクラブ — script.js
    ============================================ */
 
 /* ── Time-of-day detection ───────────────────── */
@@ -66,7 +66,7 @@ function applyTimeTheme() {
   // バッジ絵文字（昼は季節バッジを優先）
   if (tcfg.badgeEmoji) {
     const badge = document.getElementById('heroBadge');
-    if (badge) badge.textContent = tcfg.badgeEmoji + ' CoderDojo 桃花台 — Tokadai';
+    if (badge) badge.textContent = tcfg.badgeEmoji + ' 桃花台コードクラブ — Tokadai';
   }
 
   // h1 アクセントカラー
@@ -126,7 +126,7 @@ const SEASON = getSeason();
 const SEASON_CONFIG = {
   spring: {
     heroGradient:    'linear-gradient(155deg,#87CEEB 0%,#B8E4F0 30%,#FFD4C2 65%,#FF9A7B 100%)',
-    badge:           '🌸 CoderDojo 桃花台 — Tokadai',
+    badge:           '🌸 桃花台コードクラブ — Tokadai',
     petals: {
       colors:        ['#FFB6C1','#FFD4C2','#FFE4E1','#FFCCE4','#FFAAB5','#FFDDE4'],
       count:         22,
@@ -142,7 +142,7 @@ const SEASON_CONFIG = {
   },
   summer: {
     heroGradient:    'linear-gradient(155deg,#1565C0 0%,#42A5F5 30%,#A5D6A7 65%,#4CAF50 100%)',
-    badge:           '🌿 CoderDojo 桃花台 — Tokadai',
+    badge:           '🌿 桃花台コードクラブ — Tokadai',
     petals: {
       colors:        ['rgba(255,255,200,.7)','rgba(255,230,100,.5)','rgba(200,255,200,.5)','rgba(255,255,255,.4)'],
       count:         14,
@@ -158,7 +158,7 @@ const SEASON_CONFIG = {
   },
   autumn: {
     heroGradient:    'linear-gradient(155deg,#263238 0%,#546E7A 30%,#BF360C 65%,#E65100 100%)',
-    badge:           '🍂 CoderDojo 桃花台 — Tokadai',
+    badge:           '🍂 桃花台コードクラブ — Tokadai',
     petals: {
       colors:        ['#FF6F00','#E65100','#BF360C','#D84315','#F57F17','#FF8F00'],
       count:         22,
@@ -174,7 +174,7 @@ const SEASON_CONFIG = {
   },
   winter: {
     heroGradient:    'linear-gradient(155deg,#1A237E 0%,#3949AB 30%,#B3E5FC 65%,#E3F2FD 100%)',
-    badge:           '❄️ CoderDojo 桃花台 — Tokadai',
+    badge:           '❄️ 桃花台コードクラブ — Tokadai',
     petals: {
       colors:        ['#FFFFFF','#E3F2FD','#BBDEFB','#E1F5FE','#F8FBFF'],
       count:         30,

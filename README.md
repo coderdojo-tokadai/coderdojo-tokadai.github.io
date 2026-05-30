@@ -1,6 +1,6 @@
-# CoderDojo 桃花台 (Tokadai)
+# 桃花台コードクラブ (Tokadai)
 
-桃花台 周辺エリア（小牧市東部・春日井市・高蔵寺）の子どもたちのための無料プログラミングクラブ、**CoderDojo 桃花台**の公式ウェブサイトです。
+桃花台 周辺エリア（小牧市東部・春日井市・高蔵寺）の子どもたちのための無料プログラミングクラブ、**桃花台コードクラブ**の公式ウェブサイトです。
 
 ## 概要
 
@@ -87,4 +87,4 @@ python3 scripts/check-i18n.py
 
 ## ライセンス
 
-© 2026 CoderDojo 桃花台 (Tokadai). Powered by volunteers. 🌸
+© 2026 桃花台コードクラブ (Tokadai). Powered by volunteers. 🌸

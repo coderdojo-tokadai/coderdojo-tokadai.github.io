@@ -1,8 +1,8 @@
-# CoderDojo Tokadai — Project Guide for Claude
+# Tokadai Code Club — Project Guide for Claude
 
 ## Project Overview
 
-Static HTML website for **CoderDojo Tokadai** (桃花台), a free programming club for children aged 7–17 in the Tokadai area (eastern Komaki, Kasugai, Kozoji). Activities are planned to launch summer 2026.
+Static HTML website for **Tokadai Code Club** (桃花台), a free programming club for children aged 7–17 in the Tokadai area (eastern Komaki, Kasugai, Kozoji). Activities are planned to launch summer 2026.
 
 ## File Structure
 

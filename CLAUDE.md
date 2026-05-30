@@ -15,12 +15,13 @@ mentor.html     Mentor recruitment page
 style.css       Shared stylesheet (rarely needs editing)
 script.js       Runtime JS: animations, season effects, form handling
 events.js       ★ Event schedule data — update this for every new session
-i18n.js         ★ Multilingual text — update when adding/changing UI text
-favicon*.svg    Page-specific favicons
+i18n.js         Multilingual runtime (language switch & apply; no text lives here)
+i18n/           ★ Per-language UI text — *.json for ja, en, pt, vi, es, zh, id
+favicon*/logo*  Page-specific favicons & logo (SVG / PNG)
 運用方法.txt    Operations guide (Japanese)
 scripts/
   check-i18n.py       i18n consistency checker
-  hook-check-i18n.sh  Pre-edit hook that runs check-i18n.py automatically
+  hook-check-i18n.sh  Post-edit (PostToolUse) hook that runs check-i18n.py automatically
 .claude/
   settings.json       Hook configuration
 ```
@@ -34,15 +35,15 @@ scripts/
 - 15:10–15:25 — Showcase & share
 - 15:30 — End / Mentor reflection
 
-Frequency: once a month, on a Sunday.
+Held on a Sunday.
 
 ## Key Rules
 
 ### Always update events.js for schedule changes
 `events.js` is the single source of truth for the next session. All pages pull from it via `data-ev` attributes. Set `tbd: false` and fill in `date`, `dayOfWeek`, `connpassUrl` when the session is confirmed.
 
-### i18n.js is the single source of truth for UI text
-All translatable text lives in `i18n.js` under keys `ja`, `en`, `pt`, `vi`, `es`, `zh`. Whenever you add a `data-i18n` or `data-i18n-html` attribute to HTML, add the corresponding key to **all six** language sections. The HTML element's text content must match `i18n.js[ja]` exactly (verified by the pre-edit hook).
+### i18n/*.json is the single source of truth for UI text
+All translatable text lives in `i18n/<lang>.json` — one file per language: `ja`, `en`, `pt`, `vi`, `es`, `zh`, `id`. Whenever you add a `data-i18n` or `data-i18n-html` attribute to HTML, add the corresponding key to **all seven** language files. The HTML element's text content must match `i18n/ja.json` exactly (verified by the post-edit hook).
 
 ### Running the i18n check manually
 ```bash
@@ -54,7 +55,7 @@ Expected output: `i18n check: OK — all keys present and ja defaults match`
 - `venue.html` — address, map iframe src
 - `news.html` — individual article bodies (not i18n-ized)
 
-Edit these files directly without touching i18n.js.
+Edit these files directly without touching the `i18n/` files.
 
 ### contact.html has a hard-coded time string
 The "next session" reminder box inside `contact.html` contains a plain-text time string (not `data-ev` or `data-i18n`). Update it manually when the session time changes.
@@ -69,6 +70,7 @@ The "next session" reminder box inside `contact.html` contains a plain-text time
 | vi   | Vietnamese |
 | es   | Spanish    |
 | zh   | Chinese (Simplified) |
+| id   | Indonesian |
 
 ## Common Tasks
 
@@ -80,7 +82,7 @@ The "next session" reminder box inside `contact.html` contains a plain-text time
 Open `news.html`, add an `<article class="news-card ...">` block at the top of `#newsList`. See `運用方法.txt` §2 for the template.
 
 ### Change UI text
-Edit the relevant key in `i18n.js` across all six language sections. Run `python3 scripts/check-i18n.py` to confirm.
+Edit the relevant key in each `i18n/<lang>.json` (all seven languages). Run `python3 scripts/check-i18n.py` to confirm.
 
 ### Update venue details
 Edit `venue.html` directly (address `<dd>`, map `<iframe src="...">`).

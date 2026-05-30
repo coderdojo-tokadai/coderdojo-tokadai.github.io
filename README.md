@@ -1,6 +1,6 @@
 # 桃花台コードクラブ (Tokadai)
 
-桃花台 周辺エリア（小牧市東部・春日井市・高蔵寺）の子どもたちのための無料プログラミングクラブ、**桃花台コードクラブ**の公式ウェブサイトです。
+桃花台 周辺エリア（小牧市東部・春日井市・高蔵寺）の子どもたちのための無料プログラミング・クラブ、**桃花台コードクラブ**の公式ウェブサイトです。
 
 ## 概要
 
@@ -8,30 +8,33 @@
 |------|------|
 | 対象 | 7〜17歳のお子さん |
 | 参加費 | 無料 |
-| 開催日 | 月1回、いずれかの日曜日 |
+| 開催日 | いずれかの日曜日 |
 | 時間 | 13:30 〜 15:30（2時間） |
-| 場所 | 小牧市東部の公共施設（2026年夏以降開始予定） |
+| 場所 | 小牧市東部市民センター 2F 学習室（2026年夏以降開始予定） |
 | 開催エリア | 桃花台 周辺（小牧市東部・春日井市・高蔵寺） |
 
 ## 技術仕様
 
 - 静的 HTML / CSS / JavaScript（フレームワーク不使用）
-- 多言語対応：日本語・英語・ポルトガル語・ベトナム語・スペイン語・中国語（簡体字）
+- 多言語対応：日本語・英語・ポルトガル語・ベトナム語・スペイン語・中国語（簡体字）・インドネシア語
 - 季節別ヒーロービジュアル（春・夏・秋・冬で自動切替）
 
 ## ファイル構成
 
 ```
-index.html      トップページ
-news.html       お知らせ一覧
-venue.html      開催場所・アクセス
-contact.html    お問い合わせ・参加申込み
-mentor.html     メンター募集
-style.css       スタイルシート
-script.js       動作スクリプト
-events.js       開催予定管理（定期更新）
-i18n.js         多言語テキスト管理
-運用方法.txt    運用マニュアル
+index.html        トップページ
+news.html         お知らせ一覧
+venue.html        開催場所・アクセス
+contact.html      お問い合わせ・参加申込み
+mentor.html       メンター募集
+style.css         スタイルシート
+script.js         動作スクリプト（アニメーション・季節演出・フォーム）
+events.js         開催予定管理（定期更新）
+i18n.js           多言語ランタイム（言語切替・適用）
+i18n/             言語別テキスト（ja・en・pt・vi・es・zh・id の JSON）
+favicon*/logo*    ページ別ファビコン・ロゴ（SVG / PNG）
+scripts/          i18n チェック・フック
+運用方法.txt      運用マニュアル
 ```
 
 ## 開催予定の更新方法
@@ -48,7 +51,7 @@ i18n.js         多言語テキスト管理
   endTime:     '15:30',
   seasonEmoji: '🌿',
   monthLabel:  '9月',
-  venue:       '小牧市東部の公共施設',
+  venue:       '小牧市東部市民センター2F 学習室',
   connpassUrl: 'https://connpass.com/event/xxxxxxx/',
   notes:       '',
 },
@@ -69,7 +72,7 @@ python3 -m http.server 8000
 
 ## i18n チェック
 
-HTML と `i18n.js` の整合性を確認します。
+HTML と `i18n/*.json`（`ja.json` を基準）の整合性を確認します。
 
 ```bash
 python3 scripts/check-i18n.py
@@ -78,12 +81,7 @@ python3 scripts/check-i18n.py
 ## Claude Code を使う場合
 
 `CLAUDE.md`（英語）または `CLAUDE.ja.md`（日本語）を参照してください。  
-`.html` または `i18n.js` を編集すると i18n チェックが自動実行されます。
-
-## リンク
-
-- [CoderDojo 公式](https://coderdojo.com)
-- [CoderDojo Japan](https://coderdojo.jp)
+`.html`・`i18n.js`・`i18n/*.json` を編集すると i18n チェックが自動実行されます。
 
 ## ライセンス
 

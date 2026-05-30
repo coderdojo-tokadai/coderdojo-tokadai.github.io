@@ -693,7 +693,16 @@ section { padding:5rem 0; }
 @media (max-width:900px) {
   .nav-links { display:none; }
   .nav-toggle { display:flex; margin-left:auto; }
-  .brand-tagline { display:none; }
+  /* Show the desktop-style 2-line title (tagline + brand name) on mobile too. */
+  .nav-inner { height:auto; min-height:68px; padding-top:.5rem; padding-bottom:.5rem; gap:.6rem; }
+  .nav-logo { flex-shrink:1; min-width:0; gap:.55rem; }
+  .nav-logo .logo-svg { width:36px; height:36px; }
+  .nav-logo-text { min-width:0; line-height:1.3; }
+  .brand-tagline {
+    display:block; white-space:normal; overflow-wrap:anywhere;
+    font-size:.76rem; line-height:1.25;
+  }
+  .nav-logo-text strong { font-size:.8rem; }
   .about-grid,.venue-info-grid,.contact-grid { grid-template-columns:1fr; }
   .features-grid { grid-template-columns:1fr 1fr; }
   .access-cards { grid-template-columns:1fr 1fr; }

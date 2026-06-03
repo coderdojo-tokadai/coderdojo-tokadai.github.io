@@ -724,7 +724,7 @@ section { padding:5rem 0; }
   .news-date { display:flex; align-items:center; gap:.6rem; text-align:left; }
   .news-date .day { font-size:1.5rem; }
   .hero { min-height:68vh; }
-  .hero-content { padding:2.25rem 1.5rem 9rem; }
+  .hero-content { padding:1.25rem 1.5rem 9rem; }
   .form-row { grid-template-columns:1fr; }
   .volunteer-cards { grid-template-columns:1fr !important; }
 }

@@ -21,15 +21,15 @@ const EVENTS = [
 
   {
     id:          24,
-    tbd:         true,            // 日程未定: true / 日程確定: false
-    date:        null,            // 確定したら 'YYYY-MM-DD' 形式で設定
-    dayOfWeek:   null,            // 確定したら曜日を設定（例: '日'）
+    tbd:         false,            // 日程未定: true / 日程確定: false
+    date:        '2026-08-30',            // 確定したら 'YYYY-MM-DD' 形式で設定
+    dayOfWeek:   '日',            // 確定したら曜日を設定（例: '日'）
     startTime:   '13:30',
     endTime:     '15:30',
-    seasonEmoji: '🌸',
+    seasonEmoji: '🌿',
     monthLabel:  '次回',
     venue:       '小牧市東部市民センター2F 学習室',
-    connpassUrl: null,            // 確定したら connpass URL を設定
+    connpassUrl: 'https://tokadai-code-club.connpass.com/event/396549/',            // 確定したら connpass URL を設定
     notes:       '',
   },
 

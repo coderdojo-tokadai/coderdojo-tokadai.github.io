@@ -324,6 +324,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ── 種別「参加申込み」を選んだらお知らせページを案内 ── */
+  const typeSelect = document.getElementById('type');
+  const joinNotice = document.getElementById('joinNotice');
+  if (typeSelect && joinNotice) {
+    const toggleJoinNotice = () => {
+      joinNotice.style.display = typeSelect.value === '参加申込み' ? '' : 'none';
+    };
+    typeSelect.addEventListener('change', toggleJoinNotice);
+    toggleJoinNotice();
+  }
+
   /* ── Contact form ────────────────────────── */
   const form    = document.getElementById('contactForm');
   const success = document.getElementById('formSuccess');

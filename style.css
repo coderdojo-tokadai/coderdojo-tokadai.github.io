@@ -98,6 +98,30 @@ section { padding:5rem 0; }
   border-radius:999px !important; margin-left:.5rem;
 }
 .nav-cta:hover { transform:translateY(-1px); box-shadow:0 4px 16px rgba(255,78,139,.35) !important; }
+/* 申し込み（connpass）— 受付中を強調するグリーンの塗りピル */
+.nav-links a.nav-apply {
+  background:linear-gradient(135deg,var(--green),var(--green-dark)) !important;
+  color:var(--white) !important; font-weight:700;
+  padding:.5rem 1.1rem !important; border-radius:999px !important;
+  box-shadow:0 2px 10px rgba(82,183,136,.35);
+  animation:applyPulse 2s ease-in-out infinite;
+}
+.nav-links a.nav-apply:hover {
+  background:linear-gradient(135deg,var(--green),var(--green-dark)) !important;
+  color:var(--white) !important; transform:translateY(-1px);
+  box-shadow:0 4px 18px rgba(82,183,136,.5);
+}
+@keyframes applyPulse {
+  0%,100% { box-shadow:0 2px 10px rgba(82,183,136,.35); }
+  50%     { box-shadow:0 2px 16px rgba(82,183,136,.7); }
+}
+@media (prefers-reduced-motion:reduce) { .nav-links a.nav-apply { animation:none; } }
+.nav-mobile a.nav-apply {
+  text-align:center; font-weight:700; margin-top:.5rem;
+  background:linear-gradient(135deg,var(--green),var(--green-dark)) !important;
+  color:var(--white) !important; border-radius:999px; padding:.8rem;
+}
+.nav-mobile a.nav-apply:hover { background:linear-gradient(135deg,var(--green),var(--green-dark)) !important; color:var(--white) !important; }
 
 /* ── Language switcher ── */
 .lang-switcher {

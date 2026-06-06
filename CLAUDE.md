@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Static HTML website for **Tokadai Code Club** (桃花台), a free programming club for children aged 7–17 in the Tokadai area (eastern Komaki, Kasugai, Kozoji). Activities are planned to launch summer 2026.
+Static HTML website for **Tokadai Code Club** (桃花台), a free programming club for elementary through high school children (小学生〜高校生) in the Tokadai area (eastern Komaki, Kasugai, Kozoji). The kickoff "preparatory meeting" (第0回 準備会) is set for 2026-08-30.
 
 ## File Structure
 
@@ -40,7 +40,7 @@ Held on a Sunday.
 ## Key Rules
 
 ### Always update events.js for schedule changes
-`events.js` is the single source of truth for the next session. All pages pull from it via `data-ev` attributes. Set `tbd: false` and fill in `date`, `dayOfWeek`, `connpassUrl` when the session is confirmed.
+`events.js` is the single source of truth for the next session. All pages pull from it via `data-ev` attributes — never hard-code a date/venue/status string in HTML or i18n. To confirm a session, set `tbd: false` and fill in `date`, `startTime`/`endTime`, `venue`, `connpassUrl`. Day-of-week, season emoji, and the "○月" label are auto-derived from `date`. Optional fields (`label`, `kind`, `audience`, `capacity`, `fee`, `deadline`/`deadlineTime`, `summary`) render automatically where present and are omitted when blank.
 
 ### i18n/*.json is the single source of truth for UI text
 All translatable text lives in `i18n/<lang>.json` — one file per language: `ja`, `en`, `pt`, `vi`, `es`, `zh`, `id`. Whenever you add a `data-i18n` or `data-i18n-html` attribute to HTML, add the corresponding key to **all seven** language files. The HTML element's text content must match `i18n/ja.json` exactly (verified by the post-edit hook).
@@ -57,8 +57,8 @@ Expected output: `i18n check: OK — all keys present and ja defaults match`
 
 Edit these directly. Exception: the venue address lives in all seven `i18n/*.json` (`venue-dd-address`), not in `venue.html`.
 
-### contact.html has a hard-coded time string
-The "next session" reminder box inside `contact.html` contains a plain-text time string (not `data-ev` or `data-i18n`). Update it manually when the session time changes.
+### Event facts are data-ev driven (no hard-coded dates)
+The "next session" boxes on `index.html`, `contact.html`, `venue.html`, and `news.html` render date/time/venue/status from `events.js` via `data-ev` (e.g. `status-line`, `date-short`, `date-text`, `deadline`, `audience`). The HTML text is only a no-JS fallback. Change the event in `events.js`, not the page text.
 
 ## Supported Languages
 
@@ -76,7 +76,7 @@ The "next session" reminder box inside `contact.html` contains a plain-text time
 
 ### Update the next session date
 1. Open `events.js`
-2. Set `tbd: false`, fill in `date` (`YYYY-MM-DD`), `dayOfWeek`, `connpassUrl`
+2. Set `tbd: false`, fill in `date` (`YYYY-MM-DD`), `startTime`/`endTime`, `venue`, `connpassUrl` (day-of-week & season auto-derived; add optional `label`/`audience`/`deadline`/etc. as needed)
 
 ### Add a news article
 Open `news.html`, add an `<article class="news-card ...">` block at the top of `#newsList`. See `運用方法.md` §2 for the template.

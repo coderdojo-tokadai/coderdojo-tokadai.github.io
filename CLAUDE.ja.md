@@ -19,7 +19,7 @@ events.js       ★ 開催予定管理ファイル（毎回の開催前に更新
 i18n.js         多言語ランタイム（言語切替・適用。テキストは含まない）
 i18n/           ★ 言語別 UI テキスト — ja・en・pt・vi・es・zh・id の *.json
 favicon*/logo*  ページ別ファビコン・ロゴ（SVG / PNG）
-運用方法.txt    運用方法の解説書（この文書より詳細）
+運用方法.md    運用方法の解説書（この文書より詳細）
 scripts/
   check-i18n.py       i18n 整合性チェックスクリプト
   hook-check-i18n.sh  編集後（PostToolUse）に check-i18n.py を自動実行するフック
@@ -57,10 +57,10 @@ python3 scripts/check-i18n.py
 正常時の出力: `i18n check: OK — all keys present and ja defaults match`
 
 ### venue.html と news.html はHTML直書き部分あり
-- `venue.html` — 住所・地図 iframe の src
-- `news.html` — 各記事の本文（多言語化されていない）
+- `venue.html` — 地図 iframe の src（住所は i18n 管理。キー `venue-dd-address`）
+- `news.html` — 各記事の本文（新規記事は多言語化対象外。直接編集する）
 
-これらは `i18n/*.json` ではなく HTML ファイルを直接編集する。
+これらは HTML ファイルを直接編集する。ただし**例外**として開催場所の住所は `venue.html` ではなく全7言語の `i18n/*.json`（`venue-dd-address`）を編集する。
 
 ### contact.html には時間の直書きあり
 contact.html 内「次回開催」リマインダーボックスに `data-ev` も `data-i18n` も使わない平文の時間文字列がある。  
@@ -86,14 +86,15 @@ contact.html 内「次回開催」リマインダーボックスに `data-ev` �
 
 ### お知らせ記事を追加する
 `news.html` の `#newsList` 最上部に `<article class="news-card ...">` ブロックを追加。  
-テンプレートは `運用方法.txt` の §2 を参照。
+テンプレートは `運用方法.md` の §2 を参照。
 
 ### UI テキストを変更する
 各 `i18n/<lang>.json` の該当キーを全7言語で編集。  
 `python3 scripts/check-i18n.py` でエラーなしを確認。
 
 ### 開催場所の情報を更新する
-`venue.html` を直接編集（住所 `<dd>`・地図 `<iframe src="...">`）。
+- 住所：全7言語の `i18n/*.json` の `venue-dd-address` を編集し、i18n チェックを実行。
+- 地図：`venue.html` の `<iframe src="...">` を直接編集。
 
 ## 自動チェックの仕組み
 

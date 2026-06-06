@@ -18,7 +18,7 @@ events.js       ★ Event schedule data — update this for every new session
 i18n.js         Multilingual runtime (language switch & apply; no text lives here)
 i18n/           ★ Per-language UI text — *.json for ja, en, pt, vi, es, zh, id
 favicon*/logo*  Page-specific favicons & logo (SVG / PNG)
-運用方法.txt    Operations guide (Japanese)
+運用方法.md    Operations guide (Japanese)
 scripts/
   check-i18n.py       i18n consistency checker
   hook-check-i18n.sh  Post-edit (PostToolUse) hook that runs check-i18n.py automatically
@@ -52,10 +52,10 @@ python3 scripts/check-i18n.py
 Expected output: `i18n check: OK — all keys present and ja defaults match`
 
 ### venue.html and news.html have hard-coded content
-- `venue.html` — address, map iframe src
-- `news.html` — individual article bodies (not i18n-ized)
+- `venue.html` — map iframe src (the address is i18n-managed via the `venue-dd-address` key)
+- `news.html` — individual article bodies (new articles are not i18n-ized; edit directly)
 
-Edit these files directly without touching the `i18n/` files.
+Edit these directly. Exception: the venue address lives in all seven `i18n/*.json` (`venue-dd-address`), not in `venue.html`.
 
 ### contact.html has a hard-coded time string
 The "next session" reminder box inside `contact.html` contains a plain-text time string (not `data-ev` or `data-i18n`). Update it manually when the session time changes.
@@ -79,10 +79,11 @@ The "next session" reminder box inside `contact.html` contains a plain-text time
 2. Set `tbd: false`, fill in `date` (`YYYY-MM-DD`), `dayOfWeek`, `connpassUrl`
 
 ### Add a news article
-Open `news.html`, add an `<article class="news-card ...">` block at the top of `#newsList`. See `運用方法.txt` §2 for the template.
+Open `news.html`, add an `<article class="news-card ...">` block at the top of `#newsList`. See `運用方法.md` §2 for the template.
 
 ### Change UI text
 Edit the relevant key in each `i18n/<lang>.json` (all seven languages). Run `python3 scripts/check-i18n.py` to confirm.
 
 ### Update venue details
-Edit `venue.html` directly (address `<dd>`, map `<iframe src="...">`).
+- Address: edit `venue-dd-address` in all seven `i18n/*.json`, then run the i18n check.
+- Map: edit the `<iframe src="...">` in `venue.html` directly.

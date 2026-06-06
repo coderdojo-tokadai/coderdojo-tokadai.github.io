@@ -205,6 +205,12 @@ section { padding:5rem 0; }
   box-shadow:0 4px 24px rgba(0,0,0,.15);
 }
 .btn-white:hover { box-shadow:0 8px 32px rgba(0,0,0,.22); }
+/* connpass 申込ボタン（cta-apply）— ヘッダーと同じグリーン配色に統一 */
+.btn[data-i18n="cta-apply"] {
+  background:linear-gradient(135deg,var(--green),var(--green-dark)) !important;
+  color:var(--white) !important; box-shadow:0 4px 20px rgba(82,183,136,.35) !important;
+}
+.btn[data-i18n="cta-apply"]:hover { box-shadow:0 8px 28px rgba(82,183,136,.5) !important; }
 
 /* ── Hero ────────────────────────────────── */
 .hero {

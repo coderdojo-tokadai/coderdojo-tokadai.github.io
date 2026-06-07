@@ -57,7 +57,7 @@ h3 { font-size:clamp(1.1rem,2vw,1.5rem); }
 
 /* ── Layout ──────────────────────────────── */
 .container { max-width:1100px; margin:0 auto; padding:0 1.5rem; }
-section { padding:5rem 0; }
+section { padding:3.25rem 0; }
 
 /* ── Navigation ──────────────────────────── */
 .nav {
@@ -368,7 +368,7 @@ section { padding:5rem 0; }
 }
 
 /* ── Section header ──────────────────────── */
-.section-header { text-align:center; margin-bottom:3rem; }
+.section-header { text-align:center; margin-bottom:2.25rem; }
 .section-header p { color:var(--text-light); max-width:540px; margin:.75rem auto 0; font-size:1.02rem; }
 
 /* ── About ───────────────────────────────── */
@@ -718,6 +718,21 @@ section { padding:5rem 0; }
   from { transform:scale(.45) translateY(10px); opacity:0; }
   to   { transform:scale(1)   translateY(0);    opacity:1; }
 }
+
+/* ── Instagram section ───────────────────── */
+.ig-section { background:linear-gradient(180deg,#FFF5FB,#FFFBF7); }
+.ig-label {
+  background:linear-gradient(135deg,rgba(245,133,41,.14),rgba(221,42,123,.14),rgba(129,52,175,.14));
+  color:#C13584;
+}
+.ig-follow-wrap { text-align:center; }
+.ig-follow-btn {
+  background:linear-gradient(135deg,#F58529,#DD2A7B,#8134AF,#515BD4);
+  color:#fff;
+  box-shadow:0 6px 22px rgba(221,42,123,.32);
+}
+.ig-follow-btn:hover { box-shadow:0 10px 30px rgba(221,42,123,.42); }
+
 @media (max-width:900px) {
   .mascot-wrap { width:86px; bottom:1.25rem; right:1.25rem; }
   .mascot-bubble { font-size:.7rem; padding:.35rem .75rem; }
@@ -759,7 +774,7 @@ section { padding:5rem 0; }
   .launch-notice-inner p { min-width:unset; text-align:center; }
 }
 @media (max-width:600px) {
-  section { padding:3.5rem 0; }
+  section { padding:2.5rem 0; }
   .features-grid,.access-cards,.stats-grid { grid-template-columns:1fr; }
   .curriculum-grid { grid-template-columns:1fr; }
   .footer-top { grid-template-columns:1fr; }

@@ -211,6 +211,19 @@ section { padding:5rem 0; }
   color:var(--white) !important; box-shadow:0 4px 20px rgba(82,183,136,.35) !important;
 }
 .btn[data-i18n="cta-apply"]:hover { box-shadow:0 8px 28px rgba(82,183,136,.5) !important; }
+/* ヒーローの「ニンジャとして参加」「メンターになる」— 桃色背景（若干区別） */
+.btn[data-i18n="hero-btn-join"] {
+  background:linear-gradient(135deg,var(--peach),var(--pink)) !important;
+  color:var(--white) !important; border:none !important;
+  box-shadow:0 4px 20px rgba(255,78,139,.30) !important;
+}
+.btn[data-i18n="hero-btn-join"]:hover { background:linear-gradient(135deg,var(--peach),var(--pink)) !important; box-shadow:0 8px 28px rgba(255,78,139,.45) !important; }
+.btn[data-i18n="hero-btn-more"] {
+  background:var(--white) !important; color:var(--pink) !important;
+  border:2px solid var(--peach-light) !important;
+  box-shadow:0 4px 20px rgba(255,122,92,.20) !important;
+}
+.btn[data-i18n="hero-btn-more"]:hover { background:var(--peach-pale) !important; box-shadow:0 8px 28px rgba(255,122,92,.30) !important; }
 
 /* ── Hero ────────────────────────────────── */
 .hero {

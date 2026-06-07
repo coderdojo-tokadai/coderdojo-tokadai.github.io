@@ -8,7 +8,7 @@
      date / startTime / endTime / venue / connpassUrl
    ▼ 任意項目（あれば表示、無ければ自動で省略）
      label    … 回の名称（例: '第0回 準備会'）。無ければ「○月の桃花台コードクラブ」
-     kind     … 'prep'（おとな向け準備会） / 'regular'（通常回）
+     kind     … 'prep'（準備会） / 'regular'（通常回）
      audience … 対象（例: 'おとな（メンター・サポーター候補・保護者）'）
      capacity … 定員（例: '約7名'）
      fee      … 参加費（例: '無料'）
@@ -36,10 +36,10 @@ const EVENTS = [
     connpassUrl: 'https://tokadai-code-club.connpass.com/event/396549/',
     deadline:    '2026-08-29',
     deadlineTime:'17:00',
-    audience:    'おとな（メンター・サポーター候補・保護者・地域の方）',
+    audience:    'おとな（メンター・サポーター候補・保護者・学生・地域の方）、子ども（参加に興味がある小学生〜高校生）',
     capacity:    '約7名',
     fee:         '無料',
-    summary:     '子どものためのプログラミング・クラブを一緒に立ち上げる、おとな向けの準備会です。',
+    summary:     '子どものためのプログラミング・クラブを一緒に立ち上げる準備会です。おとなも、参加に興味のある子どもも歓迎します。',
     notes:       '',
   },
   // ── ↑ ここまで ───────────────────────────────────────────── //

@@ -587,6 +587,13 @@ section { padding:3.25rem 0; }
 }
 .footer-links { display:flex; gap:1.5rem; }
 .footer-links a:hover { color:var(--peach-light); }
+.footer-credit {
+  margin-top:1.25rem; padding-top:1.25rem;
+  border-top:1px solid rgba(255,255,255,.08);
+  text-align:center; font-size:.76rem; opacity:.72;
+}
+.footer-credit a { text-decoration:underline; }
+.footer-credit a:hover { color:var(--peach-light); }
 
 /* ── Launch Notice Bar ──────────────────── */
 .launch-notice-bar {

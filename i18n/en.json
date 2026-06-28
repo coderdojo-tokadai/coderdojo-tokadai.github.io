@@ -20,7 +20,7 @@
   "hero-btn-join": "🚀 Join as a Ninja",
   "cta-apply": "🎟 Now accepting sign-ups on connpass!",
   "ev-status-cancelled-badge": "🚫 Cancelled",
-  "ev-status-cancelled-line": "The session has been cancelled due to {reason}. The next session is to be decided.",
+  "ev-status-cancelled-line": "The session on {date} has been cancelled due to {reason}. The next session is to be decided.",
   "ev-link-cancelled": "Cancelled",
   "ev-cancelled-title": "🚫 Session Cancelled",
   "ev-cancel-reason-admin": "administrative reasons",

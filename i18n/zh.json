@@ -20,7 +20,7 @@
   "hero-btn-join": "🚀 以忍者身份参加",
   "cta-apply": "🎟 connpass 报名受理中！",
   "ev-status-cancelled-badge": "🚫 已取消",
-  "ev-status-cancelled-line": "{date}的活动因{reason}已取消。下次开催时间待定。",
+  "ev-status-cancelled-line": "{date}的活动因{reason}已取消。下次活动时间待定。",
   "ev-link-cancelled": "已取消",
   "ev-cancelled-title": "🚫 活动取消通知",
   "ev-cancel-reason-admin": "管理方原因",

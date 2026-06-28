@@ -34,6 +34,9 @@ async function applyLang(lang) {
   const t = await loadLang(lang).catch(() => loadLang('ja'));
   document.documentElement.lang = lang;
   _applyTranslations(t);
+  // events.js から参照する現在の翻訳辞書を公開し、イベント表示の再描画を促す
+  window.__i18nDict = t;
+  document.dispatchEvent(new CustomEvent('i18n:applied', { detail: { lang, t } }));
   const display = document.getElementById('langDisplay');
   if (display) display.textContent = LANG_FLAGS[lang] + ' ' + LANG_LABELS[lang];
   document.querySelectorAll('.lang-option').forEach(btn => {

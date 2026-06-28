@@ -19,6 +19,11 @@
      （明示したい場合は dayOfWeek / seasonEmoji / monthLabel を書けば上書きされます）
    ▼ 日程が未定のとき
      tbd: true にして date は null のままでOK。
+   ▼ 開催を中止するとき
+     cancelled: true にする（+ cancelReason に理由。例: '管理者都合'）。
+     多言語表示するなら cancelReasonKey に i18n キー（例: 'ev-cancel-reason-admin'）も指定。
+     ステータスは自動で「開催中止」表示になり、申込リンクも無効化されます。
+     中止文言は i18n/*.json の ev-status-cancelled-* / ev-link-cancelled キーで翻訳されます。
    ============================================================ */
 
 const EVENTS = [
@@ -29,6 +34,9 @@ const EVENTS = [
     label:       '第0回 準備会',
     kind:        'prep',
     tbd:         false,
+    cancelled:   true,
+    cancelReason:'管理者都合',
+    cancelReasonKey:'ev-cancel-reason-admin',
     date:        '2026-08-30',
     startTime:   '13:30',
     endTime:     '15:30',
@@ -81,6 +89,12 @@ function decorateEvent(ev) {
   };
 }
 
+/* ── i18n ルックアップ（辞書未ロード時は fallback の日本語を使用） ── */
+function evT(key, fallback) {
+  const dict = (typeof window !== 'undefined') ? window.__i18nDict : null;
+  return (key && dict && dict[key] != null) ? dict[key] : fallback;
+}
+
 /* ── 次回イベント取得 ──────────────────────── */
 function getNextEvent() {
   if (!EVENTS.length) return null;
@@ -103,7 +117,8 @@ function populateNextEvent() {
   const ev = getNextEvent();
   if (!ev) return;
 
-  const isTbd   = ev.tbd || !ev.date;
+  const isTbd       = ev.tbd || !ev.date;
+  const isCancelled = !!ev.cancelled;
   const dateStr = isTbd ? '日程未定' : formatDateJa(ev.date, ev.dayOfWeek);
   const timeStr = isTbd ? '―'        : `${ev.startTime} 〜 ${ev.endTime}`;
   const heading = ev.label ? `${ev.seasonEmoji} ${ev.label}`
@@ -112,9 +127,15 @@ function populateNextEvent() {
     ? `${formatDateJa(ev.deadline)} ${ev.deadlineTime || ''}`.trim()
     : '';
 
-  // 開催状況（ステータス）— 確定済みかどうかで自動切替
-  const statusBadge = isTbd ? '🚀 準備中' : '🚀 開催決定';
-  const statusLine  = isTbd
+  // 開催状況（ステータス）— 中止／未定／確定済みで自動切替（中止文言は i18n 対応）
+  const reasonStr   = isCancelled ? evT(ev.cancelReasonKey, ev.cancelReason || '') : '';
+  const statusBadge = isCancelled ? evT('ev-status-cancelled-badge', '🚫 開催中止')
+                    : isTbd       ? '🚀 準備中'
+                                  : '🚀 開催決定';
+  const statusLine  = isCancelled
+    ? evT('ev-status-cancelled-line', '{date}の開催は{reason}により中止となりました。')
+        .replace('{date}', dateStr).replace('{reason}', reasonStr)
+    : isTbd
     ? '次回開催に向けて準備中です。'
     : `${heading} を ${dateStr} に開催します！`;
 
@@ -148,9 +169,15 @@ function populateNextEvent() {
     });
   });
 
-  // connpass リンク更新（URL 未設定なら「申込受付前」で無効化）
+  // connpass リンク更新（中止時は無効化／URL 未設定なら「申込受付前」で無効化）
   document.querySelectorAll('[data-ev="link"]').forEach(el => {
-    if (ev.connpassUrl) {
+    if (isCancelled) {
+      el.removeAttribute('href');
+      el.textContent         = evT('ev-link-cancelled', '開催中止');
+      el.style.opacity       = '.55';
+      el.style.pointerEvents = 'none';
+      el.style.cursor        = 'default';
+    } else if (ev.connpassUrl) {
       el.href                = ev.connpassUrl;
       el.style.opacity       = '';
       el.style.pointerEvents = '';
@@ -166,3 +193,5 @@ function populateNextEvent() {
 }
 
 document.addEventListener('DOMContentLoaded', populateNextEvent);
+// 言語切替後に再描画（i18n.js が翻訳適用後に発火）。中止文言・申込リンクを現在の言語へ更新。
+document.addEventListener('i18n:applied', populateNextEvent);

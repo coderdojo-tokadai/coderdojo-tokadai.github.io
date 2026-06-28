@@ -31,21 +31,18 @@ const EVENTS = [
   // ── ↓ 直近の開催（ここを編集） ───────────────────────────── //
   {
     id:          0,
-    label:       '第0回 準備会',
+    label:       '',          // 中止のため回名は非表示（表示は ev-cancelled-title）
     kind:        'prep',
     tbd:         false,
     cancelled:   true,
     cancelReason:'管理者都合',
     cancelReasonKey:'ev-cancel-reason-admin',
-    date:        '2026-08-30',
+    date:        '2026-08-30', // 直近回として判定するため残置（日時は画面に表示されません）
     startTime:   '13:30',
     endTime:     '15:30',
     venue:       '未定',
     connpassUrl: 'https://tokadai-code-club.connpass.com/event/396549/',
-    audience:    'おとな（メンター・サポーター候補・保護者・学生・地域の方）、子ども（参加に興味がある小学生〜高校生）',
-    capacity:    '約7名',
-    fee:         '無料',
-    summary:     '子どものためのプログラミング・クラブを一緒に立ち上げる準備会です。おとなも、参加に興味のある子どもも歓迎します。',
+    summary:     '',
     notes:       '',
   },
   // ── ↑ ここまで ───────────────────────────────────────────── //
@@ -117,10 +114,12 @@ function populateNextEvent() {
 
   const isTbd       = ev.tbd || !ev.date;
   const isCancelled = !!ev.cancelled;
-  const dateStr = isTbd ? '日程未定' : formatDateJa(ev.date, ev.dayOfWeek);
-  const timeStr = isTbd ? '―'        : `${ev.startTime} 〜 ${ev.endTime}`;
-  const heading = ev.label ? `${ev.seasonEmoji} ${ev.label}`
-                           : `${ev.seasonEmoji} ${ev.monthLabel}の桃花台コードクラブ`;
+  // 中止時は回名・日時を表示せず「未定」扱い（中止文言は status で告知）
+  const dateStr = isCancelled ? '未定' : isTbd ? '日程未定' : formatDateJa(ev.date, ev.dayOfWeek);
+  const timeStr = isCancelled ? '未定' : isTbd ? '―'        : `${ev.startTime} 〜 ${ev.endTime}`;
+  const heading = isCancelled ? evT('ev-cancelled-title', '🚫 開催中止のお知らせ')
+                : ev.label    ? `${ev.seasonEmoji} ${ev.label}`
+                              : `${ev.seasonEmoji} ${ev.monthLabel}の桃花台コードクラブ`;
   const deadlineStr = (!isTbd && ev.deadline)
     ? `${formatDateJa(ev.deadline)} ${ev.deadlineTime || ''}`.trim()
     : '';
@@ -131,8 +130,8 @@ function populateNextEvent() {
                     : isTbd       ? '🚀 準備中'
                                   : '🚀 開催決定';
   const statusLine  = isCancelled
-    ? evT('ev-status-cancelled-line', '{date}の開催は{reason}により中止となりました。')
-        .replace('{date}', dateStr).replace('{reason}', reasonStr)
+    ? evT('ev-status-cancelled-line', '{reason}により開催を中止しました。次回の開催は未定です。')
+        .replace('{reason}', reasonStr)
     : isTbd
     ? '次回開催に向けて準備中です。'
     : `${heading} を ${dateStr} に開催します！`;
@@ -143,9 +142,9 @@ function populateNextEvent() {
     'date':          isTbd ? '📅 日程未定'                : `📅 ${dateStr}`,
     'time':          isTbd ? '🕐 ―'                       : `🕐 ${timeStr}`,
     'venue':         `📍 ${ev.venue}`,
-    'date-short':    isTbd ? `${ev.seasonEmoji} 日程未定` : `${ev.seasonEmoji} ${dateStr} ${timeStr}`,
+    'date-short':    isCancelled ? '未定' : isTbd ? `${ev.seasonEmoji} 日程未定` : `${ev.seasonEmoji} ${dateStr} ${timeStr}`,
     'venue-short':   ev.venue,
-    'news-summary':  isTbd ? `日程未定｜${ev.venue}`       : `${dateStr} ${timeStr}｜${ev.venue}`,
+    'news-summary':  isCancelled ? statusLine : isTbd ? `日程未定｜${ev.venue}` : `${dateStr} ${timeStr}｜${ev.venue}`,
     'date-text':     dateStr,
     'time-text':     timeStr,
     'venue-text':    ev.venue,
@@ -164,6 +163,14 @@ function populateNextEvent() {
     if (text === '') return;  // 値が無い項目は HTML の初期テキストを残す
     document.querySelectorAll(`[data-ev="${key}"]`).forEach(el => {
       el.textContent = text;
+    });
+  });
+
+  // 中止時はイベント固有の付随情報（対象・定員・参加費・締切・紹介文）を非表示
+  const HIDE_WHEN_CANCELLED = ['audience', 'audience-text', 'capacity', 'fee', 'deadline', 'deadline-text', 'summary'];
+  HIDE_WHEN_CANCELLED.forEach(key => {
+    document.querySelectorAll(`[data-ev="${key}"]`).forEach(el => {
+      el.style.display = isCancelled ? 'none' : '';
     });
   });
 

@@ -20,7 +20,7 @@
   "hero-btn-join": "🚀 Tham gia làm Ninja",
   "cta-apply": "🎟 Đang nhận đăng ký trên connpass!",
   "ev-status-cancelled-badge": "🚫 Đã hủy",
-  "ev-status-cancelled-line": "Buổi học đã bị hủy do {reason}. Buổi học tiếp theo chưa được xác định.",
+  "ev-status-cancelled-line": "Buổi học ngày {date} đã bị hủy do {reason}. Buổi học tiếp theo chưa được xác định.",
   "ev-link-cancelled": "Đã hủy",
   "ev-cancelled-title": "🚫 Buổi học đã hủy",
   "ev-cancel-reason-admin": "lý do từ ban tổ chức",

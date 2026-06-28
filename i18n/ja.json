@@ -20,7 +20,7 @@
   "hero-btn-join": "🚀 ニンジャとして参加",
   "cta-apply": "🎟 connpassから参加受け付け中！",
   "ev-status-cancelled-badge": "🚫 開催中止",
-  "ev-status-cancelled-line": "{reason}により開催を中止しました。次回の開催は未定です。",
+  "ev-status-cancelled-line": "{date}の開催は{reason}により中止になりました。次回の開催は未定です。",
   "ev-link-cancelled": "開催中止",
   "ev-cancelled-title": "🚫 開催中止のお知らせ",
   "ev-cancel-reason-admin": "管理者都合",

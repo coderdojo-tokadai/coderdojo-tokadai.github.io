@@ -20,7 +20,7 @@
   "hero-btn-join": "🚀 Bergabung sebagai Ninja",
   "cta-apply": "🎟 Pendaftaran dibuka di connpass!",
   "ev-status-cancelled-badge": "🚫 Dibatalkan",
-  "ev-status-cancelled-line": "Sesi dibatalkan karena {reason}. Sesi berikutnya belum ditentukan.",
+  "ev-status-cancelled-line": "Sesi pada {date} dibatalkan karena {reason}. Sesi berikutnya belum ditentukan.",
   "ev-link-cancelled": "Dibatalkan",
   "ev-cancelled-title": "🚫 Sesi dibatalkan",
   "ev-cancel-reason-admin": "alasan administratif",

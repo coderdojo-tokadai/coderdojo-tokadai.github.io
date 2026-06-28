@@ -114,8 +114,9 @@ function populateNextEvent() {
 
   const isTbd       = ev.tbd || !ev.date;
   const isCancelled = !!ev.cancelled;
-  // 中止時は回名・日時を表示せず「未定」扱い（中止文言は status で告知）
+  // 中止時は回名・時間は表示せず「未定」扱い（中止文言は status で、中止日（時間なし）を告知）
   const dateStr = isCancelled ? '未定' : isTbd ? '日程未定' : formatDateJa(ev.date, ev.dayOfWeek);
+  const cancelDateStr = (isCancelled && ev.date) ? formatDateJa(ev.date, ev.dayOfWeek) : '';
   const timeStr = isCancelled ? '未定' : isTbd ? '―'        : `${ev.startTime} 〜 ${ev.endTime}`;
   const heading = isCancelled ? evT('ev-cancelled-title', '🚫 開催中止のお知らせ')
                 : ev.label    ? `${ev.seasonEmoji} ${ev.label}`
@@ -130,8 +131,8 @@ function populateNextEvent() {
                     : isTbd       ? '🚀 準備中'
                                   : '🚀 開催決定';
   const statusLine  = isCancelled
-    ? evT('ev-status-cancelled-line', '{reason}により開催を中止しました。次回の開催は未定です。')
-        .replace('{reason}', reasonStr)
+    ? evT('ev-status-cancelled-line', '{date}の開催は{reason}により中止になりました。次回の開催は未定です。')
+        .replace('{date}', cancelDateStr).replace('{reason}', reasonStr)
     : isTbd
     ? '次回開催に向けて準備中です。'
     : `${heading} を ${dateStr} に開催します！`;
